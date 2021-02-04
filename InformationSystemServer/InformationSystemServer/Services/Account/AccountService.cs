@@ -70,10 +70,10 @@ namespace InformationSystemServer.Services.Account
 
             this.dbContext.Users.Add(user);
 
-            dbContext.SaveChanges();
+            await this.dbContext.SaveChangesAsync();
 
             return new UserResponseDto
-            { 
+            {
                 Username = user.Username,
                 Token = this.tokenService.CreateToken(user),
                 Role = user.Role

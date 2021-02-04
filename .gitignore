@@ -3,24 +3,16 @@ InformationSystemServer/wwwroot/**
 InformationSystemServer/Migrations/**
 packages/*
 packages/**/*
-**/bin
-**/obj
+InformationSystemServer/InformationSystemServer/bin
+InformationSystemServer/InformationSystemServer/obj
 **/Log
-**/.vs
+InformationSystemServer/.vs
 **/packages
 *.tmp
 *.suo
-*.csproj.user
+InformationSystemServer/InformationSystemServer.csproj.user
 **/project.lock.json
 artifacts/
 *.user
-InformationSystemServer/appsettings.Development.json
+InformationSystemServer/InformationSystemServer/appsettings.Development.json
 **/Migrations/**
-<<<<<<< Updated upstream
-InformationSystemServer/web.config
-InformationSystemServer/.vs/InformationSystemServer/v16/.suo
-InformationSystemServer/.vs/InformationSystemServer/v16/.suo
-InformationSystemServer/.vs/InformationSystemServer/v16/.suo
-=======
-InformationSystemServer/web.config
->>>>>>> Stashed changes

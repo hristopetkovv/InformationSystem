@@ -32,6 +32,25 @@ namespace InformationSystemServer.Services
             return application;
         }
 
-       
+        public async Task DeleteApplicationAsync(int id)
+        {
+            var app = context.Applications.Where(a => a.Id == id).SingleOrDefault();
+            context.Applications.Remove(app);
+            await context.SaveChangesAsync();
+        }
+
+        public async Task UpdateApplicationAsync(int id, Application app)
+        {
+            var existingApp = context.Applications.Where(c => c.Id == id).SingleOrDefault();
+            existingApp.FirstName = app.FirstName;
+            existingApp.LastName = app.LastName;
+            existingApp.AddressId = app.AddressId;
+            existingApp.QualificatonInformation = app.QualificatonInformation;
+            existingApp.Status = app.Status;
+            existingApp.Address = app.Address;
+
+            await context.SaveChangesAsync();
+        }
+
     }
 }

@@ -17,3 +17,6 @@ artifacts/
 InformationSystemServer/appsettings.Development.json
 **/Migrations/**
 InformationSystemServer/web.config
+InformationSystemServer/.vs/InformationSystemServer/v16/.suo
+InformationSystemServer/.vs/InformationSystemServer/v16/.suo
+InformationSystemServer/.vs/InformationSystemServer/v16/.suo

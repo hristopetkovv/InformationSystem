@@ -16,7 +16,11 @@ artifacts/
 *.user
 InformationSystemServer/appsettings.Development.json
 **/Migrations/**
+<<<<<<< Updated upstream
 InformationSystemServer/web.config
 InformationSystemServer/.vs/InformationSystemServer/v16/.suo
 InformationSystemServer/.vs/InformationSystemServer/v16/.suo
 InformationSystemServer/.vs/InformationSystemServer/v16/.suo
+=======
+InformationSystemServer/web.config
+>>>>>>> Stashed changes

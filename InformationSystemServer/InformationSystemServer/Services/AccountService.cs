@@ -64,7 +64,7 @@ namespace InformationSystemServer.Services
                 PasswordSalt = hmac.Key
             };
 
-            this.dbContext.Add(user);
+            this.dbContext.Users.Add(user);
 
             return new UserResponseDto
             { 

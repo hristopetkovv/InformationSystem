@@ -17,6 +17,7 @@ namespace InformationSystemServer.Controllers
         }
 
         [HttpPost]
+        [Route("register")]
         public async Task<UserResponseDto> Register([FromBody] RegisterRequestDto dto)
         {
             var user = await this.accountService.Register(dto);
@@ -25,6 +26,7 @@ namespace InformationSystemServer.Controllers
         }
 
         [HttpPost]
+        [Route("login")]
         public async Task<UserResponseDto> Login([FromBody] LoginRequestDto dto)
         {
             var user = await this.accountService.Login(dto);

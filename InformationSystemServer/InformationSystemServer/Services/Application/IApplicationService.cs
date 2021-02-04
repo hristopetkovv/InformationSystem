@@ -9,5 +9,7 @@ namespace InformationSystemServer.Services
         public IEnumerable<Application> GetAllApplications();
         public Application GetApplicationById(int id);
         public Task<Application> AddApplicationAsync(Application application);
+        public Task UpdateApplicationAsync(int id, Application app);
+        public Task DeleteApplicationAsync(int id);
     }
 }

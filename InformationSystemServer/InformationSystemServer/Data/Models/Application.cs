@@ -8,7 +8,7 @@ namespace InformationSystemServer.Data.Models
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public virtual List<QualificatonInformation> QualificatonInformation { get; set; }
+        public virtual ICollection<QualificatonInformation> QualificatonInformation { get; set; } = new HashSet<QualificatonInformation>();
         public int UserId { get; set; }
         public int AddressId { get; set; }
         public StatusType Status { get; set; }

@@ -21,7 +21,7 @@ namespace InformationSystemServer.Data
             builder.ApplyConfiguration(new Configurations.UserConfiguration());
             builder.ApplyConfiguration(new Configurations.ApplicationConfiguration());
             builder.ApplyConfiguration(new Configurations.QualificatonInformationConfiguration());
-            builder.ApplyConfiguration(new Configurations.AdressConfiguration());
+            builder.ApplyConfiguration(new Configurations.AddressConfiguration());
         }
 
         public DbSet<User> Users { get; set; }

@@ -9,11 +9,11 @@ namespace InformationSystemServer.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class HomeController : ControllerBase
+    public class ApplicationController : ControllerBase
     {
         private readonly IApplicationService appService;
 
-        public HomeController(IApplicationService appService)
+        public ApplicationController(IApplicationService appService)
         {
             this.appService = appService;
         }

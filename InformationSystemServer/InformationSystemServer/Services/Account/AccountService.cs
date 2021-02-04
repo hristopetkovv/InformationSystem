@@ -70,7 +70,7 @@ namespace InformationSystemServer.Services.Account
 
             this.dbContext.Users.Add(user);
 
-            await this.dbContext.SaveChangesAsync();
+            dbContext.SaveChanges();
 
             return new UserResponseDto
             { 

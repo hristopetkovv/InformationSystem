@@ -4,6 +4,7 @@ using InformationSystemServer.Data.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using InformationSystemServer.Data.Enums;
 
 namespace InformationSystemServer.Services
 {
@@ -27,6 +28,7 @@ namespace InformationSystemServer.Services
 
         public async Task<Application> AddApplicationAsync(Application application)
         {
+            application.Status = StatusType.Draft;
             context.Applications.Add(application);
             await context.SaveChangesAsync();
             return application;
@@ -51,6 +53,11 @@ namespace InformationSystemServer.Services
 
             await context.SaveChangesAsync();
         }
+
+        //public void ChangeStatus(int id, string status)
+        //{
+
+        //}
 
     }
 }

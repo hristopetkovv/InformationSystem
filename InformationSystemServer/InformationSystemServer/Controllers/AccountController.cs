@@ -1,4 +1,4 @@
-﻿using InformationSystemServer.Services;
+﻿using InformationSystemServer.Services.Account;
 using InformationSystemServer.ViewModels.Account;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;

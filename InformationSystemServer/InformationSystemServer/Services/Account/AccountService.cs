@@ -1,5 +1,6 @@
 ﻿using InformationSystemServer.Data;
 using InformationSystemServer.Data.Models;
+using InformationSystemServer.Services.Token;
 using InformationSystemServer.ViewModels.Account;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -7,15 +8,17 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace InformationSystemServer.Services
+namespace InformationSystemServer.Services.Account
 {
     public class AccountService : IAccountService
     {
         private readonly AppDbContext dbContext;
+        private readonly ITokenService tokenService;
 
-        public AccountService(AppDbContext dbContext)
+        public AccountService(AppDbContext dbContext, ITokenService tokenService)
         {
             this.dbContext = dbContext;
+            this.tokenService = tokenService;
         }
 
         public async Task<UserResponseDto> Login(LoginRequestDto dto)
@@ -44,6 +47,7 @@ namespace InformationSystemServer.Services
             return new UserResponseDto
             {
                 Username = user.Username,
+                Token = this.tokenService.CreateToken(user),
                 Role = user.Role
             };
         }
@@ -71,6 +75,7 @@ namespace InformationSystemServer.Services
             return new UserResponseDto
             { 
                 Username = user.Username,
+                Token = this.tokenService.CreateToken(user),
                 Role = user.Role
             };
         }

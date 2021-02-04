@@ -1,6 +1,6 @@
 ﻿namespace InformationSystemServer.Data.Models
 {
-    public class Adress
+    public class Address
     {
         public int Id { get; set; }
         public string Municipality { get; set; }

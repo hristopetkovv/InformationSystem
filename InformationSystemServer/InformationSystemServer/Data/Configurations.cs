@@ -31,7 +31,6 @@ namespace InformationSystemServer.Data
         {
             public void Configure(EntityTypeBuilder<QualificatonInformation> builder)
             {
-                builder.ToTable("QualificatonInformation");
                 builder.HasKey(x => x.Id);
                 builder.Property(x => x.TypeQualification).IsRequired();
                 builder.Property(x => x.StartDate).IsRequired();
@@ -45,7 +44,6 @@ namespace InformationSystemServer.Data
         {
             public void Configure(EntityTypeBuilder<Address> builder)
             {
-                builder.ToTable("Address");
                 builder.HasKey(x => x.Id);
                 builder.Property(x => x.Municipality).IsRequired();
                 builder.Property(x => x.Region).IsRequired();

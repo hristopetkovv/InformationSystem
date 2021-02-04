@@ -16,9 +16,18 @@ namespace InformationSystemServer.Controllers
             this.accountService = accountService;
         }
 
-        public async Task<UserResponseDto> Register([FromBody]RegisterRequestDto dto)
+        [HttpPost]
+        public async Task<UserResponseDto> Register([FromBody] RegisterRequestDto dto)
         {
             var user = await this.accountService.Register(dto);
+
+            return user;
+        }
+
+        [HttpPost]
+        public async Task<UserResponseDto> Login([FromBody] LoginRequestDto dto)
+        {
+            var user = await this.accountService.Login(dto);
 
             return user;
         }

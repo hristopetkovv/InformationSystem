@@ -6,5 +6,7 @@ namespace InformationSystemServer.Services
     public interface IAccountService
     {
         Task<UserResponseDto> Register(RegisterRequestDto dto);
+
+        Task<UserResponseDto> Login(LoginRequestDto dto);
     }
 }

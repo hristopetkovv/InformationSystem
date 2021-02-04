@@ -66,6 +66,8 @@ namespace InformationSystemServer.Services
 
             this.dbContext.Users.Add(user);
 
+            await this.dbContext.SaveChangesAsync();
+
             return new UserResponseDto
             { 
                 Username = user.Username,

@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 
 namespace InformationSystemServer.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class AccountController : ControllerBase
+    public class AccountController : BaseApiController
     {
         private readonly IAccountService accountService;
 

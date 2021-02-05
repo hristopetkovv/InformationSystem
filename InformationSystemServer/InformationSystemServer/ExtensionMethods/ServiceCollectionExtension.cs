@@ -1,6 +1,7 @@
 ﻿using InformationSystemServer.Data;
 using InformationSystemServer.Services;
 using InformationSystemServer.Services.Account;
+using InformationSystemServer.Services.Helpers;
 using InformationSystemServer.Services.Token;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -25,6 +26,7 @@ namespace InformationSystemServer.ExtensionMethods
             services.AddTransient<IAccountService, AccountService>();
             services.AddTransient<IApplicationService, ApplicationService>();
             services.AddScoped<ITokenService, TokenService>();
+            services.AddScoped<UserContext>();
 
             return services;
         }

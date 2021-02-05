@@ -38,8 +38,8 @@ namespace InformationSystemServer.ExtensionMethods
                  {
                      ValidateIssuerSigningKey = true,
                      IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["TokenKey"])),
-                     ValidateIssuer = false,
-                     ValidateAudience = false
+                     ValidateIssuer = true,
+                     ValidateAudience = true
                  };
              });
 

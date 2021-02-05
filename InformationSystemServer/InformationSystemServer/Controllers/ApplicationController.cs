@@ -38,7 +38,7 @@ namespace InformationSystemServer.Controllers
         }
 
         [HttpPut("{id:int}")]
-        public async Task PutCarAsync(int id, Application app)
+        public async Task PutApplicationAsync(int id, Application app)
         {
            await appService.UpdateApplicationAsync(id, app);
         }

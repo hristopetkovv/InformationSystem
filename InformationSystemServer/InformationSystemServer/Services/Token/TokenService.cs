@@ -1,5 +1,6 @@
 ﻿using InformationSystemServer.Data.Models;
-using Microsoft.Extensions.Configuration;
+using InformationSystemServer.Services.Helpers;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.IdentityModel.Tokens.Jwt;
@@ -10,11 +11,15 @@ namespace InformationSystemServer.Services.Token
 {
     public class TokenService : ITokenService
     {
-        private readonly SymmetricSecurityKey key;
+        private readonly TokenConfiguration tokenConfiguration;
 
-        public TokenService(IConfiguration config)
+        public TokenService(IOptions<TokenConfiguration> tokenConfigurationOptions)
         {
-            key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["TokenKey"]));
+            //key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["TokenKey"]));
+            //key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(this.options.Value.SecretKey));
+            //this.options = options;
+
+            this.tokenConfiguration = tokenConfigurationOptions.Value;
         }
 
         public string CreateToken(User user)
@@ -26,12 +31,14 @@ namespace InformationSystemServer.Services.Token
                 new Claim(ClaimTypes.Role, user.Role),
             });
 
-            var creds = new SigningCredentials(this.key, SecurityAlgorithms.HmacSha512Signature);
+
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(this.tokenConfiguration.SecretKey));
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
 
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = claims,
-                Expires = DateTime.UtcNow.AddDays(1),
+                Expires = DateTime.UtcNow.AddDays(this.tokenConfiguration.Expires),
                 SigningCredentials = creds
             };
 

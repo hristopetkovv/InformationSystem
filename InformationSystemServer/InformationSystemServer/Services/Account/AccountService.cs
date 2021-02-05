@@ -32,22 +32,17 @@ namespace InformationSystemServer.Services.Account
                 throw new InvalidOperationException("Invalid username");
             }
 
-            using var hmac = new HMACSHA512(user.PasswordSalt);
+            var passwordHash = PasswordEncrypt.ComputeHash(dto.Password, user.PasswordSalt);
 
-            var computedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(dto.Password));
-
-            for (int i = 0; i < computedHash.Length; i++)
+            if (user.Password != passwordHash)
             {
-                if (computedHash[i] != user.PasswordHash[i])
-                {
-                    throw new InvalidOperationException("Invalid password");
-                }
+                throw new InvalidOperationException("Invalid password");
             }
 
             return new UserResponseDto
             {
                 Username = user.Username,
-                Token = this.tokenService.CreateToken(user),
+                Token = tokenService.CreateToken(user),
                 Role = user.Role
             };
         }
@@ -56,7 +51,7 @@ namespace InformationSystemServer.Services.Account
         {
             await this.UserExists(dto.Username);
 
-            using var hmac = new HMACSHA512();
+            var passwordResult = PasswordEncrypt.ComputeHash(dto.Password);
 
             var user = new User
             {
@@ -64,8 +59,8 @@ namespace InformationSystemServer.Services.Account
                 FirstName = dto.FirstName,
                 LastName = dto.LastName,
                 Role = Roles.User,
-                PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(dto.Password)),
-                PasswordSalt = hmac.Key
+                Password = passwordResult.Hash,
+                PasswordSalt = passwordResult.Salt
             };
 
             this.dbContext.Users.Add(user);

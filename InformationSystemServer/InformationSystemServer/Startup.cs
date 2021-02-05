@@ -1,11 +1,7 @@
-using InformationSystemServer.Data;
-using InformationSystemServer.Services;
-using InformationSystemServer.Services.Account;
-using InformationSystemServer.Services.Token;
+using InformationSystemServer.ExtensionMethods;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -25,27 +21,12 @@ namespace InformationSystemServer
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<AppDbContext>(opt =>
-              opt.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddControllers();
-
-            services.AddTransient<IAccountService, AccountService>();
-            services.AddTransient<IApplicationService, ApplicationService>();
-            services.AddScoped<ITokenService, TokenService>();
-
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-             .AddJwtBearer(options =>
-             {
-                 options.TokenValidationParameters = new TokenValidationParameters
-                 {
-                     ValidateIssuerSigningKey = true,
-                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(this.Configuration["TokenKey"])),
-                     ValidateIssuer = false,
-                     ValidateAudience = false
-                 };
-             });
-
-            services.AddHttpContextAccessor();
+            services
+                .AddDatabase(this.Configuration.GetConnectionString("DefaultConnection"))
+                .AddApplicationServices()
+                .AddAuthentication(this.Configuration)
+                .AddAuthorizationDefault()
+                .AddControllers();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

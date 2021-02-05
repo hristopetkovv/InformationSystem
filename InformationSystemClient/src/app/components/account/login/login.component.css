@@ -1,0 +1,9 @@
+form {
+    border: 1px solid grey;
+    padding: 10% 20%;
+    margin-top: 20%;
+    width: 500px;
+}
+button {
+    margin-top: 5%;
+}

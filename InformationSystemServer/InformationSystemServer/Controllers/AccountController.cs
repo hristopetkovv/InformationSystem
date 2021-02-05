@@ -1,5 +1,6 @@
 ﻿using InformationSystemServer.Services.Account;
 using InformationSystemServer.ViewModels.Account;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -17,6 +18,7 @@ namespace InformationSystemServer.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         [Route("register")]
         public async Task<UserResponseDto> Register([FromBody] RegisterRequestDto dto)
         {
@@ -26,6 +28,7 @@ namespace InformationSystemServer.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         [Route("login")]
         public async Task<UserResponseDto> Login([FromBody] LoginRequestDto dto)
         {

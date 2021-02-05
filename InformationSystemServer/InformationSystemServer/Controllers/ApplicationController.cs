@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using InformationSystemServer.Data.Models;
 using InformationSystemServer.Services;
-using InformationSystemServer.Services.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,21 +10,16 @@ namespace InformationSystemServer.Controllers
     public class ApplicationController : BaseApiController
     {
         private readonly IApplicationService appService;
-        private readonly UserContext userContext;
 
-        public ApplicationController(IApplicationService appService, UserContext userContext)
+        public ApplicationController(IApplicationService appService)
         {
             this.appService = appService;
-            this.userContext = userContext;
         }
 
         [HttpGet]
         [AllowAnonymous]
         public IEnumerable<Application> GetApplications()
         {
-            var id = this.userContext.UserId.Value;
-            var username = this.userContext.UserName;
-            var role = this.userContext.Role;
             return appService.GetAllApplications();
         }
 

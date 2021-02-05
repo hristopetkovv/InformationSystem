@@ -7,3 +7,17 @@ form {
 button {
     margin-top: 5%;
 }
+
+.btn-success{
+    background-color: coral;
+    border-color: coral;
+    margin: 0;
+}
+
+a{
+    color: coral;
+}
+
+.text-primary{
+    color: coral !important;
+}

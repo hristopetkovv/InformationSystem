@@ -16,3 +16,23 @@ button {
 .error-message {
     height: 20px;
 }
+
+.btn-success{
+    background-color: coral !important;
+    border-color: coral !important;
+    margin: 0;
+}   
+
+.btn-success:focus, 
+.btn-success:hover,
+.btn-success:active {
+    box-shadow: 0 0 4px 3px #cccccc;
+}
+
+a{
+    color: coral;
+}
+
+.text-primary{
+    color: coral !important;
+}

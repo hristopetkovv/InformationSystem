@@ -19,7 +19,7 @@ export class UsersResource {
     return this.http.post('api/account/register', user);
   }
 
-  loginUser(user: LoginDto): Observable<any> {
-    return this.http.post('api/account/login', user);
+  loginUser(dto: LoginDto): Observable<any> {
+    return this.http.post('api/account/login', dto);
   }
 }

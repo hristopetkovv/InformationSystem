@@ -23,5 +23,16 @@
 }
 
 .navbar a:hover{
-	color: #000000;
+	color: #881010;
+}
+
+.btn-outline-warning{
+	color: #ebe5c4;
+	border-color:	#FFFF33;
+}
+
+button:hover{
+	color: #c33d3d !important;
+	background-color: #fbfb89;
+	border-color:	#FFFF33;
 }

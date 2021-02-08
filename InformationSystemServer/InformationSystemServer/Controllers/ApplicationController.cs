@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using InformationSystemServer.Data.Models;
 using InformationSystemServer.Services;
 using InformationSystemServer.Services.Helpers;
+using InformationSystemServer.ViewModels.Application;
 using Microsoft.AspNetCore.Mvc;
 
 namespace InformationSystemServer.Controllers
@@ -10,28 +11,32 @@ namespace InformationSystemServer.Controllers
     public class ApplicationController : BaseApiController
     {
         private readonly IApplicationService appService;
+        private readonly UserContext userContext;
 
-        public ApplicationController(IApplicationService appService)
+        public ApplicationController(IApplicationService appService, UserContext userContext)
         {
             this.appService = appService;
+            this.userContext = userContext;
         }
 
         [HttpGet]
-        public IEnumerable<Application> GetApplications()
+        public async Task<IEnumerable<ApplicationResponseDto>> GetApplications()
         {
-            return appService.GetAllApplications();
+            return await appService.GetAllApplicationsAsync();
         }
 
         [HttpGet("{id:int}")]
-        public Application GetApplication(int id)
+        public async Task<Application> GetApplication(int id)
         {
-            return appService.GetApplicationById(id);
+            return await appService.GetApplicationById(id);
         }
 
         [HttpPost]
-        public async Task<Application> PostApplication(Application app)
+        public async Task PostApplication(ApplicationRequestDto app)
         {
-            return await appService.AddApplicationAsync(app);
+            var userId = this.userContext.UserId.Value;
+
+            await appService.AddApplicationAsync(app, userId);
         }
 
         [HttpPut("{id:int}")]

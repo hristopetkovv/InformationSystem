@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace InformationSystemServer.Data.Configurations
 {
-    public class QualificatonInformationConfiguration : IEntityTypeConfiguration<QualificatonInformation>
+    public class QualificatonInformationConfiguration : IEntityTypeConfiguration<QualificationInformation>
     {
-        public void Configure(EntityTypeBuilder<QualificatonInformation> qualification)
+        public void Configure(EntityTypeBuilder<QualificationInformation> qualification)
         {
             qualification.HasKey(x => x.Id);
 

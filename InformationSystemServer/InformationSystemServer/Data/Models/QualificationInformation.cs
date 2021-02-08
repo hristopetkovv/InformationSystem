@@ -3,7 +3,7 @@ using System;
 
 namespace InformationSystemServer.Data.Models
 {
-    public class QualificatonInformation
+    public class QualificationInformation
     {
         public int Id { get; set; }
 

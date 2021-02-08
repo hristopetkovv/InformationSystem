@@ -17,6 +17,22 @@ namespace InformationSystemServer.Data.Configurations
             application
                 .Property(x => x.LastName)
                 .IsRequired();
+
+            application
+                .Property(x => x.Municipality)
+                .IsRequired();
+
+            application
+                .Property(x => x.Region)
+                .IsRequired();
+
+            application
+                .Property(x => x.City)
+                .IsRequired();
+
+            application
+                .Property(x => x.Street)
+                .IsRequired();
         }
     }
 }

@@ -1,15 +1,19 @@
 ﻿using InformationSystemServer.Data.Enums;
 using System.Collections.Generic;
 
-namespace InformationSystemServer.Data.Models
+namespace InformationSystemServer.ViewModels.Application
 {
-    public class Application
+    public class ApplicationResponseDto
     {
         public int Id { get; set; }
 
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
+
+        public ApplicationType ApplicationType { get; set; }
+
+        public StatusType Status { get; set; }
 
         public string Municipality { get; set; }
 
@@ -19,14 +23,10 @@ namespace InformationSystemServer.Data.Models
 
         public string Street { get; set; }
 
-        public StatusType Status { get; set; }
+        public string UserFirstName { get; set; }
 
-        public ApplicationType ApplicationType { get; set; }
+        public string UserLastName { get; set; }
 
-        public int UserId { get; set; }
-
-        public User User { get; set; }
-
-        public virtual ICollection<QualificationInformation> QualificatonInformation { get; set; } = new HashSet<QualificationInformation>();
+        public virtual ICollection<QualificationDto> QualificationInformation { get; set; }
     }
 }

@@ -16,11 +16,9 @@ namespace InformationSystemServer.Data
 
         public DbSet<User> Users { get; set; }
 
-        public virtual DbSet<Address> Addresses { get; set; }
-
         public virtual DbSet<Application> Applications { get; set; }
 
-        public virtual DbSet<QualificatonInformation> QualificatonsInformation { get; set; }
+        public virtual DbSet<QualificationInformation> QualificationsInformation { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -29,7 +27,6 @@ namespace InformationSystemServer.Data
             builder.ApplyConfiguration(new Configurations.UserConfiguration());
             builder.ApplyConfiguration(new Configurations.ApplicationConfiguration());
             builder.ApplyConfiguration(new Configurations.QualificatonInformationConfiguration());
-            builder.ApplyConfiguration(new Configurations.AddressConfiguration());
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace InformationSystemServer.ViewModels.Application
 {
-    public class ApplicationResponseDto
+    public class ApplicationDetailsResponseDto
     {
         public int Id { get; set; }
 
@@ -22,5 +22,11 @@ namespace InformationSystemServer.ViewModels.Application
         public string City { get; set; }
 
         public string Street { get; set; }
+
+        public string UserFirstName { get; set; }
+
+        public string UserLastName { get; set; }
+
+        public virtual IEnumerable<QualificationDto> QualificationInformation { get; set; }
     }
 }

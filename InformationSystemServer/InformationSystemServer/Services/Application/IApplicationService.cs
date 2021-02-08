@@ -9,7 +9,7 @@ namespace InformationSystemServer.Services
     {
         public Task<IEnumerable<ApplicationResponseDto>> GetAllApplicationsAsync();
 
-        public Task<Application> GetApplicationById(int id);
+        public Task<ApplicationDetailsResponseDto> GetApplicationByIdAsync(int id);
 
         public Task<Application> AddApplicationAsync(ApplicationRequestDto dto, int userId);
 

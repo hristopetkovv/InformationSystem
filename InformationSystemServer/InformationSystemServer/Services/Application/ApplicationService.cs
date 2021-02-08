@@ -29,30 +29,46 @@ namespace InformationSystemServer.Services
                     LastName = app.LastName,
                     City = app.City,
                     Region = app.Region,
+                    Street = app.Street,
                     Municipality = app.Municipality,
                     ApplicationType = app.ApplicationType,
-                    Street = app.Street,
                     Status = app.Status,
-                    UserFirstName = app.User.FirstName,
-                    UserLastName = app.User.LastName,
-                    QualificationInformation = app.QualificatonInformation
-                        .Select(q => new QualificationDto 
-                        {
-                            QualificationId = q.Id,
-                            StartDate = q.StartDate.Date,
-                            EndDate = q.EndDate.Date,
-                            Description = q.Description,
-                            DurationDays = q.DurationDays,
-                            TypeQualification = q.TypeQualification
-                        }).ToList()
                 }).ToListAsync();
 
             return applications;
         }
 
-        public async Task<Application> GetApplicationById(int id)
+        public async Task<ApplicationDetailsResponseDto> GetApplicationByIdAsync(int id)
         {
-            return await context.Applications.Where(a => a.Id == id).SingleOrDefaultAsync();
+            var application = await this.context
+               .Applications
+               .Where(app => app.Id == id)
+               .Select(app => new ApplicationDetailsResponseDto
+               {
+                   Id = app.Id,
+                   FirstName = app.FirstName,
+                   LastName = app.LastName,
+                   City = app.City,
+                   Region = app.Region,
+                   Municipality = app.Municipality,
+                   Street = app.Street,
+                   ApplicationType = app.ApplicationType,
+                   Status = app.Status,
+                   UserFirstName = app.User.FirstName,
+                   UserLastName = app.User.LastName,
+                   QualificationInformation = app.QualificatonInformation
+                       .Select(q => new QualificationDto
+                       {
+                           QualificationId = q.Id,
+                           StartDate = q.StartDate.Date,
+                           EndDate = q.EndDate.Date,
+                           Description = q.Description,
+                           DurationDays = q.DurationDays,
+                           TypeQualification = q.TypeQualification
+                       })
+               }).SingleOrDefaultAsync();
+
+            return application;
         }
 
         public async Task<Application> AddApplicationAsync(ApplicationRequestDto dto, int userId)
@@ -67,10 +83,8 @@ namespace InformationSystemServer.Services
                 City = dto.City,
                 Municipality = dto.Municipality,
                 Region = dto.Region,
+                UserId = userId
             };
-
-            var user = await this.context.Users.SingleOrDefaultAsync(u => u.Id == userId);
-            application.User = user;
 
             foreach (var qualification in dto.QualificationInformation)
             {

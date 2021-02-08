@@ -26,9 +26,9 @@ namespace InformationSystemServer.Controllers
         }
 
         [HttpGet("{id:int}")]
-        public async Task<Application> GetApplication(int id)
+        public async Task<ApplicationDetailsResponseDto> GetApplication(int id)
         {
-            return await appService.GetApplicationById(id);
+            return await appService.GetApplicationByIdAsync(id);
         }
 
         [HttpPost]

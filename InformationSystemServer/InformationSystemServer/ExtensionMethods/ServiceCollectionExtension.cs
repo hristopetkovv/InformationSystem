@@ -9,12 +9,21 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using System.Text;
 
 namespace InformationSystemServer.ExtensionMethods
 {
     public static class ServiceCollectionExtension
     {
+        public static IServiceCollection AddSwagger(this IServiceCollection services)
+        {
+            return services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "My Api", Version = "v1" });
+            });
+        }
+
         public static IServiceCollection AddDatabase(this IServiceCollection services, string connectionString)
         {
             return services.AddDbContext<AppDbContext>(opt =>

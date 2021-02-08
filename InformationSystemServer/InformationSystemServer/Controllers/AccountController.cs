@@ -5,15 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
 namespace InformationSystemServer.Controllers
-<<<<<<< Updated upstream
 {
     public class AccountController : BaseApiController
-=======
-{   
-    [Route("api/[controller]")]
-    [ApiController]
-    public class AccountController : ControllerBase
->>>>>>> Stashed changes
     {
         private readonly IAccountService accountService;
 

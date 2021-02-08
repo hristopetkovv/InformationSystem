@@ -28,6 +28,7 @@ namespace InformationSystemServer
                 .AddApplicationServices()
                 .AddAuthentication(this.Configuration)
                 .AddAuthorizationDefault()
+                .AddSwagger()
                 .AddControllers();
         }
 
@@ -38,13 +39,19 @@ namespace InformationSystemServer
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseRouting();
-            app.UseAuthorization();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app
+                .UseSwagger()
+                .UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "My InformationSystem Api");
+                    c.RoutePrefix = string.Empty;
+                })
+                .UseRouting()
+                .UseAuthorization()
+                .UseEndpoints(endpoints =>
+                {
+                    endpoints.MapControllers();
+                });
         }
     }
 }

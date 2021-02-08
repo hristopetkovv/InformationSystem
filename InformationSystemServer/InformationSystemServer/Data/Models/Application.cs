@@ -11,8 +11,6 @@ namespace InformationSystemServer.Data.Models
 
         public string LastName { get; set; }
 
-        public virtual ICollection<QualificatonInformation> QualificatonInformation { get; set; } = new HashSet<QualificatonInformation>();
-
         public StatusType Status { get; set; }
 
         public ApplicationType ApplicationType { get; set; }
@@ -24,5 +22,7 @@ namespace InformationSystemServer.Data.Models
         public int UserId { get; set; }
 
         public User User { get; set; }
+
+        public virtual ICollection<QualificatonInformation> QualificatonInformation { get; set; } = new HashSet<QualificatonInformation>();
     }
 }

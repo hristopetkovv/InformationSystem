@@ -3,6 +3,7 @@ import { LoginDto } from 'src/app/models/login.dto';
 import { Router } from '@angular/router';
 import { UsersResource } from 'src/app/services/users/users-resource.service';
 import { UsersService } from 'src/app/services/users/users.service';
+import { UserDto } from 'src/app/models/user.dto';
 
 @Component({
   selector: 'app-login',
@@ -21,9 +22,12 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.userResource.loginUser(this.model)
-      .subscribe((data) => {
-        this.userService.login(data.token, data.userId);
-        this.router.navigate(['home']);
-      });
+      .subscribe((user: UserDto) => {
+        if (user) {
+          this.userService.isUserInRole(user.role)
+          this.userService.login(user);
+          this.router.navigate(['home']);
+        }
+      }, error => console.log(error));
   }
 }

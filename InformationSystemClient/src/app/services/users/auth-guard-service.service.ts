@@ -6,13 +6,13 @@ import { UsersService } from './users.service';
   providedIn: 'root'
 })
 export class AuthGuardService {
-  constructor(private router: Router, private authService: UsersService) {
+  constructor(private router: Router, private userService: UsersService) {
   }
 
   canActivate(route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean | UrlTree {
 
-    if (!this.authService.isLogged()) {
+    if (!this.userService.isLogged()) {
 
       this.router.navigate(["home"], { queryParams: { retUrl: route.url } });
       return false;

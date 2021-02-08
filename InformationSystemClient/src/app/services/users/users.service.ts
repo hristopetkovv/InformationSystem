@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import jwt_decode from 'jwt-decode';
+import { UserDto } from 'src/app/models/user.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -9,20 +10,33 @@ import jwt_decode from 'jwt-decode';
 export class UsersService {
   private readonly token_property = 'access_token';
   loginChanged: Subject<boolean> = new Subject();
+  isAdmin: boolean;
+  isLoggedInUser = false;
 
   constructor(
     private http: HttpClient
-  ) { }
+  ) {
+    this.isLoggedInUser = localStorage.getItem('user') !== null && localStorage.getItem('user') !== undefined;
+  }
 
-  login(token: string, userId: string): void {
-    localStorage.setItem(this.token_property, token);
-    localStorage.setItem('userId', userId);
+  login(user: UserDto): void {
+    localStorage.setItem('user', JSON.stringify(user));
     this.loginChanged.next(true);
   }
 
   logout(): void {
     localStorage.clear();
+    this.isLoggedInUser = false;
     this.loginChanged.next(false);
+  }
+
+  loggedInChange() {
+    return this.loginChanged;
+  }
+
+  isLoggedIn(loggedIn: boolean): void {
+    this.isLoggedInUser = loggedIn;
+    this.loginChanged.next(loggedIn);
   }
 
   isLogged(): boolean {
@@ -31,17 +45,24 @@ export class UsersService {
   }
 
   public getToken(): string {
-    return localStorage.getItem('access_token');
+    if (this.isLoggedInUser) {
+      const user = JSON.parse(localStorage.getItem('user')) as UserDto;
+      const token = user.token;
+
+      return token;
+    }
+
+    return null;
   }
 
   getById(id: number): Observable<any> {
     return this.http.get(`api/Users/${id}`);
   }
 
-  getUserId(): number {
-    var decodedToken = this.getDecodedAccessToken(this.getToken());
-    return decodedToken['nameid'];
-  }
+  // getUserId(): number {
+  //   var decodedToken = this.getDecodedAccessToken(this.getToken());
+  //   return decodedToken['nameid'];
+  // }
 
   getDecodedAccessToken(token: string): any {
     try {
@@ -49,6 +70,14 @@ export class UsersService {
     }
     catch (Error) {
       return null;
+    }
+  }
+
+  isUserInRole(role: string) {
+    if (role === "Admin") {
+      this.isAdmin = true;
+    } else if (role === "User") {
+      this.isAdmin = false;
     }
   }
 

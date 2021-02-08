@@ -10,12 +10,10 @@ namespace InformationSystemServer.Controllers
     public class ApplicationController : BaseApiController
     {
         private readonly IApplicationService appService;
-        private readonly UserContext userContext;
 
-        public ApplicationController(IApplicationService appService, UserContext userContext)
+        public ApplicationController(IApplicationService appService)
         {
             this.appService = appService;
-            this.userContext = userContext;
         }
 
         [HttpGet]

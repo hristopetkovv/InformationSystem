@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
       .subscribe((user: UserDto) => {
         if (user) {
           this.userService.isUserInRole(user.role)
-          this.userService.login(user);
+          this.userService.setCurrentUser(user);
           this.router.navigate(['home']);
         }
       }, error => console.log(error));

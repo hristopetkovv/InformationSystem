@@ -32,18 +32,24 @@
             </ul>
         </div>
 
-        <ng-container>
+        <ng-container *ngIf="!loggedIn">
+            <button *ngIf="!loggedIn"
+                    style="margin-right: 1em; width: 7%;"
+                    type="button"
+                    class="btn btn-outline-warning"
+                    routerLink="/register">Register</button>
             <button *ngIf="!loggedIn"
                     style="margin-right: 1em; width: 7%;"
                     type="button"
                     class="btn btn-outline-warning"
                     routerLink="/login">Login</button>
-            <button *ngIf="loggedIn"
-                    style="margin-right: 1em; width: 7%;"
-                    type="button"
-                    (click)="logout()"
-                    class="btn btn-outline-warning"
-                    routerLink="/login">Logout</button>
         </ng-container>
+
+        <button *ngIf="loggedIn"
+                style="margin-right: 1em; width: 7%;"
+                type="button"
+                (click)="logout()"
+                class="btn btn-outline-warning"
+                routerLink="/login">Logout</button>
     </nav>
 </header>

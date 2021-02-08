@@ -19,7 +19,7 @@ export class UsersService {
     this.isLoggedInUser = localStorage.getItem('user') !== null && localStorage.getItem('user') !== undefined;
   }
 
-  login(user: UserDto): void {
+  setCurrentUser(user: UserDto): void {
     localStorage.setItem('user', JSON.stringify(user));
     this.isLoggedInUser = true;
     this.loginChanged.next(true);

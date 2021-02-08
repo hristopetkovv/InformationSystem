@@ -21,6 +21,7 @@ export class UsersService {
 
   login(user: UserDto): void {
     localStorage.setItem('user', JSON.stringify(user));
+    this.isLoggedInUser = true;
     this.loginChanged.next(true);
   }
 
@@ -28,10 +29,6 @@ export class UsersService {
     localStorage.clear();
     this.isLoggedInUser = false;
     this.loginChanged.next(false);
-  }
-
-  loggedInChange() {
-    return this.loginChanged;
   }
 
   isLoggedIn(loggedIn: boolean): void {

@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using InformationSystemServer.Data.Models;
 using InformationSystemServer.Services;
 using InformationSystemServer.Services.Helpers;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace InformationSystemServer.Controllers
@@ -22,8 +21,6 @@ namespace InformationSystemServer.Controllers
         [HttpGet]
         public IEnumerable<Application> GetApplications()
         {
-            var userId = this.userContext.UserId;
-
             return appService.GetAllApplications();
         }
 

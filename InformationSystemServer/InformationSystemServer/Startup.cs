@@ -5,12 +5,12 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 
 namespace InformationSystemServer
 {
     public class Startup
     {
-
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -23,10 +23,11 @@ namespace InformationSystemServer
             services.Configure<TokenConfiguration>(this.Configuration.GetSection("TokenOptions"));
             services.AddOptions();
 
+            var authConfig = this.Configuration.GetSection("TokenOptions").Get<TokenConfiguration>();
             services
                 .AddDatabase(this.Configuration.GetConnectionString("DefaultConnection"))
                 .AddApplicationServices()
-                .AddAuthentication(this.Configuration)
+                .AddAuthentication(authConfig)
                 .AddAuthorizationDefault()
                 .AddSwagger()
                 .AddControllers();
@@ -46,11 +47,13 @@ namespace InformationSystemServer
                     c.SwaggerEndpoint("/swagger/v1/swagger.json", "My InformationSystem Api");
                     c.RoutePrefix = string.Empty;
                 })
+                .UseAuthentication()
                 .UseRouting()
                 .UseAuthorization()
                 .UseEndpoints(endpoints =>
                 {
-                    endpoints.MapControllers();
+                    endpoints.MapControllers()
+                    .RequireAuthorization();
                 });
         }
     }

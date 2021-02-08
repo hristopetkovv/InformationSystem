@@ -15,10 +15,6 @@ namespace InformationSystemServer.Services.Token
 
         public TokenService(IOptions<TokenConfiguration> tokenConfigurationOptions)
         {
-            //key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["TokenKey"]));
-            //key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(this.options.Value.SecretKey));
-            //this.options = options;
-
             this.tokenConfiguration = tokenConfigurationOptions.Value;
         }
 
@@ -31,13 +27,14 @@ namespace InformationSystemServer.Services.Token
                 new Claim(ClaimTypes.Role, user.Role),
             });
 
-
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(this.tokenConfiguration.SecretKey));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
 
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = claims,
+                Issuer = this.tokenConfiguration.Issuer,
+                Audience = this.tokenConfiguration.Audience,
                 Expires = DateTime.UtcNow.AddDays(this.tokenConfiguration.Expires),
                 SigningCredentials = creds
             };

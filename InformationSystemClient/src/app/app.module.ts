@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -11,6 +11,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LoginComponent } from './components/account/login/login.component';
 import { RegisterComponent } from './components/account/register/register.component';
 import { FormsModule } from '@angular/forms';
+import { ApplicationListingComponent } from './components/application/application-listing/application-listing.component';
+import { TokenInterceptorService } from './interceptors/token-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,7 @@ import { FormsModule } from '@angular/forms';
     NotFoundComponent,
     LoginComponent,
     RegisterComponent,
+    ApplicationListingComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,7 +32,9 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

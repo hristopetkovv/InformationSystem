@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
@@ -40,7 +41,7 @@ namespace InformationSystemServer.ExtensionMethods
             return services;
         }
 
-        public static IServiceCollection AddAuthentication(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddAuthentication(this IServiceCollection services, TokenConfiguration tokenConfiguration)
         {
              services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
              .AddJwtBearer(options =>
@@ -48,9 +49,11 @@ namespace InformationSystemServer.ExtensionMethods
                  options.TokenValidationParameters = new TokenValidationParameters
                  {
                      ValidateIssuerSigningKey = true,
-                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["TokenKey"])),
+                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenConfiguration.SecretKey)),
                      ValidateIssuer = true,
-                     ValidateAudience = true
+                     ValidateAudience = true,
+                     ValidIssuer = tokenConfiguration.Issuer,
+                     ValidAudience = tokenConfiguration.Audience
                  };
              });
 

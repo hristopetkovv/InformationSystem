@@ -39,9 +39,9 @@ namespace InformationSystemServer.Controllers
         }
 
         [HttpPut("{id:int}")]
-        public async Task PutApplicationAsync(int id, ApplicationDetailsDto app)
+        public async Task PutApplicationAsync(int id, ApplicationDetailsDto application)
         {
-           await appService.UpdateApplicationAsync(id, app);
+           await appService.UpdateApplicationAsync(id, application);
         }
 
         [HttpDelete("{id:int}")]

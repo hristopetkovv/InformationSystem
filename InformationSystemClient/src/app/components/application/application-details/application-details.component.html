@@ -15,8 +15,8 @@
             <h5>
                 Type:</h5>
             <select [(ngModel)]="application.applicationType">
-                <option *ngFor="let key of keys"
-                        [value]="key"
+                <option *ngFor="let key of appKeys"
+                        [ngValue]="key"
                         [label]="applicationTypesEnum[key]"></option>
             </select>
         </div>
@@ -48,7 +48,8 @@
         <h4 style="margin-right: 1em;"><u>Qualification information</u></h4>
         <button type="button"
                 class="btn btn-success"
-                style="height: fit-content;">Add new</button>
+                style="height: fit-content;"
+                (click)="createNewQualification()">Add new</button>
     </div>
 
     <div *ngFor="let item of application.qualificationInformation; let i = index"
@@ -77,13 +78,15 @@
         <div class="row">
             <h5>Qualification type:</h5>
             <select [(ngModel)]="item.typeQualification">
-                <option *ngFor="let key of keys"
-                        [value]="key"
+                <option *ngFor="let key of qualificationKeys"
+                        [ngValue]="key"
                         [label]="qualificationTypesEnum[key]"></option>
             </select>
         </div>
         <button type="button"
-                class="btn btn-danger">Delete</button>
+                class="btn btn-danger"
+                (click)="removeQualification(i)">
+            Delete</button>
     </div>
 
     <div class="row">
@@ -100,7 +103,8 @@
     <div style="margin-bottom: 2em;">
         <button type="button"
                 class="btn btn-primary"
-                style="margin-right: 2em; width: 15%;">Save</button>
+                style="margin-right: 2em; width: 15%;"
+                (click)="saveApplication()">Save</button>
         <button type="button"
                 class="btn btn-success"
                 style="width: 15%;">Send</button>

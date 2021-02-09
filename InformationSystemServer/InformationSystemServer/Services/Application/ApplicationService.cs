@@ -119,26 +119,26 @@ namespace InformationSystemServer.Services
             await this.context.SaveChangesAsync();
         }
 
-        public async Task UpdateApplicationAsync(int applicationId, ApplicationDetailsDto dto)
+        public async Task UpdateApplicationAsync(int id, ApplicationDetailsDto application)
         {
             var existingApp = await context
                 .Applications
-                .SingleOrDefaultAsync(app => app.Id == applicationId);
+                .SingleOrDefaultAsync(app => app.Id == id);
 
-            existingApp.FirstName = dto.FirstName;
-            existingApp.LastName = dto.LastName;
-            existingApp.Municipality = dto.Municipality;
-            existingApp.Region = dto.Region;
-            existingApp.City = dto.City;
-            existingApp.Street = dto.Street;
-            existingApp.ApplicationType = dto.ApplicationType;
+            existingApp.FirstName = application.FirstName;
+            existingApp.LastName = application.LastName;
+            existingApp.Municipality = application.Municipality;
+            existingApp.Region = application.Region;
+            existingApp.City = application.City;
+            existingApp.Street = application.Street;
+            existingApp.ApplicationType = application.ApplicationType;
 
             var existingQualifications = await this.context
                 .QualificationsInformation
-                .Where(q => q.ApplicationId == dto.Id)
+                .Where(q => q.ApplicationId == application.Id)
                 .ToListAsync();
 
-            var forAdd = dto.QualificationInformation.Where(q => !existingQualifications.Any(eq => eq.Id == q.QualificationId));
+            var forAdd = application.QualificationInformation.Where(q => !existingQualifications.Any(eq => eq.Id == q.QualificationId));
 
             if (forAdd.Any())
             {
@@ -151,25 +151,25 @@ namespace InformationSystemServer.Services
                         DurationDays = qualification.DurationDays,
                         Description = qualification.Description,
                         TypeQualification = qualification.TypeQualification,
-                        ApplicationId = dto.Id
+                        ApplicationId = application.Id
                     };
 
                     existingApp.QualificationInformation.Add(newQualification);
                 }
             }
 
-            var forDelete = existingQualifications.Where(eq => !dto.QualificationInformation.Any(qi => qi.QualificationId == eq.Id));
+            var forDelete = existingQualifications.Where(eq => !application.QualificationInformation.Any(qi => qi.QualificationId == eq.Id));
 
             if (forDelete.Any())
             {
                 this.context.QualificationsInformation.RemoveRange(forDelete);
             }
 
-            var forUpdate = existingQualifications.Where(eq => dto.QualificationInformation.Any(qi => qi.QualificationId == eq.Id));
+            var forUpdate = existingQualifications.Where(eq => application.QualificationInformation.Any(qi => qi.QualificationId == eq.Id));
 
             foreach (var qualificationToUpdate in forUpdate)
             {
-                var qualification = dto.QualificationInformation.Single(q => q.QualificationId == qualificationToUpdate.Id);
+                var qualification = application.QualificationInformation.Single(q => q.QualificationId == qualificationToUpdate.Id);
 
                 qualificationToUpdate.Description = qualification.Description;
                 qualificationToUpdate.StartDate = qualification.StartDate;

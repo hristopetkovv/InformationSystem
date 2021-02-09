@@ -14,5 +14,5 @@ export class ApplicationDto {
     street: string;
     userFirstName: string;
     userLastName: string;
-    qualificationInformation: QualificationInformation[] = [];;
+    qualificationInformation: QualificationInformation[] = [];
 }

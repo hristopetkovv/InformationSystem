@@ -14,7 +14,7 @@ namespace InformationSystemServer.Services
 
         Task<Application> AddApplicationAsync(ApplicationRequestDto dto, int userId);
 
-        Task UpdateApplicationAsync(int applicationId, ApplicationDetailsDto dto);
+        Task UpdateApplicationAsync(int id, ApplicationDetailsDto application);
 
         Task DeleteApplicationAsync(int id);
 

@@ -1,7 +1,7 @@
 import { QualificationType } from "../enums/qualificationType";
 
 export class QualificationInformation {
-    qualificationId: string;
+    qualificationId: number;
     startDate: Date;
     endDate: Date;
     durationDays: number;

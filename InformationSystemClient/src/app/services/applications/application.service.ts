@@ -16,7 +16,11 @@ export class ApplicationService {
     return this.http.get(`api/Application/${id}`);
   }
 
-  update(id: number, application: ApplicationDto) {
+  update(id: number, application: ApplicationDto): Observable<any> {
     return this.http.put(`api/Application/${id}`, application);
+  }
+
+  updateStatus(id: number, status: number): Observable<any> {
+    return this.http.put(`api/Status/${id}`, status);
   }
 }

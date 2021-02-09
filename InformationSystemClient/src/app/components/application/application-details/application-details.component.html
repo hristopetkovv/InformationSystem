@@ -99,15 +99,16 @@
             {{statusTypesEnum[application.status]}}</h5>
     </div>
 
-
-    <div style="margin-bottom: 2em;">
+    <div style="margin-bottom: 2em;"
+         *ngIf="role == 'Admin' || application.status == 1">
         <button type="button"
                 class="btn btn-primary"
                 style="margin-right: 2em; width: 15%;"
                 (click)="saveApplication()">Save</button>
         <button type="button"
                 class="btn btn-success"
-                style="width: 15%;">Send</button>
+                style="width: 15%;"
+                (click)="sendQualification()">Send</button>
     </div>
 
 </div>

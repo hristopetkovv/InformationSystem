@@ -14,10 +14,10 @@ namespace InformationSystemServer.Controllers
             this.applicationService = applicationService;
         }
 
-        [HttpPut]
-        public async Task ChangeStatus([FromQuery] int applicationId, [FromBody] StatusType status)
+        [HttpPut("{id:int}")]
+        public async Task ChangeStatus(int id, [FromBody] StatusType status)
         {
-            await this.applicationService.ChangeStatusAsync(applicationId, status);
+            await this.applicationService.ChangeStatusAsync(id, status);
         }
     }
 }

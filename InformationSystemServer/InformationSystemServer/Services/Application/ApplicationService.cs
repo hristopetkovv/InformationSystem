@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using InformationSystemServer.Data.Enums;
 using InformationSystemServer.ViewModels.Application;
 using Microsoft.EntityFrameworkCore;
+using InformationSystemServer.ExtensionMethods;
 
 namespace InformationSystemServer.Services
 {
@@ -17,10 +18,11 @@ namespace InformationSystemServer.Services
             this.context = context;
         }
 
-        public async Task<IEnumerable<ApplicationResponseDto>> GetAllApplicationsAsync()
+        public async Task<IEnumerable<ApplicationResponseDto>> GetAllApplicationsAsync(SearchApplicationFilterDto filter)
         {
             var applications = await this.context
                 .Applications
+                .FilterApplications(filter)
                 .Select(app => new ApplicationResponseDto 
                 {
                     Id = app.Id,

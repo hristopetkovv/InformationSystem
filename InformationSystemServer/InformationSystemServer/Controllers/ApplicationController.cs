@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using InformationSystemServer.Data.Models;
 using InformationSystemServer.Services;
 using InformationSystemServer.Services.Helpers;
 using InformationSystemServer.ViewModels.Application;
@@ -20,9 +19,9 @@ namespace InformationSystemServer.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<ApplicationResponseDto>> GetApplications()
+        public async Task<IEnumerable<ApplicationResponseDto>> GetApplications([FromQuery] SearchApplicationFilterDto filter)
         {
-            return await appService.GetAllApplicationsAsync();
+            return await appService.GetAllApplicationsAsync(filter);
         }
 
         [HttpGet("{id:int}")]

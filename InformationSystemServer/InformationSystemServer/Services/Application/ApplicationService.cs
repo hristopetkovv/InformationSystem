@@ -117,12 +117,11 @@ namespace InformationSystemServer.Services
             await this.context.SaveChangesAsync();
         }
 
-        public async Task UpdateApplicationAsync(int id, ApplicationDetailsDto dto)
+        public async Task UpdateApplicationAsync(int applicationId, ApplicationDetailsDto dto)
         {
             var existingApp = await context
                 .Applications
-                .Where(c => c.Id == id)
-                .SingleOrDefaultAsync();
+                .SingleOrDefaultAsync(app => app.Id == applicationId);
 
             existingApp.FirstName = dto.FirstName;
             existingApp.LastName = dto.LastName;
@@ -132,11 +131,43 @@ namespace InformationSystemServer.Services
             existingApp.Street = dto.Street;
             existingApp.ApplicationType = dto.ApplicationType;
 
-            var existingQualifications = await this.context.QualificationsInformation.Where(q => q.ApplicationId == dto.Id).ToListAsync();
+            var existingQualifications = await this.context
+                .QualificationsInformation
+                .Where(q => q.ApplicationId == dto.Id)
+                .ToListAsync();
 
-            foreach (var qualification in dto.QualificationInformation)
+            var forAdd = dto.QualificationInformation.Where(q => !existingQualifications.Any(eq => eq.Id == q.QualificationId));
+
+            if (forAdd.Any())
             {
-                var qualificationToUpdate = existingQualifications.SingleOrDefault(q => q.Id == qualification.QualificationId);
+                foreach (var qualification in forAdd)
+                {
+                    var newQualification = new QualificationInformation
+                    {
+                        StartDate = qualification.StartDate,
+                        EndDate = qualification.EndDate,
+                        DurationDays = qualification.DurationDays,
+                        Description = qualification.Description,
+                        TypeQualification = qualification.TypeQualification,
+                        ApplicationId = dto.Id
+                    };
+
+                    existingApp.QualificationInformation.Add(newQualification);
+                }
+            }
+
+            var forDelete = existingQualifications.Where(eq => !dto.QualificationInformation.Any(qi => qi.QualificationId == eq.Id));
+
+            if (forDelete.Any())
+            {
+                this.context.QualificationsInformation.RemoveRange(forDelete);
+            }
+
+            var forUpdate = existingQualifications.Where(eq => dto.QualificationInformation.Any(qi => qi.QualificationId == eq.Id));
+
+            foreach (var qualificationToUpdate in forUpdate)
+            {
+                var qualification = dto.QualificationInformation.Single(q => q.QualificationId == qualificationToUpdate.Id);
 
                 qualificationToUpdate.Description = qualification.Description;
                 qualificationToUpdate.StartDate = qualification.StartDate;
@@ -147,11 +178,5 @@ namespace InformationSystemServer.Services
 
             await this.context.SaveChangesAsync();
         }
-
-        //public void ChangeStatus(int id, string status)
-        //{
-
-        //}
-
     }
 }

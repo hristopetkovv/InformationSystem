@@ -7,14 +7,14 @@ namespace InformationSystemServer.Services
 {
     public interface IApplicationService
     {
-        public Task<IEnumerable<ApplicationResponseDto>> GetAllApplicationsAsync();
+        Task<IEnumerable<ApplicationResponseDto>> GetAllApplicationsAsync();
 
-        public Task<ApplicationDetailsDto> GetApplicationByIdAsync(int id);
+        Task<ApplicationDetailsDto> GetApplicationByIdAsync(int id);
 
-        public Task<Application> AddApplicationAsync(ApplicationRequestDto dto, int userId);
+        Task<Application> AddApplicationAsync(ApplicationRequestDto dto, int userId);
 
-        public Task UpdateApplicationAsync(int id, ApplicationDetailsDto app);
+        Task UpdateApplicationAsync(int applicationId, ApplicationDetailsDto dto);
 
-        public Task DeleteApplicationAsync(int id);
+        Task DeleteApplicationAsync(int id);
     }
 }

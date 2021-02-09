@@ -1,0 +1,23 @@
+﻿using InformationSystemServer.Data.Enums;
+using InformationSystemServer.Services;
+using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
+
+namespace InformationSystemServer.Controllers
+{
+    public class StatusController : BaseApiController
+    {
+        private readonly IApplicationService applicationService;
+
+        public StatusController(IApplicationService applicationService)
+        {
+            this.applicationService = applicationService;
+        }
+
+        [HttpPut]
+        public async Task ChangeStatus([FromQuery] int applicationId, [FromBody] StatusType status)
+        {
+            await this.applicationService.ChangeStatusAsync(applicationId, status);
+        }
+    }
+}

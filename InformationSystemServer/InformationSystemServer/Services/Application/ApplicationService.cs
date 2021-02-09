@@ -178,5 +178,14 @@ namespace InformationSystemServer.Services
 
             await this.context.SaveChangesAsync();
         }
+
+        public async Task ChangeStatusAsync(int applicationId, StatusType status)
+        {
+            var application = await this.context.Applications.SingleOrDefaultAsync(app => app.Id == applicationId);
+
+            application.Status = status;
+
+            await this.context.SaveChangesAsync();
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using InformationSystemServer.Data.Models;
+﻿using InformationSystemServer.Data.Enums;
+using InformationSystemServer.Data.Models;
 using InformationSystemServer.ViewModels.Application;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -16,5 +17,7 @@ namespace InformationSystemServer.Services
         Task UpdateApplicationAsync(int applicationId, ApplicationDetailsDto dto);
 
         Task DeleteApplicationAsync(int id);
+
+        Task ChangeStatusAsync(int applicationId, StatusType status);
     }
 }

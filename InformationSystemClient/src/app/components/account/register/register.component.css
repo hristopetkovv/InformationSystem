@@ -18,8 +18,8 @@ button {
 }
 
 .btn-success{
-    background-color: coral !important;
-    border-color: coral !important;
+    background-color: #ff7f50 !important;
+    border-color: #ff7f50 !important;
     margin: 0;
 }   
 
@@ -30,9 +30,9 @@ button {
 }
 
 a{
-    color: coral;
+    color: #ff7f50;
 }
 
 .text-primary{
-    color: coral !important;
+    color: #ff7f50 !important;
 }

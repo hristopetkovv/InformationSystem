@@ -56,11 +56,6 @@ export class UsersService {
     return this.http.get(`api/Users/${id}`);
   }
 
-  // getUserId(): number {
-  //   var decodedToken = this.getDecodedAccessToken(this.getToken());
-  //   return decodedToken['nameid'];
-  // }
-
   getDecodedAccessToken(token: string): any {
     try {
       return jwt_decode(token);
@@ -84,9 +79,5 @@ export class UsersService {
     }
     return false;
   }
-
-  // editInfo(id: number, user: any): Observable<any> {
-  //   return this.http.put(`api/Users/${id}`, user);
-  // }
 
 }

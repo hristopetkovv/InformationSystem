@@ -13,6 +13,8 @@ import { RegisterComponent } from './components/account/register/register.compon
 import { FormsModule } from '@angular/forms';
 import { ApplicationListingComponent } from './components/application/application-listing/application-listing.component';
 import { TokenInterceptorService } from './interceptors/token-interceptor.service';
+import { ApplicationCreatingComponent } from './components/application/application-creating/application-creating.component';
+import { ApplicationDetailsComponent } from './components/application/application-details/application-details.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { TokenInterceptorService } from './interceptors/token-interceptor.servic
     LoginComponent,
     RegisterComponent,
     ApplicationListingComponent,
+    ApplicationCreatingComponent,
+    ApplicationDetailsComponent,
   ],
   imports: [
     BrowserModule,

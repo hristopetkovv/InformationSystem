@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { StatusType } from 'src/app/enums/statusType';
+import { ApplicationDto } from 'src/app/models/application.dto';
 import { ApplicationResourceService } from 'src/app/services/application-resource.service';
 
 @Component({
@@ -8,6 +10,9 @@ import { ApplicationResourceService } from 'src/app/services/application-resourc
 })
 export class ApplicationListingComponent implements OnInit {
 
+  apllicationsList: ApplicationDto[];
+  applicationEnum = StatusType;
+
   constructor(private applicationService: ApplicationResourceService) { }
 
   ngOnInit(): void {
@@ -15,6 +20,6 @@ export class ApplicationListingComponent implements OnInit {
   }
 
   getApplications() {
-    this.applicationService.getApplications().subscribe(applications => console.log(applications));
+    this.applicationService.getApplications().subscribe(applications => this.apllicationsList = applications);
   }
 }

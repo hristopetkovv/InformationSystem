@@ -1,28 +1,26 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { EMPTY, Observable } from 'rxjs';
-import { UsersService } from './users.service';
+import { ApplicationService } from '../applications/application.service';
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class UserResolver implements Resolve<any> {
-  userId: number = +localStorage.getItem('userId');
-
+export class ApplicationResolver implements Resolve<any> {
   constructor(
-    private resource: UsersService
+    private resource: ApplicationService
   ) { }
 
   resolve(
     route: ActivatedRouteSnapshot,
     _: RouterStateSnapshot
   ): Observable<any> | Promise<any> | any {
-
-    if (isNaN(this.userId)) {
+    const id = +route.params['id'];
+    if (isNaN(id)) {
       return EMPTY;
     }
 
-    return this.resource.getById(this.userId);
+    return this.resource.getById(id);
   }
 }

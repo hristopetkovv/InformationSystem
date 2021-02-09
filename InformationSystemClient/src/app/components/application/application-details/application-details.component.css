@@ -1,0 +1,21 @@
+input{
+    padding-left: 10px;
+}
+
+h5{
+    margin-right: 1em;
+}
+
+.row{
+  justify-content: center;
+  margin-bottom: 1.5em;
+}
+
+.mainApplicationDiv{
+  text-align: center;
+  border: 1px solid;
+  width: 54%;
+  margin: auto;
+  margin-top: 5em;
+  padding-top: 1em;
+}

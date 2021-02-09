@@ -1,1 +1,109 @@
-<p>application-details works!</p>
+<div class="mainApplicationDiv">
+    <h2 style="margin-bottom: 1em; margin-top: 1em;">Application details</h2>
+    <div style="margin-bottom: 3em;">
+        <div class="row">
+            <h5>
+                First name:</h5>
+            <input [(ngModel)]="application.firstName">
+        </div>
+        <div class="row">
+            <h5>
+                Last name:</h5>
+            <input [(ngModel)]="application.lastName">
+        </div>
+        <div class="row">
+            <h5>
+                Type:</h5>
+            <select [(ngModel)]="application.applicationType">
+                <option *ngFor="let key of keys"
+                        [value]="key"
+                        [label]="applicationTypesEnum[key]"></option>
+            </select>
+        </div>
+
+        <div class="row">
+            <h5>
+                Municipality:</h5>
+            <input [(ngModel)]="application.municipality">
+        </div>
+        <div class="row">
+            <h5>
+                Region:</h5>
+            <input [(ngModel)]="application.region">
+        </div>
+        <div class="row">
+            <h5>
+                City:</h5>
+            <input [(ngModel)]="application.city">
+        </div>
+        <div class="row">
+            <h5>
+                Street:</h5>
+            <input [(ngModel)]="application.street">
+        </div>
+    </div>
+
+    <div style="display: flex;
+    justify-content: center;">
+        <h4 style="margin-right: 1em;"><u>Qualification information</u></h4>
+        <button type="button"
+                class="btn btn-success"
+                style="height: fit-content;">Add new</button>
+    </div>
+
+    <div *ngFor="let item of application.qualificationInformation; let i = index"
+         style="margin:2em;">
+
+        <h3 style="margin-bottom: 1em;">{{i + 1}}.</h3>
+
+        <div class="row">
+            <h5>Description:</h5>
+            <input [(ngModel)]="item.description">
+        </div>
+        <div class="row">
+            <h5>Start date:</h5>
+            <input [(ngModel)]="item.startDate">
+        </div>
+        <div class="row">
+            <h5>End date:</h5>
+            <input [(ngModel)]="item.endDate">
+        </div>
+        <div class="row">
+            <h5>Duration in days:</h5>
+            <input type="number"
+                   [(ngModel)]="item.durationDays"
+                   style="width: 10%;">
+        </div>
+        <div class="row">
+            <h5>Qualification type:</h5>
+            <select [(ngModel)]="item.typeQualification">
+                <option *ngFor="let key of keys"
+                        [value]="key"
+                        [label]="qualificationTypesEnum[key]"></option>
+            </select>
+        </div>
+        <button type="button"
+                class="btn btn-danger">Delete</button>
+    </div>
+
+    <div class="row">
+        <h5>Creator application name: {{application.userFirstName}} {{application.userLastName}} </h5>
+    </div>
+
+    <div class="row">
+        <h5>
+            Status:
+            {{statusTypesEnum[application.status]}}</h5>
+    </div>
+
+
+    <div style="margin-bottom: 2em;">
+        <button type="button"
+                class="btn btn-primary"
+                style="margin-right: 2em; width: 15%;">Save</button>
+        <button type="button"
+                class="btn btn-success"
+                style="width: 15%;">Send</button>
+    </div>
+
+</div>

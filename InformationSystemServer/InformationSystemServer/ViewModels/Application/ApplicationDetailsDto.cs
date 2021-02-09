@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace InformationSystemServer.ViewModels.Application
 {
-    public class ApplicationDetailsResponseDto
+    public class ApplicationDetailsDto
     {
         public int Id { get; set; }
 

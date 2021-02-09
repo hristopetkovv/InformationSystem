@@ -27,6 +27,6 @@ namespace InformationSystemServer.Data.Models
 
         public User User { get; set; }
 
-        public virtual ICollection<QualificationInformation> QualificatonInformation { get; set; } = new HashSet<QualificationInformation>();
+        public virtual ICollection<QualificationInformation> QualificationInformation { get; set; } = new HashSet<QualificationInformation>();
     }
 }

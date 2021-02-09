@@ -26,7 +26,7 @@ namespace InformationSystemServer.Controllers
         }
 
         [HttpGet("{id:int}")]
-        public async Task<ApplicationDetailsResponseDto> GetApplication(int id)
+        public async Task<ApplicationDetailsDto> GetApplication(int id)
         {
             return await appService.GetApplicationByIdAsync(id);
         }
@@ -40,7 +40,7 @@ namespace InformationSystemServer.Controllers
         }
 
         [HttpPut("{id:int}")]
-        public async Task PutApplicationAsync(int id, Application app)
+        public async Task PutApplicationAsync(int id, ApplicationDetailsDto app)
         {
            await appService.UpdateApplicationAsync(id, app);
         }

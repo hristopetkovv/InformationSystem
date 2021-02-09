@@ -32,7 +32,7 @@ namespace InformationSystemServer.Data.Configurations
 
             qualification
                 .HasOne(x => x.Application)
-                .WithMany(a => a.QualificatonInformation)
+                .WithMany(a => a.QualificationInformation)
                 .HasForeignKey(x => x.ApplicationId);
         }
     }

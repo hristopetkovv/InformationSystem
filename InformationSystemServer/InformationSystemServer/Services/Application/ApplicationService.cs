@@ -1,5 +1,4 @@
-﻿using System;
-using InformationSystemServer.Data;
+﻿using InformationSystemServer.Data;
 using InformationSystemServer.Data.Models;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,12 +37,12 @@ namespace InformationSystemServer.Services
             return applications;
         }
 
-        public async Task<ApplicationDetailsResponseDto> GetApplicationByIdAsync(int id)
+        public async Task<ApplicationDetailsDto> GetApplicationByIdAsync(int id)
         {
             var application = await this.context
                .Applications
                .Where(app => app.Id == id)
-               .Select(app => new ApplicationDetailsResponseDto
+               .Select(app => new ApplicationDetailsDto
                {
                    Id = app.Id,
                    FirstName = app.FirstName,
@@ -56,7 +55,7 @@ namespace InformationSystemServer.Services
                    Status = app.Status,
                    UserFirstName = app.User.FirstName,
                    UserLastName = app.User.LastName,
-                   QualificationInformation = app.QualificatonInformation
+                   QualificationInformation = app.QualificationInformation
                        .Select(q => new QualificationDto
                        {
                            QualificationId = q.Id,
@@ -98,31 +97,55 @@ namespace InformationSystemServer.Services
                     ApplicationId = application.Id
                 };
 
-                application.QualificatonInformation.Add(newQualification);
+                application.QualificationInformation.Add(newQualification);
             }
 
-            context.Applications.Add(application);
-            await context.SaveChangesAsync();
+            this.context.Applications.Add(application);
+            await this.context.SaveChangesAsync();
 
             return application;
         }
 
         public async Task DeleteApplicationAsync(int id)
         {
-            var app = await context.Applications.Where(a => a.Id == id).SingleOrDefaultAsync();
-            context.Applications.Remove(app);
-            await context.SaveChangesAsync();
+            var app = await context
+                .Applications
+                .SingleOrDefaultAsync(a => a.Id == id);
+
+            this.context.Applications.Remove(app);
+
+            await this.context.SaveChangesAsync();
         }
 
-        public async Task UpdateApplicationAsync(int id, Application app)
+        public async Task UpdateApplicationAsync(int id, ApplicationDetailsDto dto)
         {
-            var existingApp = await context.Applications.Where(c => c.Id == id).SingleOrDefaultAsync();
-            existingApp.FirstName = app.FirstName;
-            existingApp.LastName = app.LastName;
-            existingApp.QualificatonInformation = app.QualificatonInformation;
-            existingApp.Status = app.Status;
+            var existingApp = await context
+                .Applications
+                .Where(c => c.Id == id)
+                .SingleOrDefaultAsync();
 
-            await context.SaveChangesAsync();
+            existingApp.FirstName = dto.FirstName;
+            existingApp.LastName = dto.LastName;
+            existingApp.Municipality = dto.Municipality;
+            existingApp.Region = dto.Region;
+            existingApp.City = dto.City;
+            existingApp.Street = dto.Street;
+            existingApp.ApplicationType = dto.ApplicationType;
+
+            var existingQualifications = await this.context.QualificationsInformation.Where(q => q.ApplicationId == dto.Id).ToListAsync();
+
+            foreach (var qualification in dto.QualificationInformation)
+            {
+                var qualificationToUpdate = existingQualifications.SingleOrDefault(q => q.Id == qualification.QualificationId);
+
+                qualificationToUpdate.Description = qualification.Description;
+                qualificationToUpdate.StartDate = qualification.StartDate;
+                qualificationToUpdate.EndDate = qualification.EndDate;
+                qualificationToUpdate.DurationDays = qualification.DurationDays;
+                qualificationToUpdate.TypeQualification = qualification.TypeQualification;
+            }
+
+            await this.context.SaveChangesAsync();
         }
 
         //public void ChangeStatus(int id, string status)

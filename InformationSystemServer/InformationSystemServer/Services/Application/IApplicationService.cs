@@ -9,11 +9,11 @@ namespace InformationSystemServer.Services
     {
         public Task<IEnumerable<ApplicationResponseDto>> GetAllApplicationsAsync();
 
-        public Task<ApplicationDetailsResponseDto> GetApplicationByIdAsync(int id);
+        public Task<ApplicationDetailsDto> GetApplicationByIdAsync(int id);
 
         public Task<Application> AddApplicationAsync(ApplicationRequestDto dto, int userId);
 
-        public Task UpdateApplicationAsync(int id, Application app);
+        public Task UpdateApplicationAsync(int id, ApplicationDetailsDto app);
 
         public Task DeleteApplicationAsync(int id);
     }

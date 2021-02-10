@@ -13,6 +13,7 @@ export class ApplicationDto {
     city: string;
     street: string;
     userFirstName: string;
+    userId: number;
     userLastName: string;
     qualificationInformation: QualificationInformation[] = [];
 }

@@ -31,4 +31,9 @@ export class ApplicationService {
   applicationsByUserId(userId: number) {
     return this.http.get(`api/Application/ByUser/${userId}`);
   }
+
+  isAuthor(creatorId: number): boolean {
+    let userId = JSON.parse(localStorage.getItem('user')).id;
+    return creatorId == userId;
+  }
 }

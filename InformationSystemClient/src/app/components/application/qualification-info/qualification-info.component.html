@@ -1,6 +1,6 @@
 <div class="mainQualificationDiv">
     <h4 style="margin-right: 1em;"><u>Qualification information</u></h4>
-    <button *ngIf="role == 'Admin' || application.status == 1"
+    <button *ngIf="canEdit == true"
             type="button"
             class="btn btn-success"
             (click)="createNewQualification()">Add new</button>
@@ -29,7 +29,7 @@
                                  [type]="qualificationTypesEnum">
                     </enum-select>
                 </td>
-                <td *ngIf="role == 'Admin' || application.status == 1">
+                <td *ngIf="canEdit == true">
                     <button type="button"
                             class="btn btn-danger"
                             (click)="removeQualification(i)">

@@ -1,7 +1,7 @@
 <form #editForm="ngForm"
       (ngSubmit)="createApplication()"
       autocomplete="off">
-    <h2 class="text-center text-primary"
+    <h2 class="text-center "
         style="margin-bottom: 30px;">Add new Application</h2>
     <div class="text-center">
         <div style="display: inline-flex;">
@@ -23,7 +23,7 @@
 
             <div class="form-group"
                  style="margin-left: 10px;">
-                <label for="fname">Last Name:</label><br>
+                <label for="text">Last Name:</label><br>
                 <input type="text"
                        class="form-control"
                        name="lastName"
@@ -40,7 +40,7 @@
 
             <div class="form-group"
                  style="margin-left: 10px;">
-                <label for="fname">Street:</label><br>
+                <label for="street">Street:</label><br>
                 <input type="text"
                        class="form-control"
                        name="street"
@@ -60,7 +60,7 @@
         <div style="display: inline-flex;">
             <div class="form-group"
                  style="margin-left: 10px;">
-                <label for="fname">City:</label><br>
+                <label for="city">City:</label><br>
                 <input type="text"
                        class="form-control"
                        name="city"
@@ -77,7 +77,7 @@
 
             <div class="form-group"
                  style="margin-left: 10px;">
-                <label for="fname">Municipality</label><br>
+                <label for="municipality">Municipality</label><br>
                 <input type="text"
                        class="form-control"
                        name="municipality"
@@ -94,7 +94,7 @@
 
             <div class="form-group"
                  style="margin-left: 10px;">
-                <label for="fname">Region:</label><br>
+                <label for="region">Region:</label><br>
                 <input type="text"
                        class="form-control"
                        name="region"
@@ -127,93 +127,98 @@
         </tr>
         <tbody style="display: inline-block;">
             <tr *ngFor="let qualification of qualificationArray; let i = index">
-                <td>
-                    <label>Qualification Type: </label>
+                <th>
+                    <label style="margin-bottom: 20px;">Qualification Type: </label>
                     <enum-select [(model)]="qualification.typeQualification"
                                  [type]="qualificationTypesEnum">
                     </enum-select>
-                </td>
-                <td>
+                </th>
+                <th>
                     <label>Start date: </label>
                     <input class="form-control"
                            type="date"
                            id="newAttributeCode"
                            [(ngModel)]="qualification.startDate"
                            name="startDate-{{i}}" />
-                </td>
-                <td>
+                </th>
+                <th>
                     <label>End date: </label>
                     <input class="form-control"
                            type="date"
                            id="newAttributeCode"
                            [(ngModel)]="qualification.endDate"
                            name="endDate-{{i}}" />
-                </td>
-                <td>
+                </th>
+                <th>
                     <label>Duration: </label>
                     <input class="form-control"
                            type="number"
                            id="newAttributeCode"
                            [(ngModel)]="qualification.durationDays"
                            name="duration-{{i}}" />
-                </td>
-                <td>
+                </th>
+                <th>
                     <label>Description: </label>
                     <input class="form-control"
                            type="text"
                            id="newAttributeCode"
                            [(ngModel)]="qualification.description"
                            name="description-{{i}}" />
-                </td>
+                </th>
                 <td>
                     <button class="btn btn-outline-danger"
+                            style="margin-top: 40px;"
                             type="button"
                             (click)="deleteRow(i)">Remove</button>
                 </td>
             </tr>
-            <td>
-                <label>Qualification Type: </label>
-                <enum-select [(model)]="qualification.typeQualification"
-                             [type]="qualificationTypesEnum">
-                </enum-select>
-            </td>
-            <td>
-                <label>Start date: </label>
-                <input class="form-control"
-                       type="date"
-                       id="newAttributeCode"
-                       [(ngModel)]="qualification.startDate"
-                       name="startdate" />
-            </td>
-            <td>
-                <label>End date: </label>
-                <input class="form-control"
-                       type="date"
-                       id="newAttributeCode"
-                       [(ngModel)]="qualification.endDate"
-                       name="enddate" />
-            </td>
-            <td>
-                <label>Duration: </label>
-                <input class="form-control"
-                       type="number"
-                       id="newAttributeCode"
-                       [(ngModel)]="qualification.durationDays"
-                       name="duration" />
-            </td>
-            <td>
-                <label>Description: </label>
-                <input class="form-control"
-                       type="text"
-                       id="newAttributeCode"
-                       [(ngModel)]="qualification.description"
-                       name="description" />
-            </td>
-            <td>
-                <button class="btn btn-outline-primary btn-sm"
-                        type="button"
-                        (click)="addRow()">Add qualification</button>
-            </td>
+
+            <div style="display: inline-block;">
+                <th>
+                    <label style="margin-bottom: 20px;">Qualification Type: </label>
+                    <enum-select [(model)]="qualification.typeQualification"
+                                 [type]="qualificationTypesEnum">
+                    </enum-select>
+                </th>
+                <th>
+                    <label>Start date: </label>
+                    <input class="form-control"
+                           type="date"
+                           id="newAttributeCode"
+                           [(ngModel)]="qualification.startDate"
+                           name="startdate" />
+                </th>
+                <th>
+                    <label>End date: </label>
+                    <input class="form-control"
+                           type="date"
+                           id="newAttributeCode"
+                           [(ngModel)]="qualification.endDate"
+                           name="enddate" />
+                </th>
+                <th>
+                    <label>Duration: </label>
+                    <input class="form-control"
+                           type="number"
+                           id="newAttributeCode"
+                           [(ngModel)]="qualification.durationDays"
+                           name="duration" />
+                </th>
+                <th>
+                    <label>Description: </label>
+                    <input class="form-control"
+                           type="text"
+                           id="newAttributeCode"
+                           [(ngModel)]="qualification.description"
+                           name="description" />
+                </th>
+                <th>
+                    <button class="btn btn-outline-primary btn-sm"
+                            style="margin-top: 40px; width: 90px; height: 40px;"
+                            type="button"
+                            (click)="addRow()">Add</button>
+                </th>
+            </div>
         </tbody>
     </table>
     <hr>

@@ -1,0 +1,16 @@
+  
+form {
+    padding: 5% 10%;
+    border: 1px solid grey;
+}
+button {
+    margin-top: 5%;
+}
+
+.form-control {
+    margin-top: 10px;
+}
+
+.error-message {
+    height: 20px;
+}

@@ -23,4 +23,8 @@ export class ApplicationService {
   updateStatus(id: number, status: number): Observable<any> {
     return this.http.put(`api/Status/${id}`, status);
   }
+
+  createApplication(application: ApplicationDto) {
+    return this.http.post('api/application', application);
+  }
 }

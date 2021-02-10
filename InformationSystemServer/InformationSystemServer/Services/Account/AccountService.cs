@@ -41,7 +41,9 @@ namespace InformationSystemServer.Services.Account
             {
                 Username = user.Username,
                 Token = tokenService.CreateToken(user),
-                Role = user.Role
+                Role = user.Role,
+                FirstName = user.FirstName,
+                LastName = user.LastName
             };
         }
 
@@ -69,7 +71,9 @@ namespace InformationSystemServer.Services.Account
             {
                 Username = user.Username,
                 Token = this.tokenService.CreateToken(user),
-                Role = user.Role
+                Role = user.Role,
+                FirstName = user.FirstName,
+                LastName = user.LastName
             };
         }
 

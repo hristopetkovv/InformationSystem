@@ -22,7 +22,6 @@ export class RegisterComponent implements OnInit {
     this.userResourse.createUser(this.model).subscribe((user: UserDto) => {
       if (user) {
         localStorage.setItem('user', JSON.stringify(user));
-        this.userService.isUserInRole(user.role);
         this.userService.setCurrentUser(user);
         this.router.navigate(['home']);
       }

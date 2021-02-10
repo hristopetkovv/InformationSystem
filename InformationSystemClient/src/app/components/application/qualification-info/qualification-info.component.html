@@ -1,6 +1,7 @@
 <div class="mainQualificationDiv">
     <h4 style="margin-right: 1em;"><u>Qualification information</u></h4>
-    <button type="button"
+    <button *ngIf="role == 'Admin' || application.status == 1"
+            type="button"
             class="btn btn-success"
             (click)="createNewQualification()">Add new</button>
 </div>

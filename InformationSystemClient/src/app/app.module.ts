@@ -17,6 +17,7 @@ import { ApplicationCreatingComponent } from './components/application/applicati
 import { ApplicationDetailsComponent } from './components/application/application-details/application-details.component';
 import { EnumSelectComponent } from './components/application/enum-select/enum-select.component';
 import { QualificationInfoComponent } from './components/application/qualification-info/qualification-info.component';
+import { ApplicationInfoComponent } from './components/application/application-info/application-info.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { QualificationInfoComponent } from './components/application/qualificati
     ApplicationDetailsComponent,
     EnumSelectComponent,
     QualificationInfoComponent,
+    ApplicationInfoComponent,
   ],
   imports: [
     BrowserModule,

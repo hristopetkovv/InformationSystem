@@ -1,0 +1,41 @@
+<div style="text-align: -webkit-center;">
+    <div style="margin-bottom: 3em; width: 31%;">
+        <div class="row">
+            <h5>
+                First name:</h5>
+            <input [(ngModel)]="application.firstName">
+        </div>
+        <div class="row">
+            <h5>
+                Last name:</h5>
+            <input [(ngModel)]="application.lastName">
+        </div>
+        <div class="row">
+            <h5>Type:</h5>
+            <enum-select [(model)]="application.applicationType"
+                         [type]="applicationTypesEnum"
+                         style="min-width: 43%;">
+            </enum-select>
+
+        </div>
+
+        <div class="row">
+            <h5>Municipality:</h5>
+            <input [(ngModel)]="application.municipality">
+        </div>
+        <div class="row">
+            <h5>Region:</h5>
+            <input [(ngModel)]="application.region">
+        </div>
+        <div class="row">
+            <h5>
+                City:</h5>
+            <input [(ngModel)]="application.city">
+        </div>
+        <div class="row">
+            <h5>
+                Street:</h5>
+            <input [(ngModel)]="application.street">
+        </div>
+    </div>
+</div>

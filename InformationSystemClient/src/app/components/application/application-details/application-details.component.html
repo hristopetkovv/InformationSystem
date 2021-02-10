@@ -1,43 +1,7 @@
 <div class="mainApplicationDiv">
     <h2 style="margin-bottom: 1em;">Application details</h2>
-    <div style="margin-bottom: 3em;">
-        <div class="row">
-            <h5>
-                First name:</h5>
-            <input [(ngModel)]="application.firstName">
-        </div>
-        <div class="row">
-            <h5>
-                Last name:</h5>
-            <input [(ngModel)]="application.lastName">
-        </div>
-        <div class="row">
-            <h5>Type:</h5>
-            <enum-select [(model)]="application.applicationType"
-                         [type]="applicationTypesEnum">
-            </enum-select>
+    <application-info [application]="application"></application-info>
 
-        </div>
-
-        <div class="row">
-            <h5>Municipality:</h5>
-            <input [(ngModel)]="application.municipality">
-        </div>
-        <div class="row">
-            <h5>Region:</h5>
-            <input [(ngModel)]="application.region">
-        </div>
-        <div class="row">
-            <h5>
-                City:</h5>
-            <input [(ngModel)]="application.city">
-        </div>
-        <div class="row">
-            <h5>
-                Street:</h5>
-            <input [(ngModel)]="application.street">
-        </div>
-    </div>
 
     <qualification-info [application]="application"
                         [role]="role"></qualification-info>
@@ -51,11 +15,11 @@
          *ngIf="role == 'Admin' || application.status == 1">
         <button type="button"
                 class="btn btn-primary"
-                style="margin-right: 2em; width: 15%;"
+                style="margin-right: 2em; width: 10%;"
                 (click)="saveApplication()">Save</button>
         <button type="button"
                 class="btn btn-success"
-                style="width: 15%;"
+                style="width: 10%;"
                 (click)="sendQualification()">Send</button>
     </div>
 

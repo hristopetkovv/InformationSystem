@@ -1,0 +1,6 @@
+<select [(ngModel)]="model"
+        (ngModelChange)="modelChange.emit(model)">
+    <option *ngFor="let key of keys"
+            [ngValue]="key"
+            [label]="type[key]"></option>
+</select>

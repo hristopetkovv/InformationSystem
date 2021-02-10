@@ -15,10 +15,6 @@ import { ApplicationService } from 'src/app/services/applications/application.se
   styleUrls: ['./application-details.component.css']
 })
 export class ApplicationDetailsComponent implements OnInit {
-  appKeys: any[];
-  qualificationKeys: any[];
-
-
   application = new ApplicationDto();
   role = JSON.parse(localStorage.getItem('user')).role;
   canEdit: boolean;
@@ -27,14 +23,14 @@ export class ApplicationDetailsComponent implements OnInit {
   statusTypesEnum = StatusType;
   qualificationTypesEnum = QualificationType;
 
-  constructor(private route: ActivatedRoute, private applicationService: ApplicationService) {
-
-    this.appKeys = Object.keys(this.applicationTypesEnum).filter(k => !isNaN(Number(k))).map(k => Number(k));
-    this.qualificationKeys = Object.keys(this.qualificationTypesEnum).filter(k => !isNaN(Number(k))).map(k => Number(k));
-  }
+  constructor(
+    private route: ActivatedRoute,
+    private applicationService: ApplicationService
+  ) { }
 
   ngOnInit(): void {
-    this.route.data.subscribe((data: any) => this.application = data.application);
+    this.route.data
+      .subscribe((data: any) => this.application = data.application);
   }
 
   createNewQualification() {

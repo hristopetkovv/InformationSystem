@@ -12,23 +12,19 @@
             <input [(ngModel)]="application.lastName">
         </div>
         <div class="row">
-            <h5>
-                Type:</h5>
-            <select [(ngModel)]="application.applicationType">
-                <option *ngFor="let key of appKeys"
-                        [ngValue]="key"
-                        [label]="applicationTypesEnum[key]"></option>
-            </select>
+            <h5>Type:</h5>
+            <enum-select [(model)]="application.applicationType"
+                         [type]="applicationTypesEnum">
+            </enum-select>
+
         </div>
 
         <div class="row">
-            <h5>
-                Municipality:</h5>
+            <h5>Municipality:</h5>
             <input [(ngModel)]="application.municipality">
         </div>
         <div class="row">
-            <h5>
-                Region:</h5>
+            <h5>Region:</h5>
             <input [(ngModel)]="application.region">
         </div>
         <div class="row">
@@ -77,11 +73,9 @@
         </div>
         <div class="row">
             <h5>Qualification type:</h5>
-            <select [(ngModel)]="item.typeQualification">
-                <option *ngFor="let key of qualificationKeys"
-                        [ngValue]="key"
-                        [label]="qualificationTypesEnum[key]"></option>
-            </select>
+            <enum-select [(model)]="item.typeQualification"
+                         [type]="qualificationTypesEnum">
+            </enum-select>
         </div>
         <button type="button"
                 class="btn btn-danger"

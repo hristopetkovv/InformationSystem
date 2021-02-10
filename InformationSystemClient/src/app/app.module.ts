@@ -15,6 +15,7 @@ import { ApplicationListingComponent } from './components/application/applicatio
 import { TokenInterceptorService } from './interceptors/token-interceptor.service';
 import { ApplicationCreatingComponent } from './components/application/application-creating/application-creating.component';
 import { ApplicationDetailsComponent } from './components/application/application-details/application-details.component';
+import { EnumSelectComponent } from './components/application/enum-select/enum-select.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { ApplicationDetailsComponent } from './components/application/applicatio
     ApplicationListingComponent,
     ApplicationCreatingComponent,
     ApplicationDetailsComponent,
+    EnumSelectComponent,
   ],
   imports: [
     BrowserModule,

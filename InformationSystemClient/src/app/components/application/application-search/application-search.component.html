@@ -1,0 +1,40 @@
+<div class="form-group col-sm-11"
+     style="display: inline-flex">Search By:
+       <input type="search"
+              class="form-control form-control-sm"
+              style="max-width: fit-content; margin-left: 5px; "
+              placeholder="First Name"
+              [(ngModel)]="applicationFilter.firstName">
+       <input type="search"
+              class="form-control form-control-sm"
+              style="max-width: fit-content; margin-left: 5px;"
+              placeholder="Last Name"
+              [(ngModel)]="applicationFilter.lastName">
+       <input type="search"
+              class="form-control form-control-sm"
+              style="max-width: fit-content; margin-left: 5px;"
+              placeholder="City"
+              [(ngModel)]="applicationFilter.city">
+       <input type="search"
+              class="form-control form-control-sm"
+              style="max-width: fit-content; margin-left: 5px;"
+              placeholder="Municipality"
+              [(ngModel)]="applicationFilter.municipality">
+       <input type="search"
+              class="form-control form-control-sm"
+              style="max-width: fit-content; margin-left: 5px;"
+              placeholder="Region"
+              [(ngModel)]="applicationFilter.region">
+       <select [(ngModel)]="applicationFilter.status"
+               style="margin-left: 5px;">
+              <option [ngValue]="null"
+                      selected>All</option>
+              <option [ngValue]="applicationEnum.Draft">Draft</option>
+              <option [ngValue]="applicationEnum.InProcess">InProcess</option>
+              <option [ngValue]="applicationEnum.Approved">Approved</option>
+              <option [ngValue]="applicationEnum.Disapproved">Disapproved</option>
+       </select>
+       <button class="btn btn-outline btn-sm"
+               (click)="search.emit(this.applicationFilter)"
+               style="margin-left: 5px; border-color: #ff7f50; color: #ff7f50;">Search</button>
+</div>

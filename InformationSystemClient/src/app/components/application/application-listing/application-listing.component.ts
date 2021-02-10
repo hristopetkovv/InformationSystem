@@ -17,11 +17,13 @@ export class ApplicationListingComponent implements OnInit {
   constructor(private applicationService: ApplicationResourceService, public applicationFilter: SearchApplicationDto) { }
 
   ngOnInit(): void {
-    this.getApplications();
-  }
-
-  getApplications() {
     this.applicationService.getApplications(this.applicationFilter)
       .subscribe(applications => this.apllicationsList = applications);
   }
+
+  getApplications($event: SearchApplicationDto) {
+    this.applicationService.getApplications($event)
+      .subscribe(applications => this.apllicationsList = applications);
+  }
+
 }

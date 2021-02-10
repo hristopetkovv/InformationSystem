@@ -33,16 +33,6 @@ export class ApplicationDetailsComponent implements OnInit {
       .subscribe((data: any) => this.application = data.application);
   }
 
-  createNewQualification() {
-    let commentData = {} as QualificationInfo;
-    this.application.qualificationInformation.push(commentData);
-    console.log(this.application);
-  }
-
-  removeQualification(index: number) {
-    this.application.qualificationInformation.splice(index, 1);
-  }
-
   saveApplication() {
     this.applicationService.update(this.application.id, this.application).subscribe();
   }
@@ -51,4 +41,5 @@ export class ApplicationDetailsComponent implements OnInit {
     this.applicationService.updateStatus(this.application.id, this.statusTypesEnum.InProcess)
       .subscribe(data => this.application.status = this.statusTypesEnum.InProcess);
   }
+
 }

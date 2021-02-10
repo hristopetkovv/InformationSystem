@@ -16,6 +16,7 @@ import { TokenInterceptorService } from './interceptors/token-interceptor.servic
 import { ApplicationCreatingComponent } from './components/application/application-creating/application-creating.component';
 import { ApplicationDetailsComponent } from './components/application/application-details/application-details.component';
 import { EnumSelectComponent } from './components/application/enum-select/enum-select.component';
+import { QualificationInfoComponent } from './components/application/qualification-info/qualification-info.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { EnumSelectComponent } from './components/application/enum-select/enum-s
     ApplicationCreatingComponent,
     ApplicationDetailsComponent,
     EnumSelectComponent,
+    QualificationInfoComponent,
   ],
   imports: [
     BrowserModule,

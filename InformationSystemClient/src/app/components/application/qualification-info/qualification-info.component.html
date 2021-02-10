@@ -1,0 +1,40 @@
+<div class="mainQualificationDiv">
+    <h4 style="margin-right: 1em;"><u>Qualification information</u></h4>
+    <button type="button"
+            class="btn btn-success"
+            (click)="createNewQualification()">Add new</button>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Description</th>
+                <th scope="col">Start date:</th>
+                <th scope="col">End date:</th>
+                <th scope="col">Duration in days:</th>
+                <th scope="col">Qualification type:</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of application.qualificationInformation; let i = index">
+                <td> <input [(ngModel)]="item.description"></td>
+                <td> <input [(ngModel)]="item.startDate"></td>
+                <td> <input [(ngModel)]="item.endDate"></td>
+                <td><input type="number"
+                           [(ngModel)]="item.durationDays"></td>
+                <td>
+                    <enum-select [(model)]="item.typeQualification"
+                                 [type]="qualificationTypesEnum">
+                    </enum-select>
+                </td>
+                <td *ngIf="role == 'Admin' || application.status == 1">
+                    <button type="button"
+                            class="btn btn-danger"
+                            (click)="removeQualification(i)">
+                        Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

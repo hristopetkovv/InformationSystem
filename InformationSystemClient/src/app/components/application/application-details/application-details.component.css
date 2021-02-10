@@ -13,9 +13,11 @@ h5{
 
 .mainApplicationDiv{
   text-align: center;
-  border: 1px solid;
-  width: 54%;
+  width: 70%;
   margin: auto;
-  margin-top: 5em;
   padding-top: 1em;
+}
+
+.creatorInfo{
+  margin-top: 2em;
 }

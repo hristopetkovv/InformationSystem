@@ -1,5 +1,5 @@
 <div class="mainApplicationDiv">
-    <h2 style="margin-bottom: 1em; margin-top: 1em;">Application details</h2>
+    <h2 style="margin-bottom: 1em;">Application details</h2>
     <div style="margin-bottom: 3em;">
         <div class="row">
             <h5>
@@ -39,58 +39,12 @@
         </div>
     </div>
 
-    <div style="display: flex;
-    justify-content: center;">
-        <h4 style="margin-right: 1em;"><u>Qualification information</u></h4>
-        <button type="button"
-                class="btn btn-success"
-                style="height: fit-content;"
-                (click)="createNewQualification()">Add new</button>
-    </div>
+    <qualification-info [application]="application"
+                        [role]="role"></qualification-info>
 
-    <div *ngFor="let item of application.qualificationInformation; let i = index"
-         style="margin:2em;">
-
-        <h3 style="margin-bottom: 1em;">{{i + 1}}.</h3>
-
-        <div class="row">
-            <h5>Description:</h5>
-            <input [(ngModel)]="item.description">
-        </div>
-        <div class="row">
-            <h5>Start date:</h5>
-            <input [(ngModel)]="item.startDate">
-        </div>
-        <div class="row">
-            <h5>End date:</h5>
-            <input [(ngModel)]="item.endDate">
-        </div>
-        <div class="row">
-            <h5>Duration in days:</h5>
-            <input type="number"
-                   [(ngModel)]="item.durationDays"
-                   style="width: 10%;">
-        </div>
-        <div class="row">
-            <h5>Qualification type:</h5>
-            <enum-select [(model)]="item.typeQualification"
-                         [type]="qualificationTypesEnum">
-            </enum-select>
-        </div>
-        <button type="button"
-                class="btn btn-danger"
-                (click)="removeQualification(i)">
-            Delete</button>
-    </div>
-
-    <div class="row">
+    <div class="creatorInfo">
         <h5>Creator application name: {{application.userFirstName}} {{application.userLastName}} </h5>
-    </div>
-
-    <div class="row">
-        <h5>
-            Status:
-            {{statusTypesEnum[application.status]}}</h5>
+        <h5>Status: {{statusTypesEnum[application.status]}}</h5>
     </div>
 
     <div style="margin-bottom: 2em;"

@@ -1,0 +1,11 @@
+.btn-success
+{
+    height: fit-content; 
+    margin-bottom: 2em;
+}
+
+.mainQualificationDiv{
+    display: flex;
+    justify-content: center;     
+    align-items: baseline;
+}

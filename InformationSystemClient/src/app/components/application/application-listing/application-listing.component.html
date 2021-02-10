@@ -27,9 +27,19 @@
                 <td>
                     <button type="button"
                             id="details"
-                            style="border-color: #ff7f50; color: #ff7f50;"
+                            style="border-color: #ff7f50; color: #ff7f50; margin-right: 2em;"
                             class="btn btn-outline"
                             routerLink="/application/{{item.id}}">Details</button>
+
+                    <ng-container *ngIf="role == 'Admin' && item.status != 1">
+                        <button type="button"
+                                class="btn btn-outline-success"
+                                style="margin-right: 2em;"
+                                (click)="updateStatus(item, 'approve')">Approve</button>
+                        <button type="button"
+                                class="btn btn-outline-danger"
+                                (click)="updateStatus(item, 'disapprove')">Disapprove</button>
+                    </ng-container>
                 </td>
             </tr>
         </tbody>

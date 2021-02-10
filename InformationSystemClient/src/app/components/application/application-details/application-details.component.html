@@ -2,7 +2,6 @@
     <h2 style="margin-bottom: 1em;">Application details</h2>
     <application-info [application]="application"></application-info>
 
-
     <qualification-info [application]="application"
                         [role]="role"></qualification-info>
 
@@ -11,16 +10,25 @@
         <h5>Status: {{statusTypesEnum[application.status]}}</h5>
     </div>
 
-    <div style="margin-bottom: 2em;"
-         *ngIf="role == 'Admin' || application.status == 1">
-        <button type="button"
-                class="btn btn-primary"
-                style="margin-right: 2em; width: 10%;"
-                (click)="saveApplication()">Save</button>
-        <button type="button"
-                class="btn btn-success"
-                style="width: 10%;"
-                (click)="sendQualification()">Send</button>
+    <div style="margin-bottom: 2em;">
+        <ng-container *ngIf="role == 'User' && application.status == 1">
+
+            <button type="button"
+                    class="btn btn-primary"
+                    style="margin-right: 2em; width: 10%;"
+                    (click)="saveApplication()">Save</button>
+            <button type="button"
+                    class="btn btn-success"
+                    style="width: 10%;"
+                    (click)="sendQualification()">Send</button>
+        </ng-container>
+
+        <ng-container *ngIf="role == 'Admin'">
+            <button type="button"
+                    class="btn btn-primary"
+                    style="margin-right: 2em; width: 10%;"
+                    (click)="saveApplication()">Save</button>
+        </ng-container>
     </div>
 
 </div>

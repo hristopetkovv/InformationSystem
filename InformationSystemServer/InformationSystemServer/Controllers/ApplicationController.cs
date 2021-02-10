@@ -49,5 +49,11 @@ namespace InformationSystemServer.Controllers
         {
             await appService.DeleteApplicationAsync(id);
         }
+
+        [HttpGet("ByUser/{id:int}")]
+        public async Task<List<int>> GetApplicationByUserId(int id)
+        {
+            return await appService.GetApplicationByUserIdAsync(id);
+        }
     }
 }

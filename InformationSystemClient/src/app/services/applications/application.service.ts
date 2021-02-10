@@ -27,4 +27,8 @@ export class ApplicationService {
   createApplication(application: ApplicationDto) {
     return this.http.post('api/application', application);
   }
+
+  applicationsByUserId(userId: number) {
+    return this.http.get(`api/Application/ByUser/${userId}`);
+  }
 }

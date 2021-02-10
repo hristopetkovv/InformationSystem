@@ -22,4 +22,5 @@ export class UsersResource {
   loginUser(dto: LoginDto): Observable<any> {
     return this.http.post('api/account/login', dto);
   }
+
 }

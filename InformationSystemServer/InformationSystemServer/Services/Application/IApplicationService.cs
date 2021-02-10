@@ -19,5 +19,7 @@ namespace InformationSystemServer.Services
         Task DeleteApplicationAsync(int id);
 
         Task ChangeStatusAsync(int applicationId, StatusType status);
+
+        Task<List<int>> GetApplicationByUserIdAsync(int userId);
     }
 }

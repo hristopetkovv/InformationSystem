@@ -62,10 +62,4 @@ export class UsersService {
     return null;
   }
 
-  canEdit(userId: number, carCreatorId: number): boolean {
-    if (userId == carCreatorId) {
-      return true;
-    }
-    return false;
-  }
 }

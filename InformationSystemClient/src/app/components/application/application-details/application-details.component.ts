@@ -1,13 +1,11 @@
-import { JsonPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { faPennyArcade } from '@fortawesome/free-brands-svg-icons';
 import { ApplicationType } from 'src/app/enums/applicationType';
 import { QualificationType } from 'src/app/enums/qualificationType';
 import { StatusType } from 'src/app/enums/statusType';
 import { ApplicationDto } from 'src/app/models/application.dto';
-import { QualificationInfo } from 'src/app/models/qualificationInformation.dto';
 import { ApplicationService } from 'src/app/services/applications/application.service';
+import { UsersService } from 'src/app/services/users/users.service';
 
 @Component({
   selector: 'app-application-details',
@@ -16,16 +14,15 @@ import { ApplicationService } from 'src/app/services/applications/application.se
 })
 export class ApplicationDetailsComponent implements OnInit {
   application = new ApplicationDto();
-  role = JSON.parse(localStorage.getItem('user')).role;
+  user = JSON.parse(localStorage.getItem('user'));
+  role = this.user.role;
   canEdit: boolean;
 
-  applicationTypesEnum = ApplicationType;
   statusTypesEnum = StatusType;
-  qualificationTypesEnum = QualificationType;
 
   constructor(
     private route: ActivatedRoute,
-    private applicationService: ApplicationService
+    private applicationService: ApplicationService,
   ) { }
 
   ngOnInit(): void {
@@ -41,5 +38,6 @@ export class ApplicationDetailsComponent implements OnInit {
     this.applicationService.updateStatus(this.application.id, this.statusTypesEnum.InProcess)
       .subscribe(data => this.application.status = this.statusTypesEnum.InProcess);
   }
+
 
 }

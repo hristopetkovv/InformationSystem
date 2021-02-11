@@ -20,8 +20,12 @@
         <tbody>
             <tr *ngFor="let item of application.qualificationInformation; let i = index">
                 <td> <input [(ngModel)]="item.description"></td>
-                <td> <input [(ngModel)]="item.startDate"></td>
-                <td> <input [(ngModel)]="item.endDate"></td>
+                <td> <input type="date"
+                           [ngModel]="item.startDate | date:'yyyy-MM-dd'"
+                           (ngModelChange)="item.startDate = $event"></td>
+                <td> <input type="date"
+                           [ngModel]="item.endDate | date:'yyyy-MM-dd'"
+                           (ngModelChange)="item.endDate = $event"></td>
                 <td><input type="number"
                            [(ngModel)]="item.durationDays"></td>
                 <td>

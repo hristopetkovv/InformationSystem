@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ApplicationType } from 'src/app/enums/applicationType';
-import { QualificationType } from 'src/app/enums/qualificationType';
 import { StatusType } from 'src/app/enums/statusType';
 import { ApplicationDto } from 'src/app/models/application.dto';
 import { ApplicationService } from 'src/app/services/applications/application.service';
-import { UsersService } from 'src/app/services/users/users.service';
 
 @Component({
   selector: 'app-application-details',

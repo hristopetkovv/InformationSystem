@@ -19,6 +19,7 @@ import { EnumSelectComponent } from './components/application/enum-select/enum-s
 import { QualificationInfoComponent } from './components/application/qualification-info/qualification-info.component';
 import { ApplicationInfoComponent } from './components/application/application-info/application-info.component';
 import { ApplicationSearchComponent } from './components/application/application-search/application-search.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { ApplicationSearchComponent } from './components/application/application
     FontAwesomeModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true }

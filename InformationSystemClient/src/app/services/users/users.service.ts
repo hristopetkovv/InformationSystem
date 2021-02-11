@@ -47,7 +47,8 @@ export class UsersService {
   }
 
   isLogged(): boolean {
-    const token = localStorage.getItem(this.token_property);
+    const token = JSON.parse(localStorage.getItem('user')).token;
+
     return token && token.length > 0;
   }
 

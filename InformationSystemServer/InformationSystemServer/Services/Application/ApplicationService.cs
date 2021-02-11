@@ -73,16 +73,6 @@ namespace InformationSystemServer.Services
             return application;
         }
 
-        public async Task<List<int>> GetApplicationByUserIdAsync(int userId)
-        {
-            var application = await this.context
-               .Applications
-               .Where(app => app.UserId == userId)
-               .Select(x => x.Id).ToListAsync();
-
-            return application;
-        }
-
         public async Task<Application> AddApplicationAsync(ApplicationRequestDto dto, int userId)
         {
             var application = new Application

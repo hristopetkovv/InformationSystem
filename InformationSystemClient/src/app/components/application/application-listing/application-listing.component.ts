@@ -3,7 +3,7 @@ import { StatusType } from 'src/app/enums/statusType';
 import { ApplicationDto } from 'src/app/models/application.dto';
 import { BaseApplicationDto } from 'src/app/models/baseApplication.dto';
 import { SearchApplicationDto } from 'src/app/models/search-application.dto';
-import { ApplicationResourceService } from 'src/app/services/application-resource.service';
+import { ApplicationResourceService } from 'src/app/services/applications/application-resource.service';
 import { ApplicationService } from 'src/app/services/applications/application.service';
 
 @Component({

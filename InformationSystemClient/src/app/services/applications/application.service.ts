@@ -12,6 +12,10 @@ export class ApplicationService {
   ) {
   }
 
+  getAll(): Observable<any> {
+    return this.http.get(`api/Application`);
+  }
+
   getById(id: number): Observable<any> {
     return this.http.get(`api/Application/${id}`);
   }
@@ -28,7 +32,8 @@ export class ApplicationService {
     return this.http.post('api/application', application);
   }
 
-  applicationsByUserId(userId: number) {
-    return this.http.get(`api/Application/ByUser/${userId}`);
+  isAuthor(creatorId: number): boolean {
+    let userId = JSON.parse(localStorage.getItem('user')).id;
+    return creatorId == userId;
   }
 }

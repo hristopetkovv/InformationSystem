@@ -10,7 +10,7 @@ import { QualificationInfo } from 'src/app/models/qualificationInformation.dto';
 })
 export class QualificationInfoComponent implements OnInit {
   @Input() application: ApplicationDto;
-  @Input() role: string;
+  @Input() canEdit: boolean;
   qualificationTypesEnum = QualificationType;
 
   constructor() { }

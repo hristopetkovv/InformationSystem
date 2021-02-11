@@ -7,6 +7,7 @@ import { ApplicationDetailsComponent } from './components/application/applicatio
 import { ApplicationListingComponent } from './components/application/application-listing/application-listing.component';
 import { HomeComponent } from './components/home/home.component';
 import { NotFoundComponent } from './components/shared/not-found/not-found.component';
+import { AuthGuardService } from './services/authorization/auth-guard-service';
 import { ApplicationResolver } from './services/resolvers/application-resolver';
 
 const routes: Routes = [
@@ -14,10 +15,10 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'applications', component: ApplicationListingComponent },
-  { path: 'add', component: ApplicationCreatingComponent },
-  { path: 'application/:id', component: ApplicationDetailsComponent, resolve: { application: ApplicationResolver } },
-  { path: 'profile', component: HomeComponent },
+  { path: 'applications', component: ApplicationListingComponent, canActivate: [AuthGuardService] },
+  { path: 'add', component: ApplicationCreatingComponent, canActivate: [AuthGuardService] },
+  { path: 'application/:id', component: ApplicationDetailsComponent, resolve: { application: ApplicationResolver }, canActivate: [AuthGuardService] },
+  { path: 'profile', component: HomeComponent, canActivate: [AuthGuardService] },
   { path: '**', component: NotFoundComponent }
 ];
 

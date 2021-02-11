@@ -23,7 +23,7 @@ namespace InformationSystemServer.Services
             var applications = await this.context
                 .Applications
                 .FilterApplications(filter)
-                .Select(app => new ApplicationResponseDto 
+                .Select(app => new ApplicationResponseDto
                 {
                     Id = app.Id,
                     FirstName = app.FirstName,
@@ -56,6 +56,7 @@ namespace InformationSystemServer.Services
                    ApplicationType = app.ApplicationType,
                    Status = app.Status,
                    UserFirstName = app.User.FirstName,
+                   UserId = app.UserId,
                    UserLastName = app.User.LastName,
                    QualificationInformation = app.QualificationInformation
                        .Select(q => new QualificationDto
@@ -68,15 +69,6 @@ namespace InformationSystemServer.Services
                            TypeQualification = q.TypeQualification
                        })
                }).SingleOrDefaultAsync();
-
-            return application;
-        }
-
-        public async Task<List<int>> GetApplicationByUserIdAsync(int userId) {
-            var application = await this.context
-               .Applications
-               .Where(app => app.UserId == userId)
-               .Select(x => x.Id).ToListAsync();
 
             return application;
         }

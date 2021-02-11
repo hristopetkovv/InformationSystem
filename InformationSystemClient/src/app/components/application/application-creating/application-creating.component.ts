@@ -23,7 +23,8 @@ export class ApplicationCreatingComponent implements OnInit {
   constructor(
     private userService: UsersService,
     private router: Router,
-    private applicationService: ApplicationService) { }
+    private applicationService: ApplicationService,
+  ) { }
 
   ngOnInit(): void {
   }

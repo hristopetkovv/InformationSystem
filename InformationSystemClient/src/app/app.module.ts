@@ -15,11 +15,11 @@ import { ApplicationListingComponent } from './components/application/applicatio
 import { TokenInterceptorService } from './interceptors/token-interceptor.service';
 import { ApplicationCreatingComponent } from './components/application/application-creating/application-creating.component';
 import { ApplicationDetailsComponent } from './components/application/application-details/application-details.component';
-import { EnumSelectComponent } from './components/application/enum-select/enum-select.component';
+import { EnumSelectComponent } from './components/shared/enum-select/enum-select.component';
 import { QualificationInfoComponent } from './components/application/qualification-info/qualification-info.component';
 import { ApplicationInfoComponent } from './components/application/application-info/application-info.component';
 import { ApplicationSearchComponent } from './components/application/application-search/application-search.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -43,11 +43,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FontAwesomeModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule,
-    NgbModule
+    HttpClientModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true, },
+    [DatePipe]
   ],
   bootstrap: [AppComponent]
 })

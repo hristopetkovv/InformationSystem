@@ -17,6 +17,7 @@ export class ApplicationResolver implements Resolve<any> {
     _: RouterStateSnapshot
   ): Observable<any> | Promise<any> | any {
     const id = +route.params['id'];
+
     if (isNaN(id)) {
       return EMPTY;
     }

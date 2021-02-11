@@ -1,6 +1,6 @@
 <select [(ngModel)]="model"
         (ngModelChange)="modelChange.emit(model)"
-        style="width: 100%; min-height: 32px;">
+        style="width: 100%; min-height: 32px; min-width: 193px;">
         <option *ngFor="let key of keys"
                 [ngValue]="key"
                 [label]="type[key]"></option>

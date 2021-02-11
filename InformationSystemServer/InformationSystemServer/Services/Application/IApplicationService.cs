@@ -20,5 +20,7 @@ namespace InformationSystemServer.Services
 
         Task ChangeStatusAsync(int applicationId, StatusType status);
 
+        Task<IEnumerable<ReferenceResponseDto>> GetReferencesAsync();
+
     }
 }

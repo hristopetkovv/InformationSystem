@@ -190,5 +190,26 @@ namespace InformationSystemServer.Services
 
             await this.context.SaveChangesAsync();
         }
+
+        public async Task<IEnumerable<ReferenceResponseDto>> GetReferencesAsync()
+        {
+            var references = await this.context
+                .Applications
+                .Select(app => new ReferenceResponseDto
+                {
+                    ApplicationId = app.Id,
+                    FirstName = app.FirstName,
+                    LastName = app.LastName,
+                    Street = app.Street,
+                    Municipality = app.Municipality,
+                    Region = app.Region,
+                    City = app.City,
+                    Status = app.Status,
+                    TotalCourseDays = app.QualificationInformation.Where(q => q.TypeQualification == TypeQualification.Course).Sum(app => app.DurationDays),
+                    TotalInternshipDays = app.QualificationInformation.Where(q => q.TypeQualification == TypeQualification.Intership).Sum(app => app.DurationDays),
+                }).ToListAsync();
+
+            return references;
+        }
     }
 }

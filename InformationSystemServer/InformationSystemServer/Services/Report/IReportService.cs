@@ -4,8 +4,8 @@ using System.Threading.Tasks;
 
 namespace InformationSystemServer.Services.Reference
 {
-    public interface IReferenceService
+    public interface IReportService
     {
-        Task<IEnumerable<ReferenceResponseDto>> GetReferencesAsync();
+        Task<IEnumerable<ReportResponseDto>> GetReportsAsync(SearchFilterDto filter);
     }
 }

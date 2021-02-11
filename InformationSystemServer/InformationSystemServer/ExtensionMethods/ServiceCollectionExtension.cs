@@ -34,7 +34,7 @@ namespace InformationSystemServer.ExtensionMethods
         {
             services.AddTransient<IAccountService, AccountService>();
             services.AddTransient<IApplicationService, ApplicationService>();
-            services.AddTransient<IReferenceService, ReferenceService>();
+            services.AddTransient<IReportService, ReportService>();
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<UserContext>();
 

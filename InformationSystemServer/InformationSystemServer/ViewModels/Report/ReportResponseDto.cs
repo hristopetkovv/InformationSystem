@@ -2,7 +2,7 @@
 
 namespace InformationSystemServer.ViewModels.Application
 {
-    public class ReferenceResponseDto
+    public class ReportResponseDto
     {
         public int ApplicationId { get; set; }
 

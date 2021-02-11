@@ -1,5 +1,4 @@
-﻿using InformationSystemServer.Data.Enums;
-using InformationSystemServer.Data.Models;
+﻿using InformationSystemServer.Data.Models;
 using InformationSystemServer.ViewModels.Application;
 using System.Linq;
 

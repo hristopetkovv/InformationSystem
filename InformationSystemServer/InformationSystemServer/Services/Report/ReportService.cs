@@ -1,5 +1,6 @@
 ﻿using InformationSystemServer.Data;
 using InformationSystemServer.Data.Enums;
+using InformationSystemServer.ExtensionMethods;
 using InformationSystemServer.ViewModels.Application;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -8,19 +9,20 @@ using System.Threading.Tasks;
 
 namespace InformationSystemServer.Services.Reference
 {
-    public class ReferenceService : IReferenceService
+    public class ReportService : IReportService
     {
         private readonly AppDbContext dbContext;
 
-        public ReferenceService(AppDbContext dbContext)
+        public ReportService(AppDbContext dbContext)
         {
             this.dbContext = dbContext;
         }
-        public async Task<IEnumerable<ReferenceResponseDto>> GetReferencesAsync()
+        public async Task<IEnumerable<ReportResponseDto>> GetReportsAsync(SearchFilterDto filter)
         {
-            var references = await this.dbContext
+            var reports = await this.dbContext
                 .Applications
-                .Select(app => new ReferenceResponseDto
+                .FilterApplications(filter)
+                .Select(app => new ReportResponseDto
                 {
                     ApplicationId = app.Id,
                     FirstName = app.FirstName,
@@ -34,7 +36,7 @@ namespace InformationSystemServer.Services.Reference
                     TotalInternshipDays = app.QualificationInformation.Where(q => q.TypeQualification == TypeQualification.Intership).Sum(app => app.DurationDays),
                 }).ToListAsync();
 
-            return references;
+            return reports;
         }
     }
 }

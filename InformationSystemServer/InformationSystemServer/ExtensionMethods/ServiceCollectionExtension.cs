@@ -2,13 +2,12 @@
 using InformationSystemServer.Services;
 using InformationSystemServer.Services.Account;
 using InformationSystemServer.Services.Helpers;
+using InformationSystemServer.Services.Reference;
 using InformationSystemServer.Services.Token;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
@@ -35,6 +34,7 @@ namespace InformationSystemServer.ExtensionMethods
         {
             services.AddTransient<IAccountService, AccountService>();
             services.AddTransient<IApplicationService, ApplicationService>();
+            services.AddTransient<IReferenceService, ReferenceService>();
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<UserContext>();
 

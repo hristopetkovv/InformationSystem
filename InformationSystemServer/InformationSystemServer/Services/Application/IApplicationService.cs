@@ -8,7 +8,7 @@ namespace InformationSystemServer.Services
 {
     public interface IApplicationService
     {
-        Task<IEnumerable<ApplicationResponseDto>> GetAllApplicationsAsync(SearchApplicationFilterDto filter);
+        Task<IEnumerable<ApplicationResponseDto>> GetAllApplicationsAsync(SearchFilterDto filter);
 
         Task<ApplicationDetailsDto> GetApplicationByIdAsync(int id);
 
@@ -19,8 +19,5 @@ namespace InformationSystemServer.Services
         Task DeleteApplicationAsync(int id);
 
         Task ChangeStatusAsync(int applicationId, StatusType status);
-
-        Task<IEnumerable<ReferenceResponseDto>> GetReferencesAsync();
-
     }
 }

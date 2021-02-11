@@ -19,7 +19,7 @@ namespace InformationSystemServer.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<ApplicationResponseDto>> GetApplications([FromQuery] SearchApplicationFilterDto filter)
+        public async Task<IEnumerable<ApplicationResponseDto>> GetApplications([FromQuery] SearchFilterDto filter)
         {
             return await appService.GetAllApplicationsAsync(filter);
         }

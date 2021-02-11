@@ -1,4 +1,4 @@
-﻿using InformationSystemServer.Services;
+﻿using InformationSystemServer.Services.Reference;
 using InformationSystemServer.ViewModels.Application;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -8,17 +8,17 @@ namespace InformationSystemServer.Controllers
 {
     public class ReferenceController : BaseApiController
     {
-        private readonly IApplicationService applicationService;
+        private readonly IReferenceService referenceService;
 
-        public ReferenceController(IApplicationService applicationService)
+        public ReferenceController(IReferenceService referenceService)
         {
-            this.applicationService = applicationService;
+            this.referenceService = referenceService;
         }
 
         [HttpGet]
         public async Task<IEnumerable<ReferenceResponseDto>> GetReferences()
         {
-            return await this.applicationService.GetReferencesAsync();
+            return await this.referenceService.GetReferencesAsync();
         }
     }
 }

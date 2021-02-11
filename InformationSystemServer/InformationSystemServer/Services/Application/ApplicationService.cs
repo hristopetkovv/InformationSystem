@@ -18,7 +18,7 @@ namespace InformationSystemServer.Services
             this.context = context;
         }
 
-        public async Task<IEnumerable<ApplicationResponseDto>> GetAllApplicationsAsync(SearchApplicationFilterDto filter)
+        public async Task<IEnumerable<ApplicationResponseDto>> GetAllApplicationsAsync(SearchFilterDto filter)
         {
             var applications = await this.context
                 .Applications
@@ -189,27 +189,6 @@ namespace InformationSystemServer.Services
             application.Status = status;
 
             await this.context.SaveChangesAsync();
-        }
-
-        public async Task<IEnumerable<ReferenceResponseDto>> GetReferencesAsync()
-        {
-            var references = await this.context
-                .Applications
-                .Select(app => new ReferenceResponseDto
-                {
-                    ApplicationId = app.Id,
-                    FirstName = app.FirstName,
-                    LastName = app.LastName,
-                    Street = app.Street,
-                    Municipality = app.Municipality,
-                    Region = app.Region,
-                    City = app.City,
-                    Status = app.Status,
-                    TotalCourseDays = app.QualificationInformation.Where(q => q.TypeQualification == TypeQualification.Course).Sum(app => app.DurationDays),
-                    TotalInternshipDays = app.QualificationInformation.Where(q => q.TypeQualification == TypeQualification.Intership).Sum(app => app.DurationDays),
-                }).ToListAsync();
-
-            return references;
         }
     }
 }

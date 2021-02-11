@@ -7,7 +7,7 @@ namespace InformationSystemServer.ExtensionMethods
 {
     public static class SearchApplicationExtension
     {
-        public static IQueryable<Application> FilterApplications(this IQueryable<Application> applications, SearchApplicationFilterDto filter)
+        public static IQueryable<Application> FilterApplications(this IQueryable<Application> applications, SearchFilterDto filter)
         {
             if (!string.IsNullOrEmpty(filter.FirstName))
             {

@@ -1,0 +1,13 @@
+<div class="text-center"
+     *ngFor="let report of reports">
+    <p>FirstName: {{report.firstName}}</p>
+    <p>LastName: {{report.lastName}}</p>
+    <p>municipality: {{report.municipality}}</p>
+    <p>region: {{report.region}}</p>
+    <p>city: {{report.city}}</p>
+    <p>street: {{report.street}}</p>
+    <p>totalCourseDays: {{report.totalCourseDays}}</p>
+    <p>totalInternshipDays: {{report.totalInternshipDays}}</p>
+    <p>status: {{status[report.status]}}</p>
+    <hr>
+</div>

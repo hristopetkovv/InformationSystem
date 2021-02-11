@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { ApplicationDto } from 'src/app/models/application.dto';
+import { SearchApplicationDto } from 'src/app/models/search-application.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,10 @@ export class ApplicationService {
 
   createApplication(application: ApplicationDto) {
     return this.http.post('api/application', application);
+  }
+
+  getApplications(applicationFilter: SearchApplicationDto): Observable<any[]> {
+    return this.http.get<any[]>(`api/application${applicationFilter.getQueryString()}`);
   }
 
   isAuthor(creatorId: number): boolean {

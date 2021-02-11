@@ -8,11 +8,11 @@ import { ApplicationService } from 'src/app/services/applications/application.se
 import { UsersService } from 'src/app/services/users/users.service';
 
 @Component({
-  selector: 'app-application-creating',
-  templateUrl: './application-creating.component.html',
-  styleUrls: ['./application-creating.component.css']
+  selector: 'app-application-create',
+  templateUrl: './application-create.component.html',
+  styleUrls: ['./application-create.component.css']
 })
-export class ApplicationCreatingComponent implements OnInit {
+export class ApplicationCreateComponent implements OnInit {
   application: ApplicationDto = new ApplicationDto();
   qualificationArray: QualificationInformation[] = [];
   qualification: QualificationInformation = new QualificationInformation();

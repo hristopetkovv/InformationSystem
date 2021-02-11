@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'applications', component: ApplicationListingComponent },
+  { path: 'applications', component: ApplicationListingComponent, resolve: { application: ApplicationResolver } },
   { path: 'add', component: ApplicationCreatingComponent },
   { path: 'application/:id', component: ApplicationDetailsComponent, resolve: { application: ApplicationResolver } },
   { path: 'profile', component: HomeComponent },

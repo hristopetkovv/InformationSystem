@@ -1,13 +1,29 @@
-<div class="text-center"
-     *ngFor="let report of reports">
-    <p>FirstName: {{report.firstName}}</p>
-    <p>LastName: {{report.lastName}}</p>
-    <p>municipality: {{report.municipality}}</p>
-    <p>region: {{report.region}}</p>
-    <p>city: {{report.city}}</p>
-    <p>street: {{report.street}}</p>
-    <p>totalCourseDays: {{report.totalCourseDays}}</p>
-    <p>totalInternshipDays: {{report.totalInternshipDays}}</p>
-    <p>status: {{status[report.status]}}</p>
-    <hr>
-</div>
+<h2 class="text-center">Reports</h2>
+
+<application-search (search)="getReports($event)"
+                    (clearSearch)="getReports($event)"></application-search>
+
+<table>
+    <tr>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Municipality</th>
+        <th>Region</th>
+        <th>City</th>
+        <th>Street</th>
+        <th>Total Course Days</th>
+        <th>Total Internship Days</th>
+        <th>Status</th>
+    </tr>
+    <tr *ngFor="let report of reports">
+        <td>{{report.firstName}}</td>
+        <td>{{report.lastName}}</td>
+        <td>{{report.municipality}}</td>
+        <td>{{report.street}}</td>
+        <td>{{report.city}}</td>
+        <td>{{report.region}}</td>
+        <td>{{report.totalCourseDays}}</td>
+        <td>{{report.totalInternshipDays}}</td>
+        <td>{{status[report.status]}}</td>
+    </tr>
+</table>

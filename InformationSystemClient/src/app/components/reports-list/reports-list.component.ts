@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StatusType } from 'src/app/enums/statusType';
 import { ReportDto } from 'src/app/models/report.dto';
+import { SearchApplicationDto } from 'src/app/models/search-application.dto';
 import { ReportService } from 'src/app/services/report/report.service';
 
 @Component({
@@ -12,13 +13,15 @@ export class ReportsListComponent implements OnInit {
   reports: ReportDto[] = [];
   status = StatusType;
 
-  constructor(private reportService: ReportService) { }
+  constructor(
+    private reportService: ReportService,
+    public applicationFilter: SearchApplicationDto) { }
 
   ngOnInit(): void {
-    this.getReports();
+    this.getReports(this.applicationFilter);
   }
 
-  getReports() {
-    this.reportService.getReports().subscribe(reports => this.reports = reports);
+  getReports($event: SearchApplicationDto) {
+    this.reportService.getReports($event).subscribe(reports => this.reports = reports);
   }
 }

@@ -13,10 +13,6 @@ export class ApplicationService {
   ) {
   }
 
-  getAll(): Observable<any> {
-    return this.http.get(`api/Application`);
-  }
-
   getById(id: number): Observable<any> {
     return this.http.get(`api/Application/${id}`);
   }

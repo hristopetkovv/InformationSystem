@@ -1,5 +1,5 @@
-<application-search [apllicationsList]="apllicationsList"
-                    (search)="getApplications($event)"></application-search>
+<application-search (search)="getApplications($event)"
+                    (clearSearch)="getApplications($event)"></application-search>
 
 <div class="table-responsive">
     <table class="table table-hover">

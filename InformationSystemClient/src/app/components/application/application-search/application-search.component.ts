@@ -1,6 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { StatusType } from 'src/app/enums/statusType';
-import { BaseApplicationDto } from 'src/app/models/baseApplication.dto';
 import { SearchApplicationDto } from 'src/app/models/search-application.dto';
 
 @Component({
@@ -9,8 +8,8 @@ import { SearchApplicationDto } from 'src/app/models/search-application.dto';
   styleUrls: ['./application-search.component.css']
 })
 export class ApplicationSearchComponent implements OnInit {
-  @Input() apllicationsList: BaseApplicationDto[];
   @Output() search: EventEmitter<any> = new EventEmitter();
+  @Output() clearSearch: EventEmitter<any> = new EventEmitter();
 
   applicationEnum = StatusType;
 
@@ -19,4 +18,12 @@ export class ApplicationSearchComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  clear() {
+    this.clearFilter();
+    this.clearSearch.emit(this.applicationFilter);
+  }
+
+  clearFilter() {
+    this.applicationFilter = new SearchApplicationDto();
+  }
 }

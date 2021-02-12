@@ -8,7 +8,8 @@ import { ApplicationService } from 'src/app/services/applications/application.se
 @Component({
   selector: 'app-application-list',
   templateUrl: './application-list.component.html',
-  styleUrls: ['./application-list.component.css']
+  styleUrls: ['./application-list.component.css'],
+  providers: [SearchApplicationDto]
 })
 export class ApplicationListComponent implements OnInit {
 

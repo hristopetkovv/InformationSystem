@@ -19,11 +19,11 @@ export class ApplicationSearchComponent implements OnInit {
   }
 
   clear() {
-    this.clearFilter();
+    this.applicationFilter = new SearchApplicationDto();
     this.clearSearch.emit(this.applicationFilter);
   }
 
   clearFilter() {
-    this.applicationFilter = new SearchApplicationDto();
+
   }
 }

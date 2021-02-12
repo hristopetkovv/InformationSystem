@@ -7,7 +7,8 @@ import { ReportService } from 'src/app/services/report/report.service';
 @Component({
   selector: 'app-reports-list',
   templateUrl: './reports-list.component.html',
-  styleUrls: ['./reports-list.component.css']
+  styleUrls: ['./reports-list.component.css'],
+  providers: [SearchApplicationDto]
 })
 export class ReportsListComponent implements OnInit {
   reports: ReportDto[] = [];

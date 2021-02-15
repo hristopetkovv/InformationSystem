@@ -22,8 +22,4 @@ export class ApplicationSearchComponent implements OnInit {
     this.applicationFilter = new SearchApplicationDto();
     this.clearSearch.emit(this.applicationFilter);
   }
-
-  clearFilter() {
-
-  }
 }

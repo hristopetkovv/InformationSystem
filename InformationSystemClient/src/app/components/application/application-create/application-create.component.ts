@@ -32,7 +32,8 @@ export class ApplicationCreateComponent implements OnInit {
   createApplication() {
     this.application.userFirstName = this.userService.getUserNames().FirstName;
     this.application.userLastName = this.userService.getUserNames().LastName;
-    this.applicationService.createApplication(this.application).subscribe(() => this.router.navigateByUrl('/applications'));
+    this.applicationService.createApplication(this.application)
+      .subscribe(() => this.router.navigateByUrl('/applications'));
   }
 
   addRow() {

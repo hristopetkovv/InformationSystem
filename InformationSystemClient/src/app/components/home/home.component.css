@@ -1,21 +1,16 @@
-div {
-    margin-top: -0.7em;
-    height: 50em;
-    background-size: cover;
-    background-image: url("https://avedisianschool.am/wp-content/uploads/2019/12/certificates-collage.jpg");
+.btn-success{
+    background-color: #ff7f50 !important;
+    border-color: #ff7f50 !important;
+    margin: 0;
+}   
+
+.btn-success:focus, 
+.btn-success:hover,
+.btn-success:active {
+    box-shadow: 0 0 4px 3px #cccccc;
 }
 
-h3 {
-    font-family: "Trebuchet MS", sans-serif;
-    font-size: 2em;
-    letter-spacing: -2px;
-    border-bottom: 3px solid black;
-    text-transform: uppercase;
-
-    position: absolute;
-    top: 28em;
-    left: 12em;
-    color:#ff7f50;
-    text-align: center;
-    text-shadow: 2px 2px 2px rgb(8, 5, 5);
+#row:hover{
+    background-color: 	#F0F0F0;
+    border: solid 1px rgb(245, 206, 206);
 }

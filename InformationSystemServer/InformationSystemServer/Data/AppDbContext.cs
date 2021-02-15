@@ -19,6 +19,7 @@ namespace InformationSystemServer.Data
         public virtual DbSet<Application> Applications { get; set; }
 
         public virtual DbSet<QualificationInformation> QualificationsInformation { get; set; }
+        public virtual DbSet<Post> Posts  { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -27,6 +28,7 @@ namespace InformationSystemServer.Data
             builder.ApplyConfiguration(new Configurations.UserConfiguration());
             builder.ApplyConfiguration(new Configurations.ApplicationConfiguration());
             builder.ApplyConfiguration(new Configurations.QualificatonInformationConfiguration());
+            builder.ApplyConfiguration(new Configurations.PostConfiguration());
         }
     }
 }

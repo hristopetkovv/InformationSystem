@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InformationSystemServer.Data.Enums;
+using System;
 
 namespace InformationSystemServer.Data.Models
 {
@@ -8,5 +9,6 @@ namespace InformationSystemServer.Data.Models
         public string Content { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime? EndDate { get; set; }
+        public PostStatus Status { get; set; }
     }
 }

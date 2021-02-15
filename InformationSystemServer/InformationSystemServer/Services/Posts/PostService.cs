@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System;
+using InformationSystemServer.Data.Enums;
 
 namespace InformationSystemServer.Services
 {
@@ -24,6 +25,7 @@ namespace InformationSystemServer.Services
 
         public async Task<Post> AddPostAsync(Post post)
         {
+            post.Status = PostStatus.Draft;
             context.Posts.Add(post);
             await context.SaveChangesAsync();
 
@@ -43,10 +45,19 @@ namespace InformationSystemServer.Services
             await context.SaveChangesAsync();
         }
 
+        public async Task<Post> ChangeStatusAsync(int postId, PostStatus status)
+        {
+            var post = await context.Posts
+                .SingleOrDefaultAsync(app => app.Id == postId);
+
+            post.Status = status;
+            await context.SaveChangesAsync();
+            return post;
+        }
+
         public async Task DeletePostAsync(int id)
         {
-            var post = await context
-             .Posts
+            var post = await context.Posts
              .SingleOrDefaultAsync(a => a.Id == id);
 
             context.Posts.Remove(post);

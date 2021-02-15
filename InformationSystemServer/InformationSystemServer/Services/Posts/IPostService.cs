@@ -1,4 +1,5 @@
-﻿using InformationSystemServer.Data.Models;
+﻿using InformationSystemServer.Data.Enums;
+using InformationSystemServer.Data.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -13,6 +14,6 @@ namespace InformationSystemServer.Services
         Task UpdatePostAsync(int id, Post post);
 
         Task DeletePostAsync(int id);
-
+        Task<Post> ChangeStatusAsync(int postId, PostStatus status);
     }
 }

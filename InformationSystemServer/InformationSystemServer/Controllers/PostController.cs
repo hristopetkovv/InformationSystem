@@ -1,4 +1,5 @@
-﻿using InformationSystemServer.Data.Models;
+﻿using InformationSystemServer.Data.Enums;
+using InformationSystemServer.Data.Models;
 using InformationSystemServer.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -26,5 +27,18 @@ namespace InformationSystemServer.Controllers
         {
             return await postService.AddPostAsync(post);
         }
+
+        [HttpPut("{id:int}")]
+        public async Task UpdatePost(int id, [FromBody] Post post)
+        {
+            await postService.UpdatePostAsync(id, post);
+        }
+
+        [HttpPut("status/{id:int}")]
+        public async Task<Post> ChangeStatus(int id, [FromBody] PostStatus status)
+        {
+            return await postService.ChangeStatusAsync(id, status);
+        }
+
     }
 }

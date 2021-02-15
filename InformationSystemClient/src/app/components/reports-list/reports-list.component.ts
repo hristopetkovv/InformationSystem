@@ -3,6 +3,8 @@ import { StatusType } from 'src/app/enums/statusType';
 import { ReportDto } from 'src/app/models/report.dto';
 import { SearchApplicationDto } from 'src/app/models/search-application.dto';
 import { ReportService } from 'src/app/services/report/report.service';
+import * as XLSX from 'xlsx';
+import * as FileSaver from 'file-saver';
 
 @Component({
   selector: 'app-reports-list',
@@ -22,7 +24,17 @@ export class ReportsListComponent implements OnInit {
     this.getReports(this.applicationFilter);
   }
 
-  getReports($event: SearchApplicationDto) {
-    this.reportService.getReports($event).subscribe(reports => this.reports = reports);
+  getReports(filter: SearchApplicationDto) {
+    this.reportService.getReports(filter)
+      .subscribe(reports => this.reports = reports);
+  }
+
+  exportExcel() {
+    this.reportService.exportAsExcel(this.applicationFilter)
+      .subscribe(data => {
+        const blob = new Blob([data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8' });
+        FileSaver.saveAs(blob, 'ExcelSheet.xlsx');
+      });
+
   }
 }

@@ -9,3 +9,10 @@ table {
     text-align: left;
     padding: 8px;
   }
+
+  .btn-outline:focus, 
+.btn-outline:hover,
+.bbtn-outline:active {
+    box-shadow: 0 0 4px 3px #cccccc;
+    background-color: white;
+}

@@ -3,7 +3,7 @@
 <application-search (search)="getReports($event)"
                     (clearSearch)="getReports($event)"></application-search>
 
-<table>
+<table id="excel-table">
     <tr>
         <th>First name</th>
         <th>Last name</th>
@@ -27,3 +27,12 @@
         <td>{{status[report.status]}}</td>
     </tr>
 </table>
+
+<div class="text-right"
+     style="margin-top: 10px; margin-right: 70px">
+    <button class="btn btn-outline"
+            style="border-color: #ff7f50; color: #ff7f50;"
+            (click)="exportExcel()">
+        Export as Excel File
+    </button>
+</div>

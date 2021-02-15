@@ -14,4 +14,9 @@ export class ReportService {
   getReports(applicationFilter: SearchApplicationDto): Observable<ReportDto[]> {
     return this.http.get<ReportDto[]>(`api/report${applicationFilter.getQueryString()}`);
   }
+
+  exportAsExcel(applicationFilter: SearchApplicationDto) {
+
+    return this.http.get(`api/report/excel${applicationFilter.getQueryString()}`, { responseType: 'blob' });
+  }
 }

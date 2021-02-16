@@ -37,4 +37,8 @@ export class ApplicationService {
     let userId = JSON.parse(localStorage.getItem('user')).id;
     return creatorId == userId;
   }
+
+  exportAsExcel(applicationFilter: SearchApplicationDto): Observable<Blob> {
+    return this.http.get(`api/application/excel${applicationFilter.getQueryString()}`, { responseType: 'blob' });
+  }
 }

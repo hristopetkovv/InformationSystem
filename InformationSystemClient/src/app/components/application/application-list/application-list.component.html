@@ -2,7 +2,7 @@
                     (clearSearch)="getApplications($event)"></application-search>
 
 <div class="table-responsive">
-    <table class="table table-hover">
+    <table class="table table-hover table-bordered">
         <thead>
             <tr>
                 <th scope="col">First name</th>
@@ -44,4 +44,13 @@
             </tr>
         </tbody>
     </table>
+</div>
+
+<div class="text-right"
+     style="margin-top: 10px; margin-right: 40px">
+    <button class="btn btn-outline"
+            style="border-color: #ff7f50; color: #ff7f50;"
+            (click)="exportExcel()">
+        Export as Excel File
+    </button>
 </div>

@@ -2,6 +2,7 @@
 using InformationSystemServer.Data.Models;
 using InformationSystemServer.ViewModels.Application;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace InformationSystemServer.Services

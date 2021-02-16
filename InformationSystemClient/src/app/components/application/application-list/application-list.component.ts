@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { StatusType } from 'src/app/enums/statusType';
+import { ApplicationService } from 'src/app/services/applications/application.service';
+import * as FileSaver from 'file-saver';
 import { ApplicationDto } from 'src/app/models/application.dto';
 import { BaseApplicationDto } from 'src/app/models/baseApplication.dto';
 import { SearchApplicationDto } from 'src/app/models/search-application.dto';
-import { ApplicationService } from 'src/app/services/applications/application.service';
+import { StatusType } from 'src/app/enums/statusType';
 
 @Component({
   selector: 'app-application-list',
@@ -44,4 +45,13 @@ export class ApplicationListComponent implements OnInit {
         .subscribe(data => app.status = this.statusTypesEnum.Disapproved);
     }
   }
+
+  exportExcel() {
+    this.applicationService.exportAsExcel(this.applicationFilter)
+      .subscribe(data => {
+        const blob = new Blob([data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8' });
+        FileSaver.saveAs(blob, 'ExcelSheet.xlsx');
+      });
+  }
+
 }

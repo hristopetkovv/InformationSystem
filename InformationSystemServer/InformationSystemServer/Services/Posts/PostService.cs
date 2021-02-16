@@ -16,7 +16,6 @@ namespace InformationSystemServer.Services
         {
             this.context = context;
         }
-
         public async Task<IEnumerable<Post>> GetAllPostsAsync()
         {
             var posts = await context.Posts.Where(x=>x.StartDate <= DateTime.UtcNow &&  (x.EndDate >= DateTime.UtcNow || x.EndDate == null)).ToListAsync();

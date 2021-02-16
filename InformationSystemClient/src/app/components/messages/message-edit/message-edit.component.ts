@@ -4,11 +4,11 @@ import { PostModel } from 'src/app/models/post.model';
 import { PostService } from 'src/app/services/post/post.service';
 
 @Component({
-  selector: 'message-edit-btn',
-  templateUrl: './message-edit-btn.component.html',
-  styleUrls: ['./message-edit-btn.component.css']
+  selector: 'message-edit',
+  templateUrl: './message-edit.component.html',
+  styleUrls: ['./message-edit.component.css']
 })
-export class MessageEditBtnComponent implements OnInit {
+export class MessageEditComponent implements OnInit {
   post: PostModel;
 
   constructor(

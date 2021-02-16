@@ -8,19 +8,16 @@ import { UsersService } from '../users/users.service';
 
 export class AuthGuardService implements CanActivate {
 
-  constructor(private router: Router, private authService: UsersService) {
-  }
+  constructor(
+    private router: Router,
+    private authService: UsersService
+  ) { }
 
-  canActivate(route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): boolean | UrlTree {
+  canActivate(
+    _: ActivatedRouteSnapshot,
+    __: RouterStateSnapshot): boolean | UrlTree {
 
-    if (!this.authService.isLogged()) {
-
-      this.router.navigate(["home"], { queryParams: { retUrl: route.url } });
-      return false;
-    }
-
-    return true;
+    return this.authService.isLogged();
   }
 
 }

@@ -47,7 +47,13 @@ export class UsersService {
   }
 
   isLogged(): boolean {
-    const token = JSON.parse(localStorage.getItem('user')).token;
+
+    let user = JSON.parse(localStorage.getItem('user'));
+    let token;
+
+    if (user != null) {
+      token = user.token;
+    }
 
     return token && token.length > 0;
   }
@@ -63,4 +69,7 @@ export class UsersService {
     return null;
   }
 
+  getRole(): string {
+    return JSON.parse(localStorage.getItem('user')).role;
+  }
 }

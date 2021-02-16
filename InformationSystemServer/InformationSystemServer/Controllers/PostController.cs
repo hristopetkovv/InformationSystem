@@ -1,6 +1,7 @@
 ﻿using InformationSystemServer.Data.Enums;
 using InformationSystemServer.Data.Models;
 using InformationSystemServer.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -16,6 +17,7 @@ namespace InformationSystemServer.Controllers
             this.postService = postService;
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IEnumerable<Post>> GetPosts()
         {

@@ -24,7 +24,7 @@ import { ReportsListComponent } from './components/reports-list/reports-list.com
 import { MessageAddComponent } from './components/messages/message-add/message-add.component';
 import { MessageListComponent } from './components/messages/message-list/message-list.component';
 import { MessageDoneBtnComponent } from './components/messages/message-done-btn/message-done-btn.component';
-import { MessageEditBtnComponent } from './components/messages/message-edit-btn/message-edit-btn.component';
+import { MessageEditComponent } from './components/messages/message-edit/message-edit.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +46,7 @@ import { MessageEditBtnComponent } from './components/messages/message-edit-btn/
     MessageAddComponent,
     MessageListComponent,
     MessageDoneBtnComponent,
-    MessageEditBtnComponent,
+    MessageEditComponent,
   ],
   imports: [
     BrowserModule,

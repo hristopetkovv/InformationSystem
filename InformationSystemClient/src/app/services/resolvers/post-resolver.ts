@@ -17,6 +17,7 @@ export class PostResolver implements Resolve<any> {
     _: RouterStateSnapshot
   ): Observable<any> | Promise<any> | any {
     const id = +route.params['id'];
+    console.log(id);
 
     if (isNaN(id)) {
       return EMPTY;

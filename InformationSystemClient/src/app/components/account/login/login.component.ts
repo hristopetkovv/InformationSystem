@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { UsersResource } from 'src/app/services/users/users-resource.service';
 import { UsersService } from 'src/app/services/users/users.service';
 import { UserDto } from 'src/app/models/user.dto';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private userService: UsersService,
     private userResource: UsersResource,
-    private router: Router) { }
+    private router: Router,
+    private toastrService: ToastrService) { }
 
   ngOnInit(): void {
   }
@@ -27,6 +29,8 @@ export class LoginComponent implements OnInit {
           this.userService.setCurrentUser(user);
           this.router.navigate(['']);
         }
-      }, error => console.log(error));
+      }, error => {
+        console.log(error);
+      });
   }
 }

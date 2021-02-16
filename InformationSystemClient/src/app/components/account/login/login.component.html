@@ -12,8 +12,16 @@
                     <input type="text"
                            class="form-control"
                            name="username"
+                           #username="ngModel"
                            [(ngModel)]="model.username"
-                           placeholder="Username">
+                           placeholder="Username"
+                           required>
+                    <div *ngIf="username.invalid && (username.dirty || username.touched)"
+                         class="alert alert-danger">
+                        <div *ngIf="username.errors.required">
+                            Username is required.
+                        </div>
+                    </div>
                 </div>
 
                 <div class="form-group">
@@ -21,12 +29,20 @@
                            class="form-control"
                            style="margin-top: 5%;"
                            name="password"
+                           #password="ngModel"
                            [(ngModel)]="model.password"
-                           placeholder="Password">
+                           placeholder="Password"
+                           required>
+                    <div *ngIf="password.invalid && (password.dirty || password.touched)"
+                         class="alert alert-danger">
+                        <div *ngIf="password.errors.required">
+                            Password is required.
+                        </div>
+                    </div>
                 </div>
-
                 <span style="display: block; margin-top: 10%;">
                     <button type="submit"
+                            [disabled]="loginForm.invalid"
                             class="btn btn-success mr-2"
                             (click)="login()">Login</button>
                     <a class="text-align"

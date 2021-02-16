@@ -25,6 +25,10 @@ import { MessageAddComponent } from './components/messages/message-add/message-a
 import { MessageListComponent } from './components/messages/message-list/message-list.component';
 import { MessageDoneBtnComponent } from './components/messages/message-done-btn/message-done-btn.component';
 import { MessageEditComponent } from './components/messages/message-edit/message-edit.component';
+//import { MessageEditBtnComponent } from './components/messages/message-edit-btn/message-edit-btn.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ErrorInterceptorService } from './interceptors/error-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -53,10 +57,15 @@ import { MessageEditComponent } from './components/messages/message-edit/message
     FontAwesomeModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-right'
+    }),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true, },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptorService, multi: true, },
     [DatePipe]
   ],
   bootstrap: [AppComponent]

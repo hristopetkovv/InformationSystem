@@ -21,6 +21,10 @@ import { ApplicationInfoComponent } from './components/application/application-i
 import { ApplicationSearchComponent } from './components/application/application-search/application-search.component';
 import { DatePipe } from '@angular/common';
 import { ReportsListComponent } from './components/reports-list/reports-list.component';
+import { MessageAddComponent } from './components/messages/message-add/message-add.component';
+import { MessageListComponent } from './components/messages/message-list/message-list.component';
+import { MessageDoneBtnComponent } from './components/messages/message-done-btn/message-done-btn.component';
+import { MessageEditBtnComponent } from './components/messages/message-edit-btn/message-edit-btn.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +43,10 @@ import { ReportsListComponent } from './components/reports-list/reports-list.com
     ApplicationInfoComponent,
     ApplicationSearchComponent,
     ReportsListComponent,
+    MessageAddComponent,
+    MessageListComponent,
+    MessageDoneBtnComponent,
+    MessageEditBtnComponent,
   ],
   imports: [
     BrowserModule,

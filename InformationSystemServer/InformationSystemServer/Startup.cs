@@ -1,4 +1,5 @@
 using InformationSystemServer.ExtensionMethods;
+using InformationSystemServer.Middleware;
 using InformationSystemServer.Services.Helpers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -34,10 +35,7 @@ namespace InformationSystemServer
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+            app.UseMiddleware<ExceptionMiddleware>();
 
             app
                 .UseSwagger()

@@ -4,6 +4,7 @@ using InformationSystemServer.Services.Token;
 using InformationSystemServer.ViewModels.Account;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace InformationSystemServer.Services.Account
@@ -51,6 +52,7 @@ namespace InformationSystemServer.Services.Account
         public async Task<UserResponseDto> Register(RegisterRequestDto dto)
         {
             await this.UserExists(dto.Username);
+            this.ValidatePassword(dto.Password);
 
             var passwordResult = PasswordEncrypt.ComputeHash(dto.Password);
 
@@ -88,6 +90,21 @@ namespace InformationSystemServer.Services.Account
             }
 
             return string.Empty;
+        }
+
+        private bool ValidatePassword(string password)
+        {
+            bool result =
+                password.Any(c => char.IsDigit(c)) &&
+                password.Any(c => char.IsUpper(c)) &&
+                password.Any(c => char.IsLower(c));
+
+            if (!result)
+            {
+                throw new InvalidOperationException("Invalid password");
+            }
+
+            return result;
         }
     }
 }

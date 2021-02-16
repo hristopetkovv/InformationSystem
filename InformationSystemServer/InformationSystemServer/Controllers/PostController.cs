@@ -22,6 +22,13 @@ namespace InformationSystemServer.Controllers
             return await postService.GetAllPostsAsync();
         }
 
+        [HttpGet("{id:int}")]
+        public async Task<Post> GetPostById(int id)
+        {
+            return await postService.GetPostByIdAsync(id);
+        }
+
+
         [HttpPost]
         public async Task<Post> AddPost(Post post)
         {

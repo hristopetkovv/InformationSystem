@@ -8,6 +8,7 @@ import { PostModel } from 'src/app/models/post.model';
 })
 export class MessageListComponent implements OnInit {
   @Input() posts: PostModel[];
+  @Input() role: string;
 
   constructor() { }
 

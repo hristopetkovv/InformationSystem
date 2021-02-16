@@ -14,6 +14,10 @@ export class PostService {
     return this.http.get<PostModel[]>(`api/post`);
   }
 
+  getById(id: number): Observable<PostModel> {
+    return this.http.get<PostModel>(`api/post/${id}`);
+  }
+
   addPost(post: PostModel): Observable<PostModel[]> {
     return this.http.post<PostModel[]>(`api/post`, post);
   }

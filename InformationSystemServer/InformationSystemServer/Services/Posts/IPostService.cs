@@ -9,11 +9,14 @@ namespace InformationSystemServer.Services
     {
         Task<IEnumerable<Post>> GetAllPostsAsync();
 
+        Task<Post> GetPostByIdAsync(int id);
+
         Task<Post> AddPostAsync(Post post);
 
         Task UpdatePostAsync(int id, Post post);
 
         Task DeletePostAsync(int id);
+
         Task<Post> ChangeStatusAsync(int postId, PostStatus status);
     }
 }

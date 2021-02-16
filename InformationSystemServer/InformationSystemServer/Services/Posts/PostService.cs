@@ -23,6 +23,11 @@ namespace InformationSystemServer.Services
             return posts;
         }
 
+        public async Task<Post> GetPostByIdAsync(int id)
+        {
+            return await context.Posts.Where(x => x.Id == id).SingleOrDefaultAsync();
+        }
+
         public async Task<Post> AddPostAsync(Post post)
         {
             post.Status = PostStatus.Draft;
@@ -64,5 +69,6 @@ namespace InformationSystemServer.Services
 
             await context.SaveChangesAsync();
         }
+
     }
 }

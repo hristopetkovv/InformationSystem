@@ -1,6 +1,56 @@
-<button class="btn btn-outline btn-sm"
-        (click)="editPost(item)"
-        data-toggle="modal"
-        data-target="#editPostModal">
-    Edit
-</button>
+<div style="width: 19%; margin-left: auto; margin-right: auto; margin-top: 10em;">
+    <div style="display: flex; margin-bottom: 3em;"
+         class="form-group">
+        <label style="margin-right: 1em;min-width: 72px;">Content:</label>
+        <textarea [(ngModel)]="post.content"
+                  class="form-control"
+                  #content="ngModel"
+                  name="content"
+                  rows="10"
+                  required></textarea>
+
+        <div *ngIf="content.invalid && (content.dirty || content.touched)"
+             class="alert alert-danger">
+            <div *ngIf="content.errors.required">
+                Content is required.
+            </div>
+        </div>
+
+    </div>
+    <div style="margin-bottom: 3em;">
+        <label style="margin-right: 1em;min-width: 72px;">Start date:</label>
+        <input style="min-width: 75%; text-align: center;"
+               type="date"
+               name="startDate"
+               #startDate="ngModel"
+               [ngModel]="post.startDate | date:'yyyy-MM-dd'"
+               (ngModelChange)="post.startDate = $event"
+               required>
+
+        <div *ngIf="startDate.invalid && (startDate.dirty || startDate.touched)"
+             class="alert alert-danger">
+            <div *ngIf="startDate.errors.required">
+                startDate is required.
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-bottom: 3em;min-width: 72px;">
+        <label style="margin-right: 1em;">End Date:</label>
+        <input style="min-width: 75%; text-align: center;"
+               type="date"
+               name="endDate"
+               [ngModel]="post.endDate | date:'yyyy-MM-dd'"
+               (ngModelChange)="post.endDate = $event">
+    </div>
+
+
+    <div class="form-group"
+         style="text-align: center;">
+        <button class="btn btn-outline"
+                style="margin-left: 72px;"
+                [disabled]="content.errors || startDate.errors"
+                data-dismiss="modal"
+                (click)="editPost(post)">Save changes</button>
+    </div>
+</div>

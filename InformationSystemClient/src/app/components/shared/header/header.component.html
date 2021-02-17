@@ -1,39 +1,57 @@
 <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top ">
-        <a class="navbar-brand" routerLink="/">Information System</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
-            aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <a class="navbar-brand"
+           routerLink="/">Information System</a>
+        <button class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarsExampleDefault"
+                aria-controls="navbarsExampleDefault"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-            <ul class="navbar-nav mr-auto" *ngIf="loggedIn == true">
+        <div class="collapse navbar-collapse"
+             id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto"
+                *ngIf="loggedIn == true">
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="applications">Applications</a>
+                    <a class="nav-link"
+                       routerLink="applications">Applications</a>
                 </li>
 
-                <ng-container>
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="add">Create</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="reports">Reports</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="messages">Messages</a>
-                    </li>
-                </ng-container>
+                <li class="nav-item">
+                    <a class="nav-link"
+                       routerLink="add">Create</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"
+                       routerLink="reports">Reports</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"
+                       routerLink="messages">Messages</a>
+                </li>
             </ul>
         </div>
 
         <ng-container *ngIf="!loggedIn">
-            <button *ngIf="!loggedIn" style="margin-right: 1em; width: 7%;" type="button"
-                class="btn btn-outline-warning" routerLink="/register">Register</button>
-            <button *ngIf="!loggedIn" style="margin-right: 1em; width: 7%;" type="button"
-                class="btn btn-outline-warning" routerLink="/login">Login</button>
+            <button style="margin-right: 1em; width: 7%;"
+                    type="button"
+                    class="btn btn-outline-warning"
+                    routerLink="/register">Register</button>
+            <button style="margin-right: 1em; width: 7%;"
+                    type="button"
+                    class="btn btn-outline-warning"
+                    routerLink="/login">Login</button>
         </ng-container>
 
-        <button *ngIf="loggedIn" style="margin-right: 1em; width: 7%;" type="button" (click)="logout()"
-            class="btn btn-outline-warning" routerLink="/login">Logout</button>
+        <button *ngIf="loggedIn"
+                style="margin-right: 1em; width: 7%;"
+                type="button"
+                (click)="logout()"
+                class="btn btn-outline-warning"
+                routerLink="/login">Logout</button>
     </nav>
 </header>

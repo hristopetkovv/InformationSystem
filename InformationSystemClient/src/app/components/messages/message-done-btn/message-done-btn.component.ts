@@ -22,7 +22,7 @@ export class MessageDoneBtnComponent implements OnInit {
   updateMessageStatus(message: MessageModel) {
     this.messageService
       .updateMessageStatus(message.id, this.messageStatus.Saved)
-      .subscribe(data => {
+      .subscribe(() => {
         message.status = this.messageStatus.Saved
       });
   }

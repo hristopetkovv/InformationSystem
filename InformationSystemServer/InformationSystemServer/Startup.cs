@@ -2,10 +2,8 @@ using InformationSystemServer.ExtensionMethods;
 using InformationSystemServer.Middleware;
 using InformationSystemServer.Services.Helpers;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 
 namespace InformationSystemServer
 {
@@ -33,9 +31,10 @@ namespace InformationSystemServer
                 .AddControllers();
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app)
         {
             app.UseMiddleware<ExceptionMiddleware>();
+            app.UseMiddleware<RequestLoggingMiddleware>();
 
             app
                 .UseSwagger()

@@ -37,7 +37,6 @@ namespace InformationSystemServer.Controllers
             return await postService.GetPostByIdAsync(id);
         }
 
-
         [HttpPost]
         public async Task<Post> AddPost(Post post)
         {
@@ -55,6 +54,5 @@ namespace InformationSystemServer.Controllers
         {
             return await postService.ChangeStatusAsync(id, status);
         }
-
     }
 }

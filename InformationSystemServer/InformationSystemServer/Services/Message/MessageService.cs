@@ -8,77 +8,108 @@ using System;
 using InformationSystemServer.Data.Enums;
 using InformationSystemServer.ViewModels.Application;
 using InformationSystemServer.ExtensionMethods;
+using InformationSystemServer.ViewModels.Message;
 
 namespace InformationSystemServer.Services
 {
     public class MessageService : IMessageService
     {
-        private readonly AppDbContext context;
-        public MessageService(AppDbContext context)
+        private readonly AppDbContext dbContext;
+
+        public MessageService(AppDbContext dbContext)
         {
-            this.context = context;
+            this.dbContext = dbContext;
         }
 
-        public async Task<IEnumerable<Post>> GetPostsAsync(MessageSearchFilterDto filter)
+        public async Task<IEnumerable<MessageDto>> GetMessagesAsync(MessageSearchFilterDto filter)
         {
-            var posts = await context
-                .Posts
+            var messages = await this.dbContext
+                .Messages
                 .Where(x =>
                     x.StartDate <= DateTime.UtcNow &&
                    (x.EndDate >= DateTime.UtcNow || x.EndDate == null))
-                .FilterPosts(filter)
+                .FilterMessages(filter)
+                .Select(x => new MessageDto 
+                { 
+                    Id = x.Id,
+                    Content = x.Content,
+                    StartDate = x.StartDate,
+                    EndDate = x.EndDate,
+                    Status = x.Status
+                })
                 .ToListAsync();
 
-            return posts;
+            return messages;
         }
 
-        public async Task<Post> GetPostByIdAsync(int id)
+        public async Task<MessageDto> GetMessageByIdAsync(int id)
         {
-            return await context.Posts.Where(x => x.Id == id).SingleOrDefaultAsync();
+            return await this.dbContext
+                .Messages
+                .Where(x => x.Id == id)
+                .Select(x => new MessageDto
+                {
+                    Id = x.Id,
+                    Content = x.Content,
+                    StartDate = x.StartDate,
+                    EndDate = x.EndDate,
+                    Status = x.Status
+                })
+                .SingleOrDefaultAsync();
         }
 
-        public async Task<Post> AddPostAsync(Post post)
+        public async Task<MessageDto> AddMessageAsync(MessageDto message)
         {
-            post.Status = PostStatus.Draft;
-            context.Posts.Add(post);
-            await context.SaveChangesAsync();
+            message.Status = MessageStatus.Draft;
 
-            return post;
+            var newMessage = new Message 
+            {
+                StartDate = message.StartDate,
+                EndDate = message.EndDate,
+                Content = message.Content,
+                Status = MessageStatus.Draft
+            };
+
+            this.dbContext.Messages.Add(newMessage);
+
+            await this.dbContext.SaveChangesAsync();
+
+            return message;
         }
 
-        public async Task UpdatePostAsync(int id, Post post)
+        public async Task UpdateMessageAsync(int id, MessageDto message)
         {
-            var existingPost = await context
-                .Posts
+            var existingMessage = await this.dbContext
+                .Messages
                 .SingleOrDefaultAsync(p => p.Id == id);
 
-            existingPost.Content = post.Content;
-            existingPost.StartDate = post.StartDate;
-            existingPost.EndDate = post.EndDate;
+            existingMessage.Content = message.Content;
+            existingMessage.StartDate = message.StartDate;
+            existingMessage.EndDate = message.EndDate;
 
-            await context.SaveChangesAsync();
+            await this.dbContext.SaveChangesAsync();
         }
 
-        public async Task<Post> ChangeStatusAsync(int postId, PostStatus status)
+        public async Task ChangeStatusAsync(int messageId, MessageStatus status)
         {
-            var post = await context.Posts
-                .SingleOrDefaultAsync(app => app.Id == postId);
+            var message = await this.dbContext
+                .Messages
+                .SingleOrDefaultAsync(app => app.Id == messageId);
 
-            post.Status = status;
+            message.Status = status;
 
-            await context.SaveChangesAsync();
-            return post;
+            await this.dbContext.SaveChangesAsync();
         }
 
-        public async Task DeletePostAsync(int id)
+        public async Task DeleteMessageAsync(int id)
         {
-            var post = await context.Posts
-             .SingleOrDefaultAsync(a => a.Id == id);
+            var message = await this.dbContext
+                .Messages
+                .SingleOrDefaultAsync(a => a.Id == id);
 
-            context.Posts.Remove(post);
+            this.dbContext.Messages.Remove(message);
 
-            await context.SaveChangesAsync();
+            await this.dbContext.SaveChangesAsync();
         }
-
     }
 }

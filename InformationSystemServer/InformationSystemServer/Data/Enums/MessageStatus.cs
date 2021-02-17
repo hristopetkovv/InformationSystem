@@ -1,6 +1,6 @@
 ﻿namespace InformationSystemServer.Data.Enums
 {
-    public enum PostStatus
+    public enum MessageStatus
     {
         Draft = 1,
         Saved = 2

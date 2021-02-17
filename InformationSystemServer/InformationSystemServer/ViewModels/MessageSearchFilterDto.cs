@@ -11,6 +11,6 @@ namespace InformationSystemServer.ViewModels.Application
 
         public DateTime? EndDate { get; set; } = null;
 
-        public PostStatus? Status { get; set; }
+        public MessageStatus? Status { get; set; }
     }
 }

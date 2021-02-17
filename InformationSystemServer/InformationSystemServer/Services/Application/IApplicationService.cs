@@ -1,8 +1,6 @@
 ﻿using InformationSystemServer.Data.Enums;
-using InformationSystemServer.Data.Models;
 using InformationSystemServer.ViewModels.Application;
 using System.Collections.Generic;
-using System.IO;
 using System.Threading.Tasks;
 
 namespace InformationSystemServer.Services
@@ -13,7 +11,7 @@ namespace InformationSystemServer.Services
 
         Task<ApplicationDetailsDto> GetApplicationByIdAsync(int id);
 
-        Task<Application> AddApplicationAsync(ApplicationRequestDto dto, int userId);
+        Task AddApplicationAsync(ApplicationRequestDto dto, int userId);
 
         Task UpdateApplicationAsync(int id, ApplicationDetailsDto application);
 

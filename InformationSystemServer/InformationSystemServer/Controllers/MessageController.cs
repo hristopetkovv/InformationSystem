@@ -1,7 +1,7 @@
 ﻿using InformationSystemServer.Data.Enums;
-using InformationSystemServer.Data.Models;
 using InformationSystemServer.Services;
 using InformationSystemServer.ViewModels.Application;
+using InformationSystemServer.ViewModels.Message;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -11,42 +11,42 @@ namespace InformationSystemServer.Controllers
 {
     public class MessageController : BaseApiController
     {
-        private readonly IMessageService postService;
+        private readonly IMessageService messageService;
 
-        public MessageController(IMessageService postService)
+        public MessageController(IMessageService messageService)
         {
-            this.postService = postService;
+            this.messageService = messageService;
         }
 
         [AllowAnonymous]
         [HttpGet("filter")]
-        public async Task<IEnumerable<Post>> GetPosts([FromQuery] MessageSearchFilterDto filter)
+        public async Task<IEnumerable<MessageDto>> GetMessages([FromQuery] MessageSearchFilterDto filter)
         {
-            return await postService.GetPostsAsync(filter);
+            return await this.messageService.GetMessagesAsync(filter);
         }
 
         [HttpGet("{id:int}")]
-        public async Task<Post> GetPostById(int id)
+        public async Task<MessageDto> GetMessageById(int id)
         {
-            return await postService.GetPostByIdAsync(id);
+            return await this.messageService.GetMessageByIdAsync(id);
         }
 
         [HttpPost]
-        public async Task<Post> AddPost(Post post)
+        public async Task<MessageDto> AddMessage(MessageDto message)
         {
-            return await postService.AddPostAsync(post);
+            return await this.messageService.AddMessageAsync(message);
         }
 
         [HttpPut("{id:int}")]
-        public async Task UpdatePost(int id, [FromBody] Post post)
+        public async Task UpdateMessage(int id, [FromBody] MessageDto message)
         {
-            await postService.UpdatePostAsync(id, post);
+            await this.messageService.UpdateMessageAsync(id, message);
         }
 
         [HttpPut("status/{id:int}")]
-        public async Task<Post> ChangeStatus(int id, [FromBody] PostStatus status)
+        public async Task ChangeStatus(int id, [FromBody] MessageStatus status)
         {
-            return await postService.ChangeStatusAsync(id, status);
+            await this.messageService.ChangeStatusAsync(id, status);
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using InformationSystemServer.Data.Enums;
-using InformationSystemServer.Data.Models;
 using InformationSystemServer.ViewModels.Application;
+using InformationSystemServer.ViewModels.Message;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -8,16 +8,16 @@ namespace InformationSystemServer.Services
 {
     public interface IMessageService
     {
-        Task<IEnumerable<Post>> GetPostsAsync(MessageSearchFilterDto filter);
+        Task<IEnumerable<MessageDto>> GetMessagesAsync(MessageSearchFilterDto filter);
 
-        Task<Post> GetPostByIdAsync(int id);
+        Task<MessageDto> GetMessageByIdAsync(int id);
 
-        Task<Post> AddPostAsync(Post post);
+        Task<MessageDto> AddMessageAsync(MessageDto message);
 
-        Task UpdatePostAsync(int id, Post post);
+        Task UpdateMessageAsync(int id, MessageDto message);
 
-        Task DeletePostAsync(int id);
+        Task DeleteMessageAsync(int id);
 
-        Task<Post> ChangeStatusAsync(int postId, PostStatus status);
+        Task ChangeStatusAsync(int messageId, MessageStatus status);
     }
 }

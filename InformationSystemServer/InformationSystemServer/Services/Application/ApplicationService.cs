@@ -73,7 +73,7 @@ namespace InformationSystemServer.Services
             return application;
         }
 
-        public async Task<Application> AddApplicationAsync(ApplicationRequestDto dto, int userId)
+        public async Task AddApplicationAsync(ApplicationRequestDto dto, int userId)
         {
             var application = new Application
             {
@@ -105,8 +105,6 @@ namespace InformationSystemServer.Services
 
             this.context.Applications.Add(application);
             await this.context.SaveChangesAsync();
-
-            return application;
         }
 
         public async Task DeleteApplicationAsync(int id)

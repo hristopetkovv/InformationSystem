@@ -4,19 +4,19 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace InformationSystemServer.Data.Configurations
 {
-    public class PostConfiguration : IEntityTypeConfiguration<Post>
+    public class MessageConfiguration : IEntityTypeConfiguration<Message>
     {
-        public void Configure(EntityTypeBuilder<Post> post)
+        public void Configure(EntityTypeBuilder<Message> message)
         {
-            post.HasKey(x => x.Id);
+            message.HasKey(x => x.Id);
 
-            post
+            message
                 .Property(x => x.Content)
                 .IsRequired();
 
-            post
-           .Property(x => x.StartDate)
-           .IsRequired();
+            message
+                .Property(x => x.StartDate)
+                .IsRequired();
         }
     }
 }

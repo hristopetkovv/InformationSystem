@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MessageModel } from 'src/app/models/message/message.model';
+import { MessageService } from 'src/app/services/message/message.service';
 
 @Component({
   selector: 'message-list',
@@ -7,16 +8,14 @@ import { MessageModel } from 'src/app/models/message/message.model';
   styleUrls: ['./message-list.component.css']
 })
 export class MessageListComponent implements OnInit {
-  @Input() messages: MessageModel[];
-  role: string;
+  messages: MessageModel[];
 
-  constructor() {
-    let user = JSON.parse(localStorage.getItem('user'));
-    if (user != null) {
-      this.role = user.role;
-    }
+  constructor(private messageService: MessageService) {
   }
 
   ngOnInit(): void {
+    this.messageService.getMessages()
+      .subscribe(data => this.messages = data);
   }
+
 }

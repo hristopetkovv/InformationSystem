@@ -35,6 +35,9 @@ namespace InformationSystemServer.Services
         {
             var posts = await context
                 .Posts
+                .Where(x =>
+                    x.StartDate <= DateTime.UtcNow &&
+                   (x.EndDate >= DateTime.UtcNow || x.EndDate == null))
                 .FilterPosts(filter)
                 .ToListAsync();
 

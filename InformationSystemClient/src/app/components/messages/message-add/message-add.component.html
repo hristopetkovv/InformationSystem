@@ -53,39 +53,4 @@
             </div>
         </div>
     </div>
-
-    <!-- 
-    <ng-container *ngIf="show==true">
-        <div style="display: flex; margin-bottom: 1em;" class="form-group">
-            <label style="margin-right: 1em;min-width: 72px;">Content:</label>
-            <textarea [(ngModel)]="message.content" class="form-control" #content="ngModel" name="content" cols="40"
-                rows="2" required></textarea>
-
-            <div *ngIf="content.invalid && (content.dirty || content.touched)" class="alert alert-danger">
-                <div *ngIf="content.errors.required">
-                    Content is required.
-                </div>
-            </div>
-
-        </div>
-        <div style="margin-bottom: 1em;">
-            <label style="margin-right: 1em;min-width: 72px;">Start date:</label>
-            <input type="date" [(ngModel)]="message.startDate" #startDate="ngModel" name="startDate" required>
-
-            <div *ngIf="startDate.invalid && (startDate.dirty || startDate.touched)" class="alert alert-danger">
-                <div *ngIf="startDate.errors.required">
-                    startDate is required.
-                </div>
-            </div>
-        </div>
-        <div style="margin-bottom: 1em;min-width: 72px;">
-            <label style="margin-right: 1em;">End Date:</label>
-            <input type="date" name="endDate" [(ngModel)]="message.endDate">
-        </div>
-
-        <div class="form-group">
-            <button class="btn btn-success" [disabled]="content.errors || startDate.errors"
-                (click)="addMesage()">Add</button>
-        </div>
-    </ng-container> -->
 </div>

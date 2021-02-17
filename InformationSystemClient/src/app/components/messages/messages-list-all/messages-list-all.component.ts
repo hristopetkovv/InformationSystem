@@ -15,6 +15,7 @@ export class MessagesListAllComponent implements OnInit {
   messages: MessageModel[];
   messageStatus = MessageStatus;
 
+
   constructor(
     private messageService: MessageService,
     public messageFilter: MesageSearchDto,
@@ -26,7 +27,8 @@ export class MessagesListAllComponent implements OnInit {
   }
 
   getMessagesByFilter($event: MesageSearchDto) {
-    this.messageService.getMessagesByFilter($event)
+    this.messageService
+      .getMessagesByFilter($event)
       .subscribe(data => this.messages = data);
   }
 

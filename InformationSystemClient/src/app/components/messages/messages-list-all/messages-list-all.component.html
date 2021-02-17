@@ -10,8 +10,7 @@
                     <th scope="col">End Date</th>
                     <th scope="col">Satus</th>
                     <th scope="col" style="display: flex;align-items: baseline;">
-                        <label style="margin: 0px;
-                            align-self: flex-end;">add new </label>
+                        <label style="margin: 0px;align-self: flex-end;">add new </label>
                         <message-add [messages]=" messages"></message-add>
                     </th>
                 </tr>
@@ -23,13 +22,6 @@
                     <td>{{item.endDate| date:'dd-MMM-YYYY' || "no"}}</td>
                     <td>{{messageStatus[item.status]}}</td>
                     <td style="width: 13%;">
-                        <!-- <div *ngIf="item.status==1; else no">
-                            <button class="btn btn-warning btn-sm" style="margin-right: 1em;"
-                                (click)="redirectionToEdit(item.id)">Edit</button>
-                            <message-done-btn [item]="item"></message-done-btn>
-                        </div>
-                        <ng-template #no></ng-template> -->
-
                         <ng-template [ngIf]="item.status==1" [ngIfElse]="emptyCell">
                             <button class="btn btn-warning btn-sm" style="margin-right: 1em;margin-left: 0.5em;"
                                 (click)="redirectionToEdit(item.id)">Edit</button>

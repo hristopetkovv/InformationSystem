@@ -1,5 +1,5 @@
 ﻿using InformationSystemServer.Data;
-using InformationSystemServer.Data.Enums;
+using InformationSystemServer.Enums;
 using InformationSystemServer.ExtensionMethods;
 using InformationSystemServer.ViewModels.Application;
 using Microsoft.EntityFrameworkCore;
@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace InformationSystemServer.Services.Reference
 {
     public class ReportService : IReportService
-    {
+    { 
         private readonly AppDbContext dbContext;
 
         public ReportService(AppDbContext dbContext)

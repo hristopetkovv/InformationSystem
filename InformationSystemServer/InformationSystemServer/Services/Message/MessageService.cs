@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System;
-using InformationSystemServer.Data.Enums;
+using InformationSystemServer.Enums;
 using InformationSystemServer.ViewModels.Application;
 using InformationSystemServer.ExtensionMethods;
 using InformationSystemServer.ViewModels.Message;

@@ -3,7 +3,7 @@ using InformationSystemServer.Data.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using InformationSystemServer.Data.Enums;
+using InformationSystemServer.Enums;
 using InformationSystemServer.ViewModels.Application;
 using Microsoft.EntityFrameworkCore;
 using InformationSystemServer.ExtensionMethods;

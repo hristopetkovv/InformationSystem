@@ -1,4 +1,4 @@
-﻿using InformationSystemServer.Data.Enums;
+﻿using InformationSystemServer.Enums;
 using InformationSystemServer.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;

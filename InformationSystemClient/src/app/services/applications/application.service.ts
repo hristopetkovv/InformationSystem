@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { ApplicationDto } from 'src/app/models/application.dto';
-import { SearchApplicationDto } from 'src/app/models/search-application.dto';
+import { ApplicationDto } from 'src/app/models/application/application.dto';
+import { SearchApplicationDto } from 'src/app/models/search/search-application.dto copy';
 
 @Injectable({
   providedIn: 'root'

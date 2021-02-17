@@ -6,6 +6,6 @@ namespace InformationSystemServer.Services.Reference
 {
     public interface IReportService
     {
-        Task<IEnumerable<ReportResponseDto>> GetReportsAsync(SearchFilterDto filter);
+        Task<IEnumerable<ReportResponseDto>> GetReportsAsync(ApplicationSearchFilterDto filter);
     }
 }

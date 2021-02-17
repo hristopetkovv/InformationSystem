@@ -18,7 +18,7 @@ namespace InformationSystemServer.Services
             this.context = context;
         }
 
-        public async Task<IEnumerable<ApplicationResponseDto>> GetAllApplicationsAsync(SearchFilterDto filter)
+        public async Task<IEnumerable<ApplicationResponseDto>> GetAllApplicationsAsync(ApplicationSearchFilterDto filter)
         {
             var applications = await this.context
                 .Applications

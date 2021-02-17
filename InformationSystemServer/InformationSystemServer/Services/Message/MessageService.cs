@@ -6,19 +6,38 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System;
 using InformationSystemServer.Data.Enums;
+using InformationSystemServer.ViewModels.Application;
+using InformationSystemServer.ExtensionMethods;
 
 namespace InformationSystemServer.Services
 {
-    public class PostService : IPostService
+    public class MessageService : IMessageService
     {
         private readonly AppDbContext context;
-        public PostService(AppDbContext context)
+        public MessageService(AppDbContext context)
         {
             this.context = context;
         }
+
         public async Task<IEnumerable<Post>> GetAllPostsAsync()
         {
-            var posts = await context.Posts.Where(x=>x.StartDate <= DateTime.UtcNow &&  (x.EndDate >= DateTime.UtcNow || x.EndDate == null)).ToListAsync();
+            var posts = await context
+                .Posts
+                .Where(x =>
+                    x.StartDate <= DateTime.UtcNow && 
+                   (x.EndDate >= DateTime.UtcNow || x.EndDate == null))
+                .ToListAsync();
+
+            return posts;
+        }
+
+        public async Task<IEnumerable<Post>> GetPostsByFilterAsync(MessageSerachFilterDto filter)
+        {
+            var posts = await context
+                .Posts
+                .FilterPosts(filter)
+                .ToListAsync();
+
             return posts;
         }
 
@@ -55,6 +74,7 @@ namespace InformationSystemServer.Services
                 .SingleOrDefaultAsync(app => app.Id == postId);
 
             post.Status = status;
+
             await context.SaveChangesAsync();
             return post;
         }

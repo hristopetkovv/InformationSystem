@@ -1,7 +1,10 @@
-<ng-container *ngIf="role =='Admin'">
-    <message-add [posts]="posts"></message-add>
-</ng-container>
+<div *ngIf="messages" style="margin-top: 5em;">
+    <h5 style=" text-align: center;">All Mesages</h5>
+    <div class="d-flex justify-content-between" *ngFor="let item of messages" id="row">
 
-<ng-container *ngIf="posts">
-    <message-list [posts]="posts"></message-list>
-</ng-container>
+        <div style="display: flex;">
+            <label style=" margin-right: 1em">Message:</label><br>
+            <label> {{item.content}}</label>
+        </div>
+    </div>
+</div>

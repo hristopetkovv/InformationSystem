@@ -1,4 +1,4 @@
-import { StatusType } from "../enums/statusType";
+import { StatusType } from "../../enums/statusType";
 
 export class ReportDto {
     applicationId: number;

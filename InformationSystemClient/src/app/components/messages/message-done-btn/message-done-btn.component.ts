@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { PostStatus } from 'src/app/enums/PostStatus';
-import { PostModel } from 'src/app/models/post.model';
-import { PostService } from 'src/app/services/post/post.service';
+import { MessageStatus } from 'src/app/enums/messageStatus';
+import { MessageModel } from 'src/app/models/message/message.model';
+import { MessageService } from 'src/app/services/message/message.service';
 
 @Component({
   selector: 'message-done-btn',
@@ -9,21 +9,21 @@ import { PostService } from 'src/app/services/post/post.service';
   styleUrls: ['./message-done-btn.component.css']
 })
 export class MessageDoneBtnComponent implements OnInit {
-  @Input() item: PostModel;
-  postStatus = PostStatus;
+  @Input() item: MessageModel;
+  messageStatus = MessageStatus;
 
   constructor(
-    private postService: PostService
+    private messageService: MessageService
   ) { }
 
   ngOnInit(): void {
   }
 
-  updatePostStatus(currentPost: PostModel) {
-    this.postService
-      .updatePostStatus(currentPost.id, this.postStatus.Saved)
+  updateMessageStatus(message: MessageModel) {
+    this.messageService
+      .updateMessageStatus(message.id, this.messageStatus.Saved)
       .subscribe(data => {
-        currentPost.status = this.postStatus.Saved
+        message.status = this.messageStatus.Saved
       });
   }
 }

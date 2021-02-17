@@ -1,4 +1,4 @@
-import { QualificationType } from "../enums/qualificationType";
+import { QualificationType } from "../../enums/qualificationType";
 
 export class QualificationInformation {
     qualificationId: number;

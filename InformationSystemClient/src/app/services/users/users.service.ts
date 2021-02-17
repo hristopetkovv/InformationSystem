@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { UserDto } from 'src/app/models/user.dto';
+import { UserDto } from 'src/app/models/account/user.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -70,6 +70,10 @@ export class UsersService {
   }
 
   getRole(): string {
-    return JSON.parse(localStorage.getItem('user')).role;
+    let user = JSON.parse(localStorage.getItem('user'));
+    if (user.role != null) {
+      return user.role;
+    }
   }
+
 }

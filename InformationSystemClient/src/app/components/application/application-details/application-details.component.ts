@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StatusType } from 'src/app/enums/statusType';
-import { ApplicationDto } from 'src/app/models/application.dto';
+import { ApplicationDto } from 'src/app/models/application/application.dto';
 import { ApplicationService } from 'src/app/services/applications/application.service';
 
 @Component({
@@ -20,7 +20,7 @@ export class ApplicationDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private applicationService: ApplicationService,
-    private router:Router
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -39,8 +39,8 @@ export class ApplicationDetailsComponent implements OnInit {
     this.applicationService
       .updateStatus(this.application.id, this.statusTypesEnum.InProcess)
       .subscribe(data => {
-        this.application.status = this.statusTypesEnum.InProcess, 
-        this.router.navigate(['applications'])
+        this.application.status = this.statusTypesEnum.InProcess,
+          this.router.navigate(['applications'])
       });
   }
 

@@ -1,6 +1,7 @@
 ﻿using InformationSystemServer.Data.Enums;
 using InformationSystemServer.Data.Models;
 using InformationSystemServer.Services;
+using InformationSystemServer.ViewModels.Application;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -8,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace InformationSystemServer.Controllers
 {
-    public class PostController : BaseApiController
+    public class MessageController : BaseApiController
     {
-        private readonly IPostService postService;
+        private readonly IMessageService postService;
 
-        public PostController(IPostService postService)
+        public MessageController(IMessageService postService)
         {
             this.postService = postService;
         }
@@ -22,6 +23,12 @@ namespace InformationSystemServer.Controllers
         public async Task<IEnumerable<Post>> GetPosts()
         {
             return await postService.GetAllPostsAsync();
+        }
+
+        [HttpGet("filter")]
+        public async Task<IEnumerable<Post>> GetPosts([FromQuery] MessageSerachFilterDto filter)
+        {
+            return await postService.GetPostsByFilterAsync(filter);
         }
 
         [HttpGet("{id:int}")]

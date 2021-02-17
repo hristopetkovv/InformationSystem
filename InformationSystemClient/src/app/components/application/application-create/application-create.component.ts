@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApplicationType } from 'src/app/enums/applicationType';
 import { QualificationType } from 'src/app/enums/qualificationType';
-import { ApplicationDto } from 'src/app/models/application.dto';
-import { QualificationInformation } from 'src/app/models/qualificationInformation.dto';
+import { ApplicationDto } from 'src/app/models/application/application.dto';
+import { QualificationInformation } from 'src/app/models/application/qualificationInformation.dto';
 import { ApplicationService } from 'src/app/services/applications/application.service';
 import { UsersService } from 'src/app/services/users/users.service';
 

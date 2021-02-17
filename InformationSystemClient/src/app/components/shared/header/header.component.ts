@@ -10,6 +10,7 @@ import { UsersService } from 'src/app/services/users/users.service';
 })
 export class HeaderComponent implements OnInit {
   loggedIn: boolean = false;
+  role: string;
 
   constructor(
     public userService: UsersService,

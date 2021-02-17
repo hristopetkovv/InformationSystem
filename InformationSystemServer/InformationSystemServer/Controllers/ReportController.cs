@@ -18,13 +18,13 @@ namespace InformationSystemServer.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<ReportResponseDto>> GetReports([FromQuery] SearchFilterDto filter)
+        public async Task<IEnumerable<ReportResponseDto>> GetReports([FromQuery] ApplicationSearchFilterDto filter)
         {
             return await this.reportService.GetReportsAsync(filter);
         }
 
         [HttpGet("excel")]
-        public async Task<IActionResult> ExportExcel([FromQuery] SearchFilterDto filter)
+        public async Task<IActionResult> ExportExcel([FromQuery] ApplicationSearchFilterDto filter)
         {
             var reports = await this.reportService.GetReportsAsync(filter);
 

@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { QualificationType } from 'src/app/enums/qualificationType';
-import { ApplicationDto } from 'src/app/models/application.dto';
-import { QualificationInfo } from 'src/app/models/qualificationInformation.dto';
+import { ApplicationDto } from 'src/app/models/application/application.dto';
+import { QualificationInfo } from 'src/app/models/application/qualificationInformation.dto';
 
 @Component({
   selector: 'qualification-info',

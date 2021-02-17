@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { PostModel } from 'src/app/models/post.model';
+import { MessageModel } from 'src/app/models/message/message.model';
 
 @Component({
   selector: 'message-list',
@@ -7,7 +7,7 @@ import { PostModel } from 'src/app/models/post.model';
   styleUrls: ['./message-list.component.css']
 })
 export class MessageListComponent implements OnInit {
-  @Input() posts: PostModel[];
+  @Input() messages: MessageModel[];
   role: string;
 
   constructor() {

@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { EMPTY, Observable } from 'rxjs';
-import { PostService } from '../post/post.service';
+import { MessageService } from '../message/message.service';
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class PostResolver implements Resolve<any> {
+export class MessageResolver implements Resolve<any> {
   constructor(
-    private resource: PostService
+    private resource: MessageService
   ) { }
 
   resolve(
@@ -17,12 +17,11 @@ export class PostResolver implements Resolve<any> {
     _: RouterStateSnapshot
   ): Observable<any> | Promise<any> | any {
     const id = +route.params['id'];
-    console.log(id);
 
     if (isNaN(id)) {
       return EMPTY;
     }
 
-    return this.resource.getById(id);
+    return this.resource.getMessageById(id);
   }
 }

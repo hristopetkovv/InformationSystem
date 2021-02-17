@@ -1,7 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PostModel } from 'src/app/models/post.model';
-import { PostService } from 'src/app/services/post/post.service';
+import { MessageModel } from 'src/app/models/message/message.model';
+import { MessageService } from 'src/app/services/message/message.service';
 
 @Component({
   selector: 'message-edit',
@@ -9,21 +9,21 @@ import { PostService } from 'src/app/services/post/post.service';
   styleUrls: ['./message-edit.component.css']
 })
 export class MessageEditComponent implements OnInit {
-  post: PostModel;
+  message: MessageModel;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private postService: PostService
+    private messageService: MessageService
   ) { }
 
   ngOnInit(): void {
     this.route.data
-      .subscribe((data: any) => this.post = data.post);
+      .subscribe((data: any) => this.message = data.message);
   }
 
-  editPost(currentPost: PostModel) {
-    this.postService.updatePost(currentPost.id, currentPost)
+  editMessage(message: MessageModel) {
+    this.messageService.updateMessage(message.id, message)
       .subscribe(data => this.router.navigate(['/']));
   }
 }

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginDto } from 'src/app/models/login.dto';
+import { LoginDto } from 'src/app/models/account/login.dto';
 import { Router } from '@angular/router';
 import { UsersResource } from 'src/app/services/users/users-resource.service';
 import { UsersService } from 'src/app/services/users/users.service';
-import { UserDto } from 'src/app/models/user.dto';
+import { UserDto } from 'src/app/models/account/user.dto';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({

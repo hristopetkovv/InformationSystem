@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { StatusType } from 'src/app/enums/statusType';
-import { SearchApplicationDto } from 'src/app/models/search-application.dto';
+import { SearchApplicationDto } from 'src/app/models/search/search-application.dto copy';
 
 @Component({
   selector: 'application-search',

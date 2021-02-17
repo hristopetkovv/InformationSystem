@@ -2,7 +2,7 @@
 
 namespace InformationSystemServer.ViewModels.Application
 {
-    public class SearchFilterDto
+    public class ApplicationSearchFilterDto
     {
         public string FirstName { get; set; }
 

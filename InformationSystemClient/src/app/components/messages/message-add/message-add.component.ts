@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { PostModel } from 'src/app/models/post.model';
-import { PostService } from 'src/app/services/post/post.service';
+import { MessageModel } from 'src/app/models/message/message.model';
+import { MessageService } from 'src/app/services/message/message.service';
 
 @Component({
   selector: 'message-add',
@@ -9,31 +9,29 @@ import { PostService } from 'src/app/services/post/post.service';
 })
 export class MessageAddComponent implements OnInit {
 
-  @Input() posts: PostModel[];
-  post: PostModel = new PostModel();
-  show: boolean = false;
+  @Input() messages: MessageModel[];
+  message: MessageModel = new MessageModel();
 
   constructor(
-    private postService: PostService
+    private messageService: MessageService
   ) { }
 
   ngOnInit(): void {
   }
 
-  addPost() {
-    this.postService.addPost(this.post)
+  addMesage() {
+    this.messageService.addMessage(this.message)
       .subscribe(data => {
         this.checkDate(data),
-          this.show = false,
-          this.post = new PostModel()
+          this.message = new MessageModel();
       });
   }
 
   checkDate(data) {
-    if (this.isDateBeforeToday(new Date(this.post.startDate))
-      && (this.isDateAfterToday(new Date(this.post.endDate))
-        || this.post.endDate == null)) {
-      this.posts.push(data);
+    if (this.isDateBeforeToday(new Date(this.message.startDate))
+      && (this.isDateAfterToday(new Date(this.message.endDate))
+        || this.message.endDate == null)) {
+      this.messages.push(data);
     }
   }
 

@@ -1,6 +1,3 @@
-import { Injectable } from "@angular/core";
-import { StatusType } from "../enums/statusType";
-
 export abstract class BaseFilterDto {
     getQueryString(): string {
         let params = '';
@@ -15,16 +12,4 @@ export abstract class BaseFilterDto {
 
         return params;
     }
-}
-
-@Injectable({
-    providedIn: 'root'
-})
-export class SearchApplicationDto extends BaseFilterDto {
-    status?: StatusType = null;
-    firstName: string;
-    lastName: string;
-    city: string;
-    municipality: string;
-    region: string;
 }

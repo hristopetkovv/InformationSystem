@@ -1,5 +1,5 @@
-import { ApplicationType } from "../enums/applicationType";
-import { StatusType } from "../enums/statusType";
+import { ApplicationType } from "../../enums/applicationType";
+import { StatusType } from "../../enums/statusType";
 import { QualificationInformation } from "./qualificationInformation.dto";
 
 export class ApplicationDto {

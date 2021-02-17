@@ -21,7 +21,7 @@ namespace InformationSystemServer.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<ApplicationResponseDto>> GetApplications([FromQuery] SearchFilterDto filter)
+        public async Task<IEnumerable<ApplicationResponseDto>> GetApplications([FromQuery] ApplicationSearchFilterDto filter)
         {
             return await appService.GetAllApplicationsAsync(filter);
         }
@@ -53,7 +53,7 @@ namespace InformationSystemServer.Controllers
         }
 
         [HttpGet("excel")]
-        public async Task<IActionResult> ExportExcel([FromQuery] SearchFilterDto filter)
+        public async Task<IActionResult> ExportExcel([FromQuery] ApplicationSearchFilterDto filter)
         {
             var reports = await appService.GetAllApplicationsAsync(filter);
 

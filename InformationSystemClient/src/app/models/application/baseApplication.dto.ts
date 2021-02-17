@@ -1,4 +1,4 @@
-import { StatusType } from "../enums/statusType";
+import { StatusType } from "src/app/enums/statusType";
 
 export class BaseApplicationDto {
     id: string;

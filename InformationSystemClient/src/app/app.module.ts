@@ -25,10 +25,11 @@ import { MessageAddComponent } from './components/messages/message-add/message-a
 import { MessageListComponent } from './components/messages/message-list/message-list.component';
 import { MessageDoneBtnComponent } from './components/messages/message-done-btn/message-done-btn.component';
 import { MessageEditComponent } from './components/messages/message-edit/message-edit.component';
-//import { MessageEditBtnComponent } from './components/messages/message-edit-btn/message-edit-btn.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ErrorInterceptorService } from './interceptors/error-interceptor.service';
+import { MessagesListAllComponent } from './components/messages/messages-list-all/messages-list-all.component';
+import { MessageSearchComponent } from './components/messages/message-search/message-search.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,8 @@ import { ErrorInterceptorService } from './interceptors/error-interceptor.servic
     MessageListComponent,
     MessageDoneBtnComponent,
     MessageEditComponent,
+    MessagesListAllComponent,
+    MessageSearchComponent,
   ],
   imports: [
     BrowserModule,

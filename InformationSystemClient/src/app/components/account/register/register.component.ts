@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { RegisterDto } from 'src/app/models/register.dto';
-import { UserDto } from 'src/app/models/user.dto';
+import { RegisterDto } from 'src/app/models/account/register.dto';
+import { UserDto } from 'src/app/models/account/user.dto';
 import { UsersResource } from 'src/app/services/users/users-resource.service';
 import { UsersService } from 'src/app/services/users/users.service';
 

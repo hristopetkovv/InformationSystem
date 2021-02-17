@@ -17,7 +17,7 @@ namespace InformationSystemServer.Services.Reference
         {
             this.dbContext = dbContext;
         }
-        public async Task<IEnumerable<ReportResponseDto>> GetReportsAsync(SearchFilterDto filter)
+        public async Task<IEnumerable<ReportResponseDto>> GetReportsAsync(ApplicationSearchFilterDto filter)
         {
             var reports = await this.dbContext
                 .Applications

@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ApplicationType } from 'src/app/enums/applicationType';
-import { ApplicationDto } from 'src/app/models/application.dto';
+import { ApplicationDto } from 'src/app/models/application/application.dto';
 
 @Component({
   selector: 'application-info',

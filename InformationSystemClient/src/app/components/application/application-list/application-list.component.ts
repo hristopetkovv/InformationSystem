@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ApplicationService } from 'src/app/services/applications/application.service';
 import * as FileSaver from 'file-saver';
-import { ApplicationDto } from 'src/app/models/application.dto';
-import { BaseApplicationDto } from 'src/app/models/baseApplication.dto';
-import { SearchApplicationDto } from 'src/app/models/search-application.dto';
+import { ApplicationDto } from 'src/app/models/application/application.dto';
 import { StatusType } from 'src/app/enums/statusType';
+import { BaseApplicationDto } from 'src/app/models/application/baseApplication.dto';
+import { SearchApplicationDto } from 'src/app/models/search/search-application.dto copy';
 
 @Component({
   selector: 'app-application-list',

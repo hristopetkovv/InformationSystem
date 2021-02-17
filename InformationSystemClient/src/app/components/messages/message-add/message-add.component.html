@@ -1,25 +1,67 @@
-<div style="width: fit-content; margin-bottom: 3em; margin-left: 2em;">
-    <div style="display: flex;">
-        <h4 style="margin-bottom: 1em;">Add new message</h4>
-        <button class="btn btn-success"
-                style="height: max-content; margin-left: 1em;"
-                (click)="this.show = true;">+</button>
+<div>
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addMessage"
+        style="height: max-content; margin-left: 1em;">+
+    </button>
+
+    <div class="modal fade" id="addMessage" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add new message</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div style="display: flex; margin-bottom: 1em;" class="form-group">
+                        <label style="margin-right: 1em;min-width: 101px;">Content:</label>
+                        <textarea [(ngModel)]="message.content" class="form-control" #content="ngModel" name="content"
+                            cols="40" rows="2" required></textarea>
+
+                        <div *ngIf="content.invalid && (content.dirty || content.touched)" class="alert alert-danger">
+                            <div *ngIf="content.errors.required">
+                                Content is required.
+                            </div>
+                        </div>
+
+                    </div>
+                    <div style="margin-bottom: 1em;">
+                        <label style="margin-right: 1em;min-width: 72px;">Start date:</label>
+                        <input type="date" [(ngModel)]="message.startDate" #startDate="ngModel" name="startDate"
+                            style="min-width: 74%;" required>
+
+                        <div *ngIf="startDate.invalid && (startDate.dirty || startDate.touched)"
+                            class="alert alert-danger">
+                            <div *ngIf="startDate.errors.required">
+                                startDate is required.
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-bottom: 1em;min-width: 72px;">
+                        <label style="margin-right: 1.5em;">End Date:</label>
+                        <input type="date" name="endDate" [(ngModel)]="message.endDate" style="min-width: 73%;">
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <div class="form-group">
+                        <button class="btn btn-success" data-dismiss="modal"
+                            [disabled]="content.errors || startDate.errors" (click)="addMesage()">Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
+    <!-- 
     <ng-container *ngIf="show==true">
-        <div style="display: flex; margin-bottom: 1em;"
-             class="form-group">
+        <div style="display: flex; margin-bottom: 1em;" class="form-group">
             <label style="margin-right: 1em;min-width: 72px;">Content:</label>
-            <textarea [(ngModel)]="post.content"
-                      class="form-control"
-                      #content="ngModel"
-                      name="content"
-                      cols="40"
-                      rows="2"
-                      required></textarea>
+            <textarea [(ngModel)]="message.content" class="form-control" #content="ngModel" name="content" cols="40"
+                rows="2" required></textarea>
 
-            <div *ngIf="content.invalid && (content.dirty || content.touched)"
-                 class="alert alert-danger">
+            <div *ngIf="content.invalid && (content.dirty || content.touched)" class="alert alert-danger">
                 <div *ngIf="content.errors.required">
                     Content is required.
                 </div>
@@ -28,14 +70,9 @@
         </div>
         <div style="margin-bottom: 1em;">
             <label style="margin-right: 1em;min-width: 72px;">Start date:</label>
-            <input type="date"
-                   [(ngModel)]="post.startDate"
-                   #startDate="ngModel"
-                   name="startDate"
-                   required>
+            <input type="date" [(ngModel)]="message.startDate" #startDate="ngModel" name="startDate" required>
 
-            <div *ngIf="startDate.invalid && (startDate.dirty || startDate.touched)"
-                 class="alert alert-danger">
+            <div *ngIf="startDate.invalid && (startDate.dirty || startDate.touched)" class="alert alert-danger">
                 <div *ngIf="startDate.errors.required">
                     startDate is required.
                 </div>
@@ -43,15 +80,12 @@
         </div>
         <div style="margin-bottom: 1em;min-width: 72px;">
             <label style="margin-right: 1em;">End Date:</label>
-            <input type="date"
-                   name="endDate"
-                   [(ngModel)]="post.endDate">
+            <input type="date" name="endDate" [(ngModel)]="message.endDate">
         </div>
 
         <div class="form-group">
-            <button class="btn btn-success"
-                    [disabled]="content.errors || startDate.errors"
-                    (click)="addPost()">Add</button>
+            <button class="btn btn-success" [disabled]="content.errors || startDate.errors"
+                (click)="addMesage()">Add</button>
         </div>
-    </ng-container>
+    </ng-container> -->
 </div>

@@ -6,7 +6,7 @@ namespace InformationSystemServer.ExtensionMethods
 {
     public static class SearchMessageExtension
     {
-        public static IQueryable<Post> FilterPosts(this IQueryable<Post> posts, MessageSerachFilterDto filter)
+        public static IQueryable<Post> FilterPosts(this IQueryable<Post> posts, MessageSearchFilterDto filter)
         {
             if (!string.IsNullOrEmpty(filter.Content))
             {

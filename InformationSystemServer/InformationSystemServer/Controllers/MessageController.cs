@@ -19,16 +19,10 @@ namespace InformationSystemServer.Controllers
         }
 
         [AllowAnonymous]
-        [HttpGet]
-        public async Task<IEnumerable<Post>> GetPosts()
-        {
-            return await postService.GetAllPostsAsync();
-        }
-
         [HttpGet("filter")]
-        public async Task<IEnumerable<Post>> GetPosts([FromQuery] MessageSerachFilterDto filter)
+        public async Task<IEnumerable<Post>> GetPosts([FromQuery] MessageSearchFilterDto filter)
         {
-            return await postService.GetPostsByFilterAsync(filter);
+            return await postService.GetPostsAsync(filter);
         }
 
         [HttpGet("{id:int}")]

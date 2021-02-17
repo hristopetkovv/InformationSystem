@@ -11,10 +11,6 @@ export class MessageService {
 
   constructor(private http: HttpClient) { }
 
-  getMessages(): Observable<MessageModel[]> {
-    return this.http.get<MessageModel[]>(`api/message`);
-  }
-
   getMessagesByFilter(filter: MesageSearchDto): Observable<any[]> {
     return this.http.get<any[]>(`api/message/filter${filter.getQueryString()}`);
   }

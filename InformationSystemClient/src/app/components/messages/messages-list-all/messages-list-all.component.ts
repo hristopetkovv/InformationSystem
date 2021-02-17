@@ -8,7 +8,8 @@ import { MessageService } from 'src/app/services/message/message.service';
 @Component({
   selector: 'messages-list-all',
   templateUrl: './messages-list-all.component.html',
-  styleUrls: ['./messages-list-all.component.css']
+  styleUrls: ['./messages-list-all.component.css'],
+  providers: [MesageSearchDto]
 })
 export class MessagesListAllComponent implements OnInit {
 
@@ -26,9 +27,9 @@ export class MessagesListAllComponent implements OnInit {
     this.getMessagesByFilter(this.messageFilter);
   }
 
-  getMessagesByFilter($event: MesageSearchDto) {
+  getMessagesByFilter(filter: MesageSearchDto) {
     this.messageService
-      .getMessagesByFilter($event)
+      .getMessagesByFilter(filter)
       .subscribe(data => this.messages = data);
   }
 

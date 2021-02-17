@@ -8,9 +8,7 @@ namespace InformationSystemServer.Services
 {
     public interface IMessageService
     {
-        Task<IEnumerable<Post>> GetAllPostsAsync();
-
-        Task<IEnumerable<Post>> GetPostsByFilterAsync(MessageSerachFilterDto filter);
+        Task<IEnumerable<Post>> GetPostsAsync(MessageSearchFilterDto filter);
 
         Task<Post> GetPostByIdAsync(int id);
 

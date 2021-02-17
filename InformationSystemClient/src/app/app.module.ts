@@ -22,7 +22,6 @@ import { ApplicationSearchComponent } from './components/application/application
 import { DatePipe } from '@angular/common';
 import { ReportsListComponent } from './components/reports-list/reports-list.component';
 import { MessageAddComponent } from './components/messages/message-add/message-add.component';
-import { MessageListComponent } from './components/messages/message-list/message-list.component';
 import { MessageDoneBtnComponent } from './components/messages/message-done-btn/message-done-btn.component';
 import { MessageEditComponent } from './components/messages/message-edit/message-edit.component';
 import { ToastrModule } from 'ngx-toastr';
@@ -49,7 +48,6 @@ import { MessageSearchComponent } from './components/messages/message-search/mes
     ApplicationSearchComponent,
     ReportsListComponent,
     MessageAddComponent,
-    MessageListComponent,
     MessageDoneBtnComponent,
     MessageEditComponent,
     MessagesListAllComponent,

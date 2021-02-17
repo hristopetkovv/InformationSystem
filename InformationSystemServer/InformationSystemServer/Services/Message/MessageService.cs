@@ -19,19 +19,7 @@ namespace InformationSystemServer.Services
             this.context = context;
         }
 
-        public async Task<IEnumerable<Post>> GetAllPostsAsync()
-        {
-            var posts = await context
-                .Posts
-                .Where(x =>
-                    x.StartDate <= DateTime.UtcNow && 
-                   (x.EndDate >= DateTime.UtcNow || x.EndDate == null))
-                .ToListAsync();
-
-            return posts;
-        }
-
-        public async Task<IEnumerable<Post>> GetPostsByFilterAsync(MessageSerachFilterDto filter)
+        public async Task<IEnumerable<Post>> GetPostsAsync(MessageSearchFilterDto filter)
         {
             var posts = await context
                 .Posts

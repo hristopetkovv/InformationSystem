@@ -1,4 +1,4 @@
-﻿using InformationSystemServer.Enums;
+﻿using InformationSystemServer.Infrastructure.Enums;
 using System.Collections.Generic;
 
 namespace InformationSystemServer.Data.Models

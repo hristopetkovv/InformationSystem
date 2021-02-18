@@ -1,4 +1,4 @@
-﻿namespace InformationSystemServer.Enums
+﻿namespace InformationSystemServer.Infrastructure.Enums
 {
     public enum StatusType
     {

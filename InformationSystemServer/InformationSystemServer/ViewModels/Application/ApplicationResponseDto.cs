@@ -1,4 +1,4 @@
-﻿using InformationSystemServer.Enums;
+﻿using InformationSystemServer.Infrastructure.Enums;
 
 namespace InformationSystemServer.ViewModels.Application
 {

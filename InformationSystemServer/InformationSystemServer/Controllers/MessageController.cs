@@ -1,4 +1,4 @@
-﻿using InformationSystemServer.Enums;
+﻿using InformationSystemServer.Infrastructure.Enums;
 using InformationSystemServer.Services;
 using InformationSystemServer.ViewModels.Application;
 using InformationSystemServer.ViewModels.Message;

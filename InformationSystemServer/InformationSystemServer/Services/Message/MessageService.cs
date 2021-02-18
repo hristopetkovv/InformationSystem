@@ -76,6 +76,8 @@ namespace InformationSystemServer.Services
 
             await this.dbContext.SaveChangesAsync();
 
+            message.Id = newMessage.Id;
+
             return message;
         }
 

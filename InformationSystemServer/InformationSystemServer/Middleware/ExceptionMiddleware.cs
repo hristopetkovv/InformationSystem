@@ -36,7 +36,7 @@ namespace InformationSystemServer.Middleware
 
                 var response = this.env.IsDevelopment()
                     ? new ErrorDto(context.Response.StatusCode, ex.Message, ex.StackTrace?.ToString())
-                    : new ErrorDto(context.Response.StatusCode, "Internal Server Error");
+                    : new ErrorDto(context.Response.StatusCode, ex.Message);
 
                 var options = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
 

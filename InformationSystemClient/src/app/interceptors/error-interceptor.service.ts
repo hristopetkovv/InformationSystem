@@ -39,6 +39,9 @@ export class ErrorInterceptorService implements HttpInterceptor {
             case 500:
               this.toastrService.error(error.error.message);
               break;
+            case 504:
+              this.toastrService.error(error.error);
+              break;
             default:
               this.toastrService.error('Something unexpected went wrong');
               break;

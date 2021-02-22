@@ -25,7 +25,7 @@
                 <td>{{application.city}}</td>
                 <td>{{application.street}}</td>
                 <td>{{statusTypesEnum[application.status]}}</td>
-                <td>
+                <td style="display: inline-flex;">
                     <ng-container *ngIf="userService.isAdmin || userService.isApplicationAuthor(application.userId)">
                         <button type="button"
                                 class="btn btn-outline"
@@ -36,18 +36,26 @@
                         <button type="button"
                                 class="btn btn-outline-danger"
                                 id="remove"
-                                style="margin-right: 2em;"
+                                style="margin-right: 1em;"
                                 (click)="removeApplication(application.id)">Remove</button>
                     </ng-container>
                     <ng-container *ngIf="userService.isAdmin == true && application.status == 2">
                         <button type="button"
                                 class="btn btn-outline-success"
-                                style="margin-right: 2em;"
+                                style="margin-right: 1em;"
                                 (click)="updateStatus(application, statusTypesEnum.Approved)">Approve</button>
                         <button type="button"
                                 class="btn btn-outline-danger"
                                 (click)="updateStatus(application, statusTypesEnum.Disapproved)">Disapprove</button>
                     </ng-container>
+                    <button *ngIf="userService.isAdmin && (application.status == 
+                            3
+                            ||
+                            application.status== 4
+                            )"
+                            type="button"
+                            class="btn btn-outline-success"
+                            (click)="updateStatus(application, statusTypesEnum.Draft)">Make Draft</button>
                 </td>
             </tr>
         </tbody>

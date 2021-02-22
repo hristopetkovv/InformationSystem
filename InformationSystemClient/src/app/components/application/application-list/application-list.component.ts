@@ -6,7 +6,6 @@ import { StatusType } from 'src/app/enums/statusType';
 import { BaseApplicationDto } from 'src/app/models/application/baseApplication.dto';
 import { SearchApplicationDto } from 'src/app/models/search/search-application.dto copy';
 import { UsersService } from 'src/app/services/users/users.service';
-import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 
 @Component({
   selector: 'app-application-list',
@@ -50,5 +49,4 @@ export class ApplicationListComponent implements OnInit {
         FileSaver.saveAs(blob, 'ExcelSheet.xlsx');
       });
   }
-
 }

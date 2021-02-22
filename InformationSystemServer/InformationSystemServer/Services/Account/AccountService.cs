@@ -1,5 +1,6 @@
 ﻿using InformationSystemServer.Data;
 using InformationSystemServer.Data.Models;
+using InformationSystemServer.Infrastructure.Enums;
 using InformationSystemServer.Services.Token;
 using InformationSystemServer.ViewModels.Account;
 using Microsoft.EntityFrameworkCore;
@@ -61,7 +62,7 @@ namespace InformationSystemServer.Services.Account
                 Username = dto.Username,
                 FirstName = dto.FirstName,
                 LastName = dto.LastName,
-                Role = Roles.User,
+                Role = Role.User,
                 Password = passwordResult.Hash,
                 PasswordSalt = passwordResult.Salt
             };

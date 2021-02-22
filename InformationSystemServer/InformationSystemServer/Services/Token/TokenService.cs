@@ -24,7 +24,7 @@ namespace InformationSystemServer.Services.Token
             {
                 new Claim(JwtRegisteredClaimNames.NameId, user.Username),
                 new Claim("userId", user.Id.ToString()),
-                new Claim(ClaimTypes.Role, user.Role),
+                new Claim(ClaimTypes.Role, user.Role.ToString()),
             });
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(this.tokenConfiguration.SecretKey));

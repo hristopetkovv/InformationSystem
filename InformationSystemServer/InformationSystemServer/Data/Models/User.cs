@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using InformationSystemServer.Infrastructure.Enums;
+using System.Collections.Generic;
 
 namespace InformationSystemServer.Data.Models
 {
@@ -16,7 +17,7 @@ namespace InformationSystemServer.Data.Models
 
         public string Password { get; set; }
 
-        public string Role { get; set; }
+        public Role Role { get; set; }
 
         public virtual ICollection<Application> Applications { get; set; } = new HashSet<Application>();
     }

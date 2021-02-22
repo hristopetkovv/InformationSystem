@@ -1,4 +1,6 @@
-﻿namespace InformationSystemServer.ViewModels.Account
+﻿using InformationSystemServer.Infrastructure.Enums;
+
+namespace InformationSystemServer.ViewModels.Account
 {
     public class UserResponseDto
     {
@@ -7,7 +9,7 @@
 
         public string Token { get; set; }
 
-        public string Role { get; set; }
+        public Role Role { get; set; }
 
         public string FirstName { get; set; }
 

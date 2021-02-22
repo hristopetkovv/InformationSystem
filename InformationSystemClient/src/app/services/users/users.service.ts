@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { Role } from 'src/app/enums/role';
 import { UserDto } from 'src/app/models/account/user.dto';
 
 @Injectable({
@@ -8,7 +9,6 @@ import { UserDto } from 'src/app/models/account/user.dto';
 export class UsersService {
   private readonly token_property = 'access_token';
   loginChanged: Subject<boolean> = new Subject();
-  isAdmin: boolean;
   isLoggedInUser = false;
 
   constructor() {
@@ -69,11 +69,21 @@ export class UsersService {
     return null;
   }
 
-  getRole(): string {
-    let user = JSON.parse(localStorage.getItem('user'));
-    if (user.role != null) {
-      return user.role;
-    }
+  isApplicationAuthor(creatorId: number): boolean {
+    let userId = JSON.parse(localStorage.getItem('user')).id;
+
+    return creatorId == userId;
   }
 
+  isAdmin() {
+    let role = JSON.parse(localStorage.getItem('user'))?.role;
+    let isAdmin: boolean;
+
+    if (Role[role] == 'Admin') {
+      return isAdmin = true;
+    }
+    else {
+      return isAdmin = false;
+    }
+  }
 }

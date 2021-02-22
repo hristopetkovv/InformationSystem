@@ -73,6 +73,7 @@ namespace InformationSystemServer.Services.Account
 
             return new UserResponseDto
             {
+                Id = user.Id,
                 Username = user.Username,
                 Token = this.tokenService.CreateToken(user),
                 Role = user.Role,

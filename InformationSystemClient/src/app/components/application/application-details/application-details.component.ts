@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { StatusType } from 'src/app/enums/statusType';
 import { ApplicationDto } from 'src/app/models/application/application.dto';
 import { ApplicationService } from 'src/app/services/applications/application.service';
+import { UsersService } from 'src/app/services/users/users.service';
 
 @Component({
   selector: 'app-application-details',
@@ -11,16 +12,16 @@ import { ApplicationService } from 'src/app/services/applications/application.se
 })
 export class ApplicationDetailsComponent implements OnInit {
   application = new ApplicationDto();
-
   canEdit: boolean;
-  isAuthor: boolean;
+  isApplicationAuthor: boolean;
 
   statusTypesEnum = StatusType;
 
   constructor(
     private route: ActivatedRoute,
     private applicationService: ApplicationService,
-    private router: Router
+    private router: Router,
+    private userService: UsersService
   ) { }
 
   ngOnInit(): void {
@@ -32,25 +33,23 @@ export class ApplicationDetailsComponent implements OnInit {
   saveApplication() {
     this.applicationService
       .update(this.application.id, this.application)
-      .subscribe(data => this.router.navigate(['applications']));
+      .subscribe(() => this.router.navigate(['applications']));
   }
 
   sendQualification() {
     this.applicationService
       .updateStatus(this.application.id, this.statusTypesEnum.InProcess)
-      .subscribe(data => {
+      .subscribe(() => {
         this.application.status = this.statusTypesEnum.InProcess,
           this.router.navigate(['applications'])
       });
   }
 
   isEditAllowed() {
-    this.isAuthor = this.applicationService.isAuthor(this.application.userId);
-    let role = JSON.parse(localStorage.getItem('user')).role;
+    this.isApplicationAuthor = this.userService.isApplicationAuthor(this.application.userId);
 
-    if ((role == 'Admin') || (this.application.status == 1 && this.isAuthor == true)) {
+    if (this.userService.isAdmin() || (this.application.status == 1 && this.isApplicationAuthor == true)) {
       this.canEdit = true;
     }
   }
-
 }

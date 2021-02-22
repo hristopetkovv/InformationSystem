@@ -8,7 +8,6 @@ import { MessageService } from 'src/app/services/message/message.service';
   styleUrls: ['./message-add.component.css']
 })
 export class MessageAddComponent implements OnInit {
-
   @Input() messages: MessageModel[];
   message: MessageModel = new MessageModel();
 

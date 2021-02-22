@@ -1,4 +1,3 @@
-import { typeWithParameters } from '@angular/compiler/src/render3/util';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsersService } from 'src/app/services/users/users.service';
@@ -10,17 +9,20 @@ import { UsersService } from 'src/app/services/users/users.service';
 })
 export class HeaderComponent implements OnInit {
   loggedIn: boolean = false;
-  role: string;
+  isAdmin: boolean;
 
   constructor(
-    public userService: UsersService,
-    private router: Router
+    private userService: UsersService,
+    private router: Router,
   ) {
   }
 
   ngOnInit(): void {
     this.loggedIn = this.userService.isLoggedInUser;
-    this.userService.loginChanged.subscribe(isLoggedIn => this.loggedIn = isLoggedIn);
+    this.userService.loginChanged.subscribe(isLoggedIn => {
+      this.loggedIn = isLoggedIn;
+      this.isAdmin = this.userService.isAdmin();
+    });
   }
 
   logout() {

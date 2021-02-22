@@ -13,7 +13,10 @@ import { UsersService } from 'src/app/services/users/users.service';
 export class RegisterComponent implements OnInit {
   model: RegisterDto = new RegisterDto();
 
-  constructor(private userResourse: UsersResource, private userService: UsersService, private router: Router) { }
+  constructor(
+    private userResourse: UsersResource,
+    private userService: UsersService,
+    private router: Router) { }
 
   ngOnInit(): void {
   }

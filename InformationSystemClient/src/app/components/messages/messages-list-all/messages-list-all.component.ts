@@ -12,7 +12,6 @@ import { MessageService } from 'src/app/services/message/message.service';
   providers: [MesageSearchDto]
 })
 export class MessagesListAllComponent implements OnInit {
-
   messages: MessageModel[];
   messageStatus = MessageStatus;
 

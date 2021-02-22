@@ -5,6 +5,7 @@ import { ApplicationDto } from 'src/app/models/application/application.dto';
 import { StatusType } from 'src/app/enums/statusType';
 import { BaseApplicationDto } from 'src/app/models/application/baseApplication.dto';
 import { SearchApplicationDto } from 'src/app/models/search/search-application.dto copy';
+import { UsersService } from 'src/app/services/users/users.service';
 
 @Component({
   selector: 'app-application-list',
@@ -16,20 +17,22 @@ export class ApplicationListComponent implements OnInit {
 
   apllicationsList: BaseApplicationDto[];
   applicationEnum = StatusType;
-  role = JSON.parse(localStorage.getItem('user')).role;
+  isAdmin: boolean;
   statusTypesEnum = StatusType;
 
   constructor(
     private applicationService: ApplicationService,
-    public applicationFilter: SearchApplicationDto
+    public applicationFilter: SearchApplicationDto,
+    private userService: UsersService
   ) { }
 
   ngOnInit(): void {
     this.getApplications(this.applicationFilter);
+    this.isAdmin = this.userService.isAdmin();
   }
 
-  getApplications($event: SearchApplicationDto) {
-    this.applicationService.getApplications($event)
+  getApplications(filter: SearchApplicationDto) {
+    this.applicationService.getApplications(filter)
       .subscribe(applications => this.apllicationsList = applications);
   }
 
@@ -37,12 +40,12 @@ export class ApplicationListComponent implements OnInit {
     if (status == 'approve') {
       this.applicationService
         .updateStatus(app.id, this.statusTypesEnum.Approved)
-        .subscribe(data => app.status = this.statusTypesEnum.Approved);
+        .subscribe(() => app.status = this.statusTypesEnum.Approved);
     }
     else if (status == 'disapprove') {
       this.applicationService
         .updateStatus(app.id, this.statusTypesEnum.Disapproved)
-        .subscribe(data => app.status = this.statusTypesEnum.Disapproved);
+        .subscribe(() => app.status = this.statusTypesEnum.Disapproved);
     }
   }
 

@@ -16,9 +16,7 @@ export class HomeComponent implements OnInit {
   constructor(
     private messageService: MessageService,
     public messageFilter: MesageSearchDto
-  ) {
-
-  }
+  ) { }
 
   ngOnInit(): void {
     this.getMessages();

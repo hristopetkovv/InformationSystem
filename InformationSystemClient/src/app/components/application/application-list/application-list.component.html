@@ -32,7 +32,7 @@
                             class="btn btn-outline"
                             routerLink="/application/{{application.id}}">Details</button>
 
-                    <ng-container *ngIf="isAdmin == true && application.status == 2">
+                    <ng-container *ngIf="userService.isAdmin == true && application.status == 2">
                         <button type="button"
                                 class="btn btn-outline-success"
                                 style="margin-right: 2em;"

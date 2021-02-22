@@ -7,24 +7,27 @@ import { UserDto } from 'src/app/models/account/user.dto';
   providedIn: 'root'
 })
 export class UsersService {
-  private readonly token_property = 'access_token';
   loginChanged: Subject<boolean> = new Subject();
   isLoggedInUser = false;
+  isAdmin: boolean;
 
   constructor() {
     this.isLoggedInUser = localStorage.getItem('user') !== null && localStorage.getItem('user') !== undefined;
+    this.isUserAdmin();
   }
 
   setCurrentUser(user: UserDto): void {
     localStorage.setItem('user', JSON.stringify(user));
     this.isLoggedInUser = true;
     this.loginChanged.next(true);
+    this.isUserAdmin();
   }
 
   logout(): void {
     localStorage.clear();
     this.isLoggedInUser = false;
     this.loginChanged.next(false);
+    this.isUserAdmin();
   }
 
   getUserNames() {
@@ -75,15 +78,14 @@ export class UsersService {
     return creatorId == userId;
   }
 
-  isAdmin() {
+  isUserAdmin() {
     let role = JSON.parse(localStorage.getItem('user'))?.role;
-    let isAdmin: boolean;
 
     if (Role[role] == 'Admin') {
-      return isAdmin = true;
+      this.isAdmin = true;
     }
     else {
-      return isAdmin = false;
+      this.isAdmin = false;
     }
   }
 }

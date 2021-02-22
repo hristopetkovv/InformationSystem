@@ -9,10 +9,9 @@ import { UsersService } from 'src/app/services/users/users.service';
 })
 export class HeaderComponent implements OnInit {
   loggedIn: boolean = false;
-  isAdmin: boolean;
 
   constructor(
-    private userService: UsersService,
+    public userService: UsersService,
     private router: Router,
   ) {
   }
@@ -21,7 +20,6 @@ export class HeaderComponent implements OnInit {
     this.loggedIn = this.userService.isLoggedInUser;
     this.userService.loginChanged.subscribe(isLoggedIn => {
       this.loggedIn = isLoggedIn;
-      this.isAdmin = this.userService.isAdmin();
     });
   }
 

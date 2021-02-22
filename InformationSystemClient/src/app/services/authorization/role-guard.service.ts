@@ -18,7 +18,7 @@ export class RoleGuardService implements CanActivate {
         _: RouterStateSnapshot): boolean | UrlTree {
 
         const expectedRole = route.data.expectedRole;
-        let isAdmin = this.userSerive.isAdmin();
+        let isAdmin = this.userSerive.isAdmin;
         let actualRole: string;
 
         if (isAdmin == true) {

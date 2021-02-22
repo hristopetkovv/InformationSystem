@@ -48,7 +48,7 @@ export class ApplicationDetailsComponent implements OnInit {
   isEditAllowed() {
     this.isApplicationAuthor = this.userService.isApplicationAuthor(this.application.userId);
 
-    if (this.userService.isAdmin() || (this.application.status == 1 && this.isApplicationAuthor == true)) {
+    if (this.userService.isAdmin || (this.application.status == 1 && this.isApplicationAuthor == true)) {
       this.canEdit = true;
     }
   }

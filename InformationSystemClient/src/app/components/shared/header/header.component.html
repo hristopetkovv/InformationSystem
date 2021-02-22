@@ -29,7 +29,7 @@
                     <a class="nav-link"
                        routerLink="reports">Reports</a>
                 </li>
-                <li *ngIf="isAdmin"
+                <li *ngIf="userService.isAdmin"
                     class="nav-item">
                     <a class="nav-link"
                        routerLink="messages">Messages</a>

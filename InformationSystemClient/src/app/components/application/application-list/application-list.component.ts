@@ -17,18 +17,16 @@ export class ApplicationListComponent implements OnInit {
 
   apllicationsList: BaseApplicationDto[];
   applicationEnum = StatusType;
-  isAdmin: boolean;
   statusTypesEnum = StatusType;
 
   constructor(
     private applicationService: ApplicationService,
     public applicationFilter: SearchApplicationDto,
-    private userService: UsersService
+    public userService: UsersService
   ) { }
 
   ngOnInit(): void {
     this.getApplications(this.applicationFilter);
-    this.isAdmin = this.userService.isAdmin();
   }
 
   getApplications(filter: SearchApplicationDto) {

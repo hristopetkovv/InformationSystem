@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { StatusType } from 'src/app/enums/statusType';
 import { ReportDto } from 'src/app/models/report/report.dto';
 import { ReportService } from 'src/app/services/report/report.service';
-import * as XLSX from 'xlsx';
 import * as FileSaver from 'file-saver';
 import { SearchApplicationDto } from 'src/app/models/search/search-application.dto copy';
 

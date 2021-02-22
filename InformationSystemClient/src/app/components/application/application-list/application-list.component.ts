@@ -6,6 +6,7 @@ import { StatusType } from 'src/app/enums/statusType';
 import { BaseApplicationDto } from 'src/app/models/application/baseApplication.dto';
 import { SearchApplicationDto } from 'src/app/models/search/search-application.dto copy';
 import { UsersService } from 'src/app/services/users/users.service';
+import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 
 @Component({
   selector: 'app-application-list',
@@ -36,17 +37,10 @@ export class ApplicationListComponent implements OnInit {
       .subscribe(applications => this.apllicationsList = applications);
   }
 
-  updateStatus(app: ApplicationDto, status: string) {
-    if (status == 'approve') {
-      this.applicationService
-        .updateStatus(app.id, this.statusTypesEnum.Approved)
-        .subscribe(() => app.status = this.statusTypesEnum.Approved);
-    }
-    else if (status == 'disapprove') {
-      this.applicationService
-        .updateStatus(app.id, this.statusTypesEnum.Disapproved)
-        .subscribe(() => app.status = this.statusTypesEnum.Disapproved);
-    }
+  updateStatus(application: ApplicationDto, status: StatusType) {
+    this.applicationService
+      .updateStatus(application.id, status)
+      .subscribe(() => application.status = this.statusTypesEnum.Approved);
   }
 
   exportExcel() {

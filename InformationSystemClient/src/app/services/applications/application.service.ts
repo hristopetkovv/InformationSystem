@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { ApplicationDto } from 'src/app/models/application/application.dto';
 import { SearchApplicationDto } from 'src/app/models/search/search-application.dto copy';
+import { StatusType } from 'src/app/enums/statusType';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,7 @@ export class ApplicationService {
     return this.http.put(`api/Application/${id}`, application);
   }
 
-  updateStatus(id: number, status: number): Observable<any> {
+  updateStatus(id: number, status: StatusType): Observable<any> {
     return this.http.put(`api/Status/${id}`, status);
   }
 

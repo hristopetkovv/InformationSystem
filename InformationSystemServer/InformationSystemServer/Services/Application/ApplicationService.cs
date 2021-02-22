@@ -188,6 +188,5 @@ namespace InformationSystemServer.Services
 
             await this.context.SaveChangesAsync();
         }
-
     }
 }

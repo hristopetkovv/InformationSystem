@@ -29,6 +29,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ErrorInterceptorService } from './interceptors/error-interceptor.service';
 import { MessagesListAllComponent } from './components/messages/messages-list-all/messages-list-all.component';
 import { MessageSearchComponent } from './components/messages/message-search/message-search.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { MessageSearchComponent } from './components/messages/message-search/mes
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    NgbModule,
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right'
     }),

@@ -15,10 +15,14 @@ import { UsersService } from 'src/app/services/users/users.service';
 })
 export class ApplicationListComponent implements OnInit {
 
-  apllicationsList: BaseApplicationDto[];
+  applicationsList: BaseApplicationDto[];
 
   applicationEnum = StatusType;
   statusTypesEnum = StatusType;
+
+  page = 1;
+  pageSize = 4;
+  collectionSize: number;
 
   constructor(
     private applicationService: ApplicationService,
@@ -32,7 +36,10 @@ export class ApplicationListComponent implements OnInit {
 
   getApplications(filter: SearchApplicationDto) {
     this.applicationService.getApplications(filter)
-      .subscribe(applications => this.apllicationsList = applications);
+      .subscribe(applications => {
+        this.applicationsList = applications.slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
+        this.collectionSize = applications.length
+      });
   }
 
   updateStatus(application: ApplicationDto, status: StatusType) {

@@ -76,7 +76,14 @@ namespace InformationSystemServer.Services
                        })
                }).SingleOrDefaultAsync();
 
-            return application;
+            if (this.IsAdministrator() || this.IsApplicationAuthor(application.UserId))
+            {
+                return application;
+            }
+            else
+            {
+                throw new InvalidOperationException("You cannot delete this application!");
+            }
         }
 
         public async Task AddApplicationAsync(ApplicationRequestDto dto, int userId)
@@ -132,6 +139,11 @@ namespace InformationSystemServer.Services
 
         public async Task UpdateApplicationAsync(int id, ApplicationDetailsDto application)
         {
+            if (this.IsAdministrator() && this.IsApplicationAuthor(application.UserId))
+            {
+                throw new InvalidOperationException("You cannot update this application!");
+            }
+
             var existingApp = await context
                 .Applications
                 .SingleOrDefaultAsync(app => app.Id == id);

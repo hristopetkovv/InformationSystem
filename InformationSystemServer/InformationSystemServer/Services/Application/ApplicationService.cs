@@ -124,6 +124,10 @@ namespace InformationSystemServer.Services
                 this.context.Applications.Remove(application);
                 await this.context.SaveChangesAsync();
             }
+            else
+            {
+                throw new InvalidOperationException("You cannot delete this application!");
+            }
         }
 
         public async Task UpdateApplicationAsync(int id, ApplicationDetailsDto application)
@@ -194,11 +198,21 @@ namespace InformationSystemServer.Services
 
             if (application.Status == StatusType.InProcess)
             {
-                this.IsAdministrator();
+                bool isAdmin = this.IsAdministrator();
+
+                if (!isAdmin)
+                {
+                    throw new InvalidOperationException("You are not an administrator!");
+                }
             }
             else if (application.Status == StatusType.Draft)
             {
-                this.IsApplicationAuthor(application.UserId);
+                bool isCreator = this.IsApplicationAuthor(application.UserId);
+
+                if (!isCreator)
+                {
+                    throw new InvalidOperationException("You are not a creator of this application!");
+                }
             }
 
             application.Status = status;
@@ -212,7 +226,7 @@ namespace InformationSystemServer.Services
 
             if (userRole != Role.Admin.ToString())
             {
-                throw new ArgumentException("You are not an administrator!");
+                return false;
             }
 
             return true;
@@ -224,7 +238,7 @@ namespace InformationSystemServer.Services
 
             if (userId != creatorId)
             {
-                throw new InvalidOperationException("You are not a creator of this application!");
+                return false;
             }
 
             return true;

@@ -41,6 +41,12 @@ export class ApplicationListComponent implements OnInit {
       .subscribe(() => application.status = status);
   }
 
+  removeApplication(applicationId: number) {
+    this.applicationService
+      .removeApplication(applicationId)
+      .subscribe(() => this.getApplications(this.applicationFilter));
+  }
+
   exportExcel() {
     this.applicationService.exportAsExcel(this.applicationFilter)
       .subscribe(data => {

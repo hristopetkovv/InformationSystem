@@ -26,13 +26,19 @@
                 <td>{{application.street}}</td>
                 <td>{{statusTypesEnum[application.status]}}</td>
                 <td>
-                    <button *ngIf="userService.isAdmin || userService.isApplicationAuthor(application.userId)"
-                            type="button"
-                            id="details"
-                            style="border-color: #ff7f50; color: #ff7f50; margin-right: 2em;"
-                            class="btn btn-outline"
-                            routerLink="/application/{{application.id}}">Details</button>
+                    <ng-container *ngIf="userService.isAdmin || userService.isApplicationAuthor(application.userId)">
+                        <button type="button"
+                                class="btn btn-outline"
+                                id="details"
+                                style="border-color: #ff7f50; color: #ff7f50; margin-right: 1em;"
+                                routerLink="/application/{{application.id}}">Details</button>
 
+                        <button type="button"
+                                class="btn btn-outline-danger"
+                                id="remove"
+                                style="margin-right: 2em;"
+                                (click)="removeApplication(application.id)">Remove</button>
+                    </ng-container>
                     <ng-container *ngIf="userService.isAdmin == true && application.status == 2">
                         <button type="button"
                                 class="btn btn-outline-success"

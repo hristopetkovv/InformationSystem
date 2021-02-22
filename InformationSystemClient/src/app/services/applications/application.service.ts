@@ -34,6 +34,10 @@ export class ApplicationService {
     return this.http.get<any[]>(`api/application${applicationFilter.getQueryString()}`);
   }
 
+  removeApplication(applicationId: number) {
+    return this.http.delete(`api/application/${applicationId}`);
+  }
+
   exportAsExcel(applicationFilter: SearchApplicationDto): Observable<Blob> {
     return this.http.get(`api/application/excel${applicationFilter.getQueryString()}`, { responseType: 'blob' });
   }

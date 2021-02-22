@@ -23,13 +23,13 @@ namespace InformationSystemServer.Controllers
         [HttpGet]
         public async Task<IEnumerable<ApplicationResponseDto>> GetApplications([FromQuery] ApplicationSearchFilterDto filter)
         {
-            return await appService.GetAllApplicationsAsync(filter);
+            return await this.appService.GetAllApplicationsAsync(filter);
         }
 
         [HttpGet("{id:int}")]
         public async Task<ApplicationDetailsDto> GetApplication(int id)
         {
-            return await appService.GetApplicationByIdAsync(id);
+            return await this.appService.GetApplicationByIdAsync(id);
         }
 
         [HttpPost]
@@ -37,25 +37,25 @@ namespace InformationSystemServer.Controllers
         {
             var userId = this.userContext.UserId.Value;
 
-            await appService.AddApplicationAsync(app, userId);
+            await this.appService.AddApplicationAsync(app, userId);
         }
 
         [HttpPut("{id:int}")]
         public async Task PutApplicationAsync(int id, ApplicationDetailsDto application)
         {
-           await appService.UpdateApplicationAsync(id, application);
+           await this.appService.UpdateApplicationAsync(id, application);
         }
 
         [HttpDelete("{id:int}")]
         public async Task DeleteApplicationAsync(int id)
         {
-            await appService.DeleteApplicationAsync(id);
+            await this.appService.DeleteApplicationAsync(id);
         }
 
         [HttpGet("excel")]
         public async Task<IActionResult> ExportExcel([FromQuery] ApplicationSearchFilterDto filter)
         {
-            var reports = await appService.GetAllApplicationsAsync(filter);
+            var reports = await this.appService.GetAllApplicationsAsync(filter);
 
             using (var workbook = new XLWorkbook())
             {

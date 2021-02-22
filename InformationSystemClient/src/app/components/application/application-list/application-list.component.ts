@@ -16,6 +16,7 @@ import { UsersService } from 'src/app/services/users/users.service';
 export class ApplicationListComponent implements OnInit {
 
   apllicationsList: BaseApplicationDto[];
+
   applicationEnum = StatusType;
   statusTypesEnum = StatusType;
 
@@ -37,7 +38,7 @@ export class ApplicationListComponent implements OnInit {
   updateStatus(application: ApplicationDto, status: StatusType) {
     this.applicationService
       .updateStatus(application.id, status)
-      .subscribe(() => application.status = this.statusTypesEnum.Approved);
+      .subscribe(() => application.status = status);
   }
 
   exportExcel() {

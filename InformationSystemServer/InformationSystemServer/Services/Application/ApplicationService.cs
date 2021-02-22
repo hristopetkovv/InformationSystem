@@ -7,15 +7,20 @@ using InformationSystemServer.Infrastructure.Enums;
 using InformationSystemServer.ViewModels.Application;
 using Microsoft.EntityFrameworkCore;
 using InformationSystemServer.ExtensionMethods;
+using InformationSystemServer.Services.Helpers;
+using System;
 
 namespace InformationSystemServer.Services
 {
     public class ApplicationService : IApplicationService
     {
         private readonly AppDbContext context;
-        public ApplicationService(AppDbContext context)
+        private readonly UserContext userContext;
+
+        public ApplicationService(AppDbContext context, UserContext userContext)
         {
             this.context = context;
+            this.userContext = userContext;
         }
 
         public async Task<IEnumerable<ApplicationResponseDto>> GetAllApplicationsAsync(ApplicationSearchFilterDto filter)
@@ -33,6 +38,7 @@ namespace InformationSystemServer.Services
                     Street = app.Street,
                     Municipality = app.Municipality,
                     ApplicationType = app.ApplicationType,
+                    UserId = app.UserId,
                     Status = app.Status,
                 }).ToListAsync();
 
@@ -109,13 +115,15 @@ namespace InformationSystemServer.Services
 
         public async Task DeleteApplicationAsync(int id)
         {
-            var app = await context
+            var application = await context
                 .Applications
                 .SingleOrDefaultAsync(a => a.Id == id);
 
-            this.context.Applications.Remove(app);
-
-            await this.context.SaveChangesAsync();
+            if (this.IsAdministrator() || this.IsApplicationAuthor(application.UserId))
+            {
+                this.context.Applications.Remove(application);
+                await this.context.SaveChangesAsync();
+            }
         }
 
         public async Task UpdateApplicationAsync(int id, ApplicationDetailsDto application)
@@ -184,9 +192,42 @@ namespace InformationSystemServer.Services
         {
             var application = await this.context.Applications.SingleOrDefaultAsync(app => app.Id == applicationId);
 
+            if (application.Status == StatusType.InProcess)
+            {
+                this.IsAdministrator();
+            }
+            else if (application.Status == StatusType.Draft)
+            {
+                this.IsApplicationAuthor(application.UserId);
+            }
+
             application.Status = status;
 
             await this.context.SaveChangesAsync();
+        }
+
+        private bool IsAdministrator()
+        {
+            var userRole = this.userContext.Role;
+
+            if (userRole != Role.Admin.ToString())
+            {
+                throw new ArgumentException("You are not an administrator!");
+            }
+
+            return true;
+        }
+
+        private bool IsApplicationAuthor(int creatorId)
+        {
+            var userId = this.userContext.UserId.Value;
+
+            if (userId != creatorId)
+            {
+                throw new InvalidOperationException("You are not a creator of this application!");
+            }
+
+            return true;
         }
     }
 }

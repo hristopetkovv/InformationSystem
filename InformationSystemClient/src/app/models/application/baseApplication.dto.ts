@@ -8,5 +8,6 @@ export class BaseApplicationDto {
     region: string;
     city: string;
     street: string;
+    userId: number;
     status: StatusType;
 }

@@ -28,7 +28,7 @@ export class MessageService {
   }
 
   updateMessageStatus(id: number, status: number): Observable<any> {
-    return this.http.put(`api/message/status/${id}`, status);
+    return this.http.put(`api/status/message/${id}`, status);
   }
 
 }

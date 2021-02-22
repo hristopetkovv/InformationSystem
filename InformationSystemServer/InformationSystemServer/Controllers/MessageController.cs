@@ -43,10 +43,6 @@ namespace InformationSystemServer.Controllers
             await this.messageService.UpdateMessageAsync(id, message);
         }
 
-        [HttpPut("status/{id:int}")]
-        public async Task ChangeStatus(int id, [FromBody] MessageStatus status)
-        {
-            await this.messageService.ChangeStatusAsync(id, status);
-        }
+        
     }
 }

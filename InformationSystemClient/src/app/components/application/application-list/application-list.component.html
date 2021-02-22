@@ -26,7 +26,8 @@
                 <td>{{application.street}}</td>
                 <td>{{statusTypesEnum[application.status]}}</td>
                 <td>
-                    <button type="button"
+                    <button *ngIf="userService.isAdmin || userService.isApplicationAuthor(application.userId)"
+                            type="button"
                             id="details"
                             style="border-color: #ff7f50; color: #ff7f50; margin-right: 2em;"
                             class="btn btn-outline"

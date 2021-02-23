@@ -20,5 +20,24 @@
         "street": "Улица",
         "status": "Статус",
         "actions": "Действия"
+    },
+    "applicationCreate": {
+        "title": "Добави ново заявление",
+        "middleName": "Презиме",
+        "type": "Вид"
+    },
+    "qualificationCreate": {
+        "title": "Квалификации",
+        "startDate": "Начална дата",
+        "endDate": "Крайна дата",
+        "duration": "Продължителност",
+        "description": "Описание"
+    },
+    "buttons": {
+        "add": "Добави",
+        "send": "Изпрати",
+        "delete": "Изтрии",
+        "seach": "Търси",
+        "cancel": "Откажи"
     }
 }

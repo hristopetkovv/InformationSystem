@@ -20,5 +20,24 @@
         "street": "Street",
         "status": "Status",
         "actions": "Actions"
+    },
+    "applicationCreate": {
+        "title": "Add new Application",
+        "middleName": "Middle Name",
+        "type": "Type"
+    },
+    "qualificationCreate": {
+        "title": "Qualifications",
+        "startdate": "Start date",
+        "endDate": "End date",
+        "duration": "Duration",
+        "description": "Description"
+    },
+    "buttons": {
+        "add": "Add",
+        "send": "Send",
+        "delete": "Delete",
+        "seach": "Seach",
+        "cancel": "Cancel"
     }
 }

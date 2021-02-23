@@ -1,5 +1,5 @@
 ﻿using InformationSystemServer.Data;
-using InformationSystemServer.Infrastructure.Enums;
+using InformationSystemServer.Data.Enums;
 using InformationSystemServer.Services.Helpers;
 using InformationSystemServer.ViewModels.Admin;
 using Microsoft.EntityFrameworkCore;

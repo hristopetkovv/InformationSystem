@@ -1,6 +1,6 @@
 ﻿using InformationSystemServer.Data;
+using InformationSystemServer.Data.Enums;
 using InformationSystemServer.Data.Models;
-using InformationSystemServer.Infrastructure.Enums;
 using InformationSystemServer.Services.Token;
 using InformationSystemServer.ViewModels.Account;
 using Microsoft.EntityFrameworkCore;

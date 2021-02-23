@@ -3,12 +3,12 @@ using InformationSystemServer.Data.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using InformationSystemServer.Infrastructure.Enums;
 using InformationSystemServer.ViewModels.Application;
 using Microsoft.EntityFrameworkCore;
 using InformationSystemServer.ExtensionMethods;
 using InformationSystemServer.Services.Helpers;
 using System;
+using InformationSystemServer.Data.Enums;
 
 namespace InformationSystemServer.Services
 {

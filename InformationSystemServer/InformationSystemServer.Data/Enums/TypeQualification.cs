@@ -1,4 +1,4 @@
-﻿namespace InformationSystemServer.Infrastructure.Enums
+﻿namespace InformationSystemServer.Data.Enums
 {
     public enum TypeQualification
     {

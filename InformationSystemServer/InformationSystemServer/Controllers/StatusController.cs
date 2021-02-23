@@ -1,4 +1,4 @@
-﻿using InformationSystemServer.Infrastructure.Enums;
+﻿using InformationSystemServer.Data.Enums;
 using InformationSystemServer.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

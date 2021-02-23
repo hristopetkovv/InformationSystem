@@ -1,4 +1,4 @@
-﻿using InformationSystemServer.Infrastructure.Enums;
+﻿using InformationSystemServer.Data.Enums;
 using InformationSystemServer.ViewModels.Application;
 using System.Collections.Generic;
 using System.Threading.Tasks;

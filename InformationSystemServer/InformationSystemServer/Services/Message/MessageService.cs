@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System;
-using InformationSystemServer.Infrastructure.Enums;
 using InformationSystemServer.ViewModels.Application;
 using InformationSystemServer.ExtensionMethods;
 using InformationSystemServer.ViewModels.Message;
+using InformationSystemServer.Data.Enums;
 
 namespace InformationSystemServer.Services
 {

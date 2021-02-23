@@ -40,7 +40,9 @@ namespace InformationSystemServer.Services
                     ApplicationType = app.ApplicationType,
                     UserId = app.UserId,
                     Status = app.Status,
-                }).ToListAsync();
+                })
+                .OrderBy(x => x.FirstName)
+                .ToListAsync();
 
             return applications;
         }

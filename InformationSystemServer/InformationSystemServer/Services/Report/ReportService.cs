@@ -34,7 +34,9 @@ namespace InformationSystemServer.Services.Reference
                     Status = app.Status,
                     TotalCourseDays = app.QualificationInformation.Where(q => q.TypeQualification == TypeQualification.Course).Sum(app => app.DurationDays),
                     TotalInternshipDays = app.QualificationInformation.Where(q => q.TypeQualification == TypeQualification.Intership).Sum(app => app.DurationDays),
-                }).ToListAsync();
+                })
+                .OrderBy(x=>x.FirstName)
+                .ToListAsync();
 
             return reports;
         }

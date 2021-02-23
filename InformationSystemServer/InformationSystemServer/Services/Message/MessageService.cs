@@ -57,6 +57,7 @@ namespace InformationSystemServer.Services
                     EndDate = x.EndDate,
                     Status = x.Status
                 })
+                .OrderBy(x=>x.StartDate)
                 .SingleOrDefaultAsync();
         }
 

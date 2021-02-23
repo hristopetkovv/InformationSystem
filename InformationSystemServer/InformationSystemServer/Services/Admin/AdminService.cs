@@ -36,6 +36,7 @@ namespace InformationSystemServer.Services.Admin
                     Username = u.Username,
                     Role = u.Role
                 })
+                .OrderBy(x=>x.FirstName)
                 .ToListAsync();
         }
 

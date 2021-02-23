@@ -1,6 +1,7 @@
 ﻿using InformationSystemServer.Data;
 using InformationSystemServer.Services;
 using InformationSystemServer.Services.Account;
+using InformationSystemServer.Services.Admin;
 using InformationSystemServer.Services.Helpers;
 using InformationSystemServer.Services.Reference;
 using InformationSystemServer.Services.Token;
@@ -36,6 +37,7 @@ namespace InformationSystemServer.ExtensionMethods
             services.AddTransient<IApplicationService, ApplicationService>();
             services.AddTransient<IReportService, ReportService>();
             services.AddTransient<IMessageService, MessageService>();
+            services.AddTransient<IAdminService, AdminService>();
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<UserContext>();
 

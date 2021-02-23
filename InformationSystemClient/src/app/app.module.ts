@@ -30,6 +30,7 @@ import { ErrorInterceptorService } from './interceptors/error-interceptor.servic
 import { MessagesListAllComponent } from './components/messages/messages-list-all/messages-list-all.component';
 import { MessageSearchComponent } from './components/messages/message-search/message-search.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { UsersListComponent } from './components/admin/users-list/users-list.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MessageEditComponent,
     MessagesListAllComponent,
     MessageSearchComponent,
+    UsersListComponent,
   ],
   imports: [
     BrowserModule,

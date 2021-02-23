@@ -1,7 +1,8 @@
 <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top ">
         <a class="navbar-brand"
-           routerLink="/">Information System</a>
+           routerLink="/">{{ 'nav.title' | translate }}</a>
+
         <button class="navbar-toggler"
                 type="button"
                 data-toggle="collapse"
@@ -18,25 +19,25 @@
                 *ngIf="loggedIn == true">
                 <li class="nav-item">
                     <a class="nav-link"
-                       routerLink="applications">Applications</a>
+                       routerLink="applications">{{ 'nav.applications' | translate }}</a>
                 </li>
 
                 <li class="nav-item">
                     <a class="nav-link"
-                       routerLink="add">Create</a>
+                       routerLink="add">{{ 'nav.create' | translate }}</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link"
-                       routerLink="reports">Reports</a>
+                       routerLink="reports">{{ 'nav.reports' | translate }}</a>
                 </li>
                 <ng-container *ngIf="userService.isAdmin">
                     <li class="nav-item">
                         <a class="nav-link"
-                           routerLink="messages">Messages</a>
+                           routerLink="messages">{{ 'nav.messages' | translate }}</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link"
-                           routerLink="admin/users">Users</a>
+                           routerLink="admin/users">{{ 'nav.users' | translate }}</a>
                     </li>
                 </ng-container>
             </ul>
@@ -46,18 +47,29 @@
             <button style="margin-right: 1em; width: 7%;"
                     type="button"
                     class="btn btn-outline-warning"
-                    routerLink="/register">Register</button>
+                    routerLink="/register">{{ 'nav.register' | translate }}</button>
             <button style="margin-right: 1em; width: 7%;"
                     type="button"
                     class="btn btn-outline-warning"
-                    routerLink="/login">Login</button>
+                    routerLink="/login">{{ 'nav.login' | translate }}</button>
         </ng-container>
+
+        <div>
+            <label style="color: white;">{{ 'nav.language' | translate }}</label>
+            <select #langSelect
+                    (change)="translate.use(langSelect.value)"
+                    style="margin:0 1em 0em 1em;">
+                <option *ngFor="let lang of translate.getLangs()"
+                        [value]="lang"
+                        [selected]="lang === translate.currentLang">{{ lang }}</option>
+            </select>
+        </div>
 
         <button *ngIf="loggedIn"
                 style="margin-right: 1em; width: 7%;"
                 type="button"
                 (click)="logout()"
                 class="btn btn-outline-warning"
-                routerLink="/login">Logout</button>
+                routerLink="/login">{{ 'nav.logout' | translate }}</button>
     </nav>
 </header>

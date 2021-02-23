@@ -1,0 +1,24 @@
+{
+    "nav": {
+        "title": "Information System",
+        "applications": "Applications",
+        "create": "Create",
+        "reports": "Reports",
+        "messages": "Messages",
+        "register": "Register",
+        "login": "Login",
+        "logout": "Logout",
+        "language": "Language",
+        "users": "Users"
+    },
+    "applicationTable": {
+        "firstName": "First name",
+        "lastName": "Last name",
+        "municipality": "Municipality",
+        "region": "Region",
+        "city": "City",
+        "street": "Street",
+        "status": "Status",
+        "actions": "Actions"
+    }
+}

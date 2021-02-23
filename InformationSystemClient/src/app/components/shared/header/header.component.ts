@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { UsersService } from 'src/app/services/users/users.service';
 
 @Component({
@@ -13,14 +14,16 @@ export class HeaderComponent implements OnInit {
   constructor(
     public userService: UsersService,
     private router: Router,
+    public translate: TranslateService
   ) {
   }
 
   ngOnInit(): void {
     this.loggedIn = this.userService.isLoggedInUser;
-    this.userService.loginChanged.subscribe(isLoggedIn => {
-      this.loggedIn = isLoggedIn;
-    });
+    this.userService.loginChanged
+      .subscribe(isLoggedIn => {
+        this.loggedIn = isLoggedIn;
+      });
   }
 
   logout() {

@@ -1,0 +1,24 @@
+{
+    "nav": {
+        "title": "Информационна система",
+        "applications": "Заявления",
+        "create": "Създай",
+        "reports": "Справки",
+        "messages": "Съобщения",
+        "register": "Регистрация",
+        "login": "Вход",
+        "logout": "Изход",
+        "language": "Език",
+        "users": "Потребители"
+    },
+    "applicationTable": {
+        "firstName": "Име",
+        "lastName": "Фамилия",
+        "municipality": "Община",
+        "region": "Област",
+        "city": "Град",
+        "street": "Улица",
+        "status": "Статус",
+        "actions": "Действия"
+    }
+}

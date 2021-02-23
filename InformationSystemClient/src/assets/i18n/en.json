@@ -39,5 +39,10 @@
         "delete": "Delete",
         "seach": "Seach",
         "cancel": "Cancel"
+    },
+    "users": {
+        "username": "Username",
+        "role": "Role",
+        "makeAdmin": "Make Admin"
     }
 }

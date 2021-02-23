@@ -33,22 +33,26 @@
                                     class="btn btn-outline"
                                     id="details"
                                     style="border-color: #ff7f50; color: #ff7f50; margin-right: 1em;"
-                                    routerLink="/application/{{application.id}}">Details</button>
+                                    routerLink="/application/{{application.id}}">{{ 'buttons.details' |
+                                translate }}</button>
 
                             <button type="button"
                                     class="btn btn-outline-danger"
                                     id="remove"
                                     style="margin-right: 1em;"
-                                    (click)="removeApplication(application.id)">Remove</button>
+                                    (click)="removeApplication(application.id)">{{ 'buttons.delete' |
+                                translate }}</button>
                         </ng-container>
                         <ng-container *ngIf="userService.isAdmin == true && application.status == 2">
                             <button type="button"
                                     class="btn btn-outline-success"
                                     style="margin-right: 1em;"
-                                    (click)="updateStatus(application, statusTypesEnum.Approved)">Approve</button>
+                                    (click)="updateStatus(application, statusTypesEnum.Approved)">{{ 'buttons.approve' |
+                                translate }}</button>
                             <button type="button"
                                     class="btn btn-outline-danger"
-                                    (click)="updateStatus(application, statusTypesEnum.Disapproved)">Disapprove</button>
+                                    (click)="updateStatus(application, statusTypesEnum.Disapproved)">{{'buttons.disapprove'
+                                | translate }}</button>
                         </ng-container>
                         <button *ngIf="userService.isAdmin && (application.status == 
                             3
@@ -75,9 +79,9 @@
                 style="width: auto"
                 [(ngModel)]="pageSize"
                 (ngModelChange)="getApplications(applicationFilter)">
-            <option [ngValue]="2">2 items per page</option>
-            <option [ngValue]="4">4 items per page</option>
-            <option [ngValue]="6">6 items per page</option>
+            <option [ngValue]="2">2 {{'buttons.itemsPerPage'|translate}}</option>
+            <option [ngValue]="4">4 {{'buttons.itemsPerPage'|translate}}</option>
+            <option [ngValue]="6">6 {{'buttons.itemsPerPage'|translate}}</option>
         </select>
     </div>
 </div>
@@ -87,6 +91,6 @@
     <button class="btn btn-outline"
             style="border-color: #ff7f50; color: #ff7f50;"
             (click)="exportExcel()">
-        Export as Excel File
+        {{'buttons.asExel'|translate}}
     </button>
 </div>

@@ -37,12 +37,33 @@
         "add": "Add",
         "send": "Send",
         "delete": "Delete",
-        "seach": "Seach",
-        "cancel": "Cancel"
+        "search": "Seach",
+        "cancel": "Cancel",
+        "approve": "Approve",
+        "disapprove": "Disapprove",
+        "edit": "Edit",
+        "details": "Details",
+        "clear": "Clear",
+        "asExel": "Export as Excel File",
+        "itemsPerPage": "items per page"
     },
     "users": {
         "username": "Username",
         "role": "Role",
         "makeAdmin": "Make Admin"
+    },
+    "search": {
+        "by": "Search By"
+    },
+    "applicationEnumStatus": {
+        "draft": "Draft",
+        "inProcess": "In Process",
+        "approved": "Approved",
+        "disapproved": "Disapproved",
+        "all": "All"
+    },
+    "applicationType": {
+        "proffesion": "Proffesion",
+        "certification": "Certification"
     }
 }

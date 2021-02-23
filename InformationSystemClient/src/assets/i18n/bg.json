@@ -37,12 +37,33 @@
         "add": "Добави",
         "send": "Изпрати",
         "delete": "Изтрии",
-        "seach": "Търси",
-        "cancel": "Откажи"
+        "search": "Търси",
+        "cancel": "Откажи",
+        "approve": "Приеми",
+        "disapprove": "Откажи",
+        "edit": "Редактирай",
+        "details": "Детайли",
+        "clear": "Изчисти",
+        "asExel": "Изтегли като ексел файл",
+        "itemsPerPage": "елемента на страница"
     },
     "users": {
         "username": "Потребителско име",
         "role": "Роля",
         "makeAdmin": "Направи админ"
+    },
+    "search": {
+        "by": "Търси по"
+    },
+    "applicationEnumStatus": {
+        "draft": "Чернова",
+        "inProcess": "В процес",
+        "approved": "Одобрен",
+        "disapproved": "Неодобрен",
+        "all": "Всички"
+    },
+    "applicationType": {
+        "proffesion": "Професия",
+        "certification": "Сертификация"
     }
 }

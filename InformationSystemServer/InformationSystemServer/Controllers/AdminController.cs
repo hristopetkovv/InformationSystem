@@ -22,5 +22,13 @@ namespace InformationSystemServer.Controllers
         {
             return await this.adminService.GetUsers();
         }
+
+        [HttpPut]
+        public async Task<IActionResult> MakeAdmin([FromBody] int userId)
+        {
+            await this.adminService.MakeAdmin(userId);
+
+            return Ok();
+        }
     }
 }

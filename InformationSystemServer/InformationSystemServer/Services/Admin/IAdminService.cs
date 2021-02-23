@@ -7,5 +7,7 @@ namespace InformationSystemServer.Services.Admin
     public interface IAdminService
     {
         Task<IEnumerable<UserDto>> GetUsers();
+
+        Task MakeAdmin(int userId);
     }
 }

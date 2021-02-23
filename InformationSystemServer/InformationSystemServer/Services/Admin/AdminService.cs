@@ -1,7 +1,9 @@
 ﻿using InformationSystemServer.Data;
+using InformationSystemServer.Infrastructure.Enums;
 using InformationSystemServer.Services.Helpers;
 using InformationSystemServer.ViewModels.Admin;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -35,6 +37,22 @@ namespace InformationSystemServer.Services.Admin
                     Role = u.Role
                 })
                 .ToListAsync();
+        }
+
+        public async Task MakeAdmin(int userId)
+        {
+            var user = await this.dbContext
+                .Users
+                .SingleOrDefaultAsync(u => u.Id == userId);
+
+            if (user == null)
+            {
+                throw new InvalidOperationException("Invalid user");
+            }
+
+            user.Role = Role.Admin;
+
+            await this.dbContext.SaveChangesAsync();
         }
     }
 }

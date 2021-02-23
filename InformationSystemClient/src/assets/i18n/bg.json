@@ -65,5 +65,17 @@
     "applicationType": {
         "proffesion": "Професия",
         "certification": "Сертификация"
+    },
+    "messages": {
+        "title": "Всички съобщения",
+        "name": "Съобщение"
+    },
+    "login": {
+        "title": "Вход",
+        "registerLink": "Регисрирай се",
+        "password": "Парола"
+    },
+    "register": {
+        "title": "Регистрация"
     }
 }

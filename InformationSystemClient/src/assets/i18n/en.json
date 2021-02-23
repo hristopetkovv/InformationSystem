@@ -65,5 +65,17 @@
     "applicationType": {
         "proffesion": "Proffesion",
         "certification": "Certification"
+    },
+    "messages": {
+        "title": "All messages",
+        "name": "Message"
+    },
+    "login": {
+        "title": "Sign In",
+        "registerLink": "Register here",
+        "password": "Password"
+    },
+    "register": {
+        "title": "Sign Up"
     }
 }

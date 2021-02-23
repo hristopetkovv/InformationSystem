@@ -43,6 +43,17 @@
             </ul>
         </div>
 
+        <div style="display: flex;">
+            <label style="color: white; margin: 0;">{{ 'nav.language' | translate }}:</label>
+            <select #langSelect
+                    (change)="translate.use(langSelect.value)"
+                    style="margin:0 1em 0em 1em;">
+                <option *ngFor="let lang of translate.getLangs()"
+                        [value]="lang"
+                        [selected]="lang === translate.currentLang">{{ lang }}</option>
+            </select>
+        </div>
+
         <ng-container *ngIf="!loggedIn">
             <button style="margin-right: 1em; width: 7%;"
                     type="button"
@@ -54,16 +65,7 @@
                     routerLink="/login">{{ 'nav.login' | translate }}</button>
         </ng-container>
 
-        <div>
-            <label style="color: white;">{{ 'nav.language' | translate }}</label>
-            <select #langSelect
-                    (change)="translate.use(langSelect.value)"
-                    style="margin:0 1em 0em 1em;">
-                <option *ngFor="let lang of translate.getLangs()"
-                        [value]="lang"
-                        [selected]="lang === translate.currentLang">{{ lang }}</option>
-            </select>
-        </div>
+
 
         <button *ngIf="loggedIn"
                 style="margin-right: 1em; width: 7%;"

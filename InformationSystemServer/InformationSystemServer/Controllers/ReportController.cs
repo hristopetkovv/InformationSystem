@@ -1,5 +1,5 @@
 ﻿using ClosedXML.Excel;
-using InformationSystemServer.Services.Services.Report;
+using InformationSystemServer.Services.Implementations.Report;
 using InformationSystemServer.Services.ViewModels.Application;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;

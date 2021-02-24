@@ -3,7 +3,7 @@ using InformationSystemServer.Services.ViewModels.Application;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace InformationSystemServer.Services.Services
+namespace InformationSystemServer.Services.Implementations
 {
     public interface IApplicationService
     {

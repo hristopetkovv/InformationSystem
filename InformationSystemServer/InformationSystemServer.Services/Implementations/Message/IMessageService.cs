@@ -4,7 +4,7 @@ using InformationSystemServer.Services.ViewModels.Message;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace InformationSystemServer.Services.Services
+namespace InformationSystemServer.Services.Implementations
 {
     public interface IMessageService
     {

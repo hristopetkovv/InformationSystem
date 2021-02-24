@@ -1,4 +1,4 @@
-﻿using InformationSystemServer.Services.Services;
+﻿using InformationSystemServer.Services.Implementations;
 using InformationSystemServer.Services.ViewModels.Application;
 using InformationSystemServer.Services.ViewModels.Message;
 using Microsoft.AspNetCore.Authorization;

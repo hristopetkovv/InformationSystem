@@ -1,4 +1,4 @@
-﻿namespace InformationSystemServer.Services.Services.Helpers
+﻿namespace InformationSystemServer.Services.Implementations.Helpers
 {
     public class TokenConfiguration
     {

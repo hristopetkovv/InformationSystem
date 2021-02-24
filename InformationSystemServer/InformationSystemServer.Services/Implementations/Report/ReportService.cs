@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace InformationSystemServer.Services.Services.Report
+namespace InformationSystemServer.Services.Implementations.Report
 {
     public class ReportService : IReportService
     { 

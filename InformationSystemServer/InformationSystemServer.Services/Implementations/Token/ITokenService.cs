@@ -1,6 +1,6 @@
 ﻿using InformationSystemServer.Data.Models;
 
-namespace InformationSystemServer.Services.Services.Token
+namespace InformationSystemServer.Services.Implementations.Token
 {
     public interface ITokenService
     {

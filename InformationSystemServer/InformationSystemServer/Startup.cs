@@ -1,6 +1,6 @@
 using InformationSystemServer.Infrastructure;
 using InformationSystemServer.Middleware;
-using InformationSystemServer.Services.Services.Helpers;
+using InformationSystemServer.Services.Implementations.Helpers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -22,6 +22,7 @@ namespace InformationSystemServer
             services.AddOptions();
 
             var authConfig = this.Configuration.GetSection("TokenOptions").Get<TokenConfiguration>();
+
             services
                 .AddDatabase(this.Configuration.GetConnectionString("DefaultConnection"))
                 .AddApplicationServices()

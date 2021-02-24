@@ -2,7 +2,7 @@
 using System.Security.Cryptography;
 using System.Text;
 
-namespace InformationSystemServer.Services.Services
+namespace InformationSystemServer.Services.Implementations.Helpers
 {
     public class PasswordEncrypt
     {

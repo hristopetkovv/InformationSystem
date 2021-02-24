@@ -1,5 +1,4 @@
 ﻿using InformationSystemServer.Data;
-using InformationSystemServer.Data.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -9,8 +8,9 @@ using InformationSystemServer.Data.Enums;
 using InformationSystemServer.Services.ViewModels.Message;
 using InformationSystemServer.Services.ViewModels.Application;
 using InformationSystemServer.Services.ExtensionMethods;
+using InformationSystemServer.Data.Models;
 
-namespace InformationSystemServer.Services.Services
+namespace InformationSystemServer.Services.Implementations
 {
     public class MessageService : IMessageService
     {

@@ -2,8 +2,8 @@
 using System.IO;
 using System.Threading.Tasks;
 using ClosedXML.Excel;
-using InformationSystemServer.Services.Services;
-using InformationSystemServer.Services.Services.Helpers;
+using InformationSystemServer.Services.Implementations;
+using InformationSystemServer.Services.Implementations.Helpers;
 using InformationSystemServer.Services.ViewModels.Application;
 using Microsoft.AspNetCore.Mvc;
 

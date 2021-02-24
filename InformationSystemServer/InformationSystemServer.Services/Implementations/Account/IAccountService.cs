@@ -1,7 +1,7 @@
 ﻿using InformationSystemServer.Services.ViewModels.Account;
 using System.Threading.Tasks;
 
-namespace InformationSystemServer.Services.Services.Account
+namespace InformationSystemServer.Services.Implementations.Account
 {
     public interface IAccountService
     {

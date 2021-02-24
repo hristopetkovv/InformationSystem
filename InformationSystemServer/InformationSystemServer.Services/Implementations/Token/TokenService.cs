@@ -1,5 +1,5 @@
 ﻿using InformationSystemServer.Data.Models;
-using InformationSystemServer.Services.Services.Helpers;
+using InformationSystemServer.Services.Implementations.Helpers;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -7,7 +7,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace InformationSystemServer.Services.Services.Token
+namespace InformationSystemServer.Services.Implementations.Token
 {
     public class TokenService : ITokenService
     {

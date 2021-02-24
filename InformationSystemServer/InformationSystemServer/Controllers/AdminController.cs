@@ -1,4 +1,4 @@
-﻿using InformationSystemServer.Services.Services.Admin;
+﻿using InformationSystemServer.Services.Implementations.Admin;
 using InformationSystemServer.Services.ViewModels.Admin;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

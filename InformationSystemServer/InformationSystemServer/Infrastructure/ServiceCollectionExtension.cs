@@ -1,10 +1,10 @@
 ﻿using InformationSystemServer.Data;
-using InformationSystemServer.Services.Services;
-using InformationSystemServer.Services.Services.Account;
-using InformationSystemServer.Services.Services.Admin;
-using InformationSystemServer.Services.Services.Helpers;
-using InformationSystemServer.Services.Services.Report;
-using InformationSystemServer.Services.Services.Token;
+using InformationSystemServer.Services.Implementations;
+using InformationSystemServer.Services.Implementations.Account;
+using InformationSystemServer.Services.Implementations.Admin;
+using InformationSystemServer.Services.Implementations.Helpers;
+using InformationSystemServer.Services.Implementations.Report;
+using InformationSystemServer.Services.Implementations.Token;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;

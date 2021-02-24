@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Security.Claims;
 
-namespace InformationSystemServer.Services.Services.Helpers
+namespace InformationSystemServer.Services.Implementations.Helpers
 {
     public class UserContext
     {

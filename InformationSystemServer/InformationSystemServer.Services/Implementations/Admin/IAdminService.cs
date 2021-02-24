@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace InformationSystemServer.Services.Services.Admin
+namespace InformationSystemServer.Services.Implementations.Admin
 {
     public interface IAdminService
     {

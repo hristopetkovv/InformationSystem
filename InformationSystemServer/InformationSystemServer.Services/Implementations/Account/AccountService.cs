@@ -1,14 +1,15 @@
 ﻿using InformationSystemServer.Data;
 using InformationSystemServer.Data.Enums;
 using InformationSystemServer.Data.Models;
-using InformationSystemServer.Services.Services.Token;
+using InformationSystemServer.Services.Implementations.Helpers;
+using InformationSystemServer.Services.Implementations.Token;
 using InformationSystemServer.Services.ViewModels.Account;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace InformationSystemServer.Services.Services.Account
+namespace InformationSystemServer.Services.Implementations.Account
 {
     public class AccountService : IAccountService
     {

@@ -1,6 +1,6 @@
 ﻿using InformationSystemServer.Data;
 using InformationSystemServer.Data.Enums;
-using InformationSystemServer.Services.Services.Helpers;
+using InformationSystemServer.Services.Implementations.Helpers;
 using InformationSystemServer.Services.ViewModels.Admin;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace InformationSystemServer.Services.Services.Admin
+namespace InformationSystemServer.Services.Implementations.Admin
 {
     public class AdminService : IAdminService
     {

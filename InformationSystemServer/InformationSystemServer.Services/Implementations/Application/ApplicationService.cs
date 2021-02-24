@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using System;
 using InformationSystemServer.Data.Enums;
-using InformationSystemServer.Services.Services.Helpers;
 using InformationSystemServer.Services.ViewModels.Application;
 using InformationSystemServer.Services.ExtensionMethods;
+using InformationSystemServer.Services.Implementations.Helpers;
 
-namespace InformationSystemServer.Services.Services
+namespace InformationSystemServer.Services.Implementations
 {
     public class ApplicationService : IApplicationService
     {

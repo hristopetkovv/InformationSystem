@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace InformationSystemServer.Services.Services.Report
+namespace InformationSystemServer.Services.Implementations.Report
 {
     public interface IReportService
     {

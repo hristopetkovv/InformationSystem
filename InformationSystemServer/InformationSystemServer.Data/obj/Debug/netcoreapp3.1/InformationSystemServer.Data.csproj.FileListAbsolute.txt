@@ -9,4 +9,3 @@ C:\Users\hristo.petkov\Documents\GitHub\InformationSystem\InformationSystemServe
 C:\Users\hristo.petkov\Documents\GitHub\InformationSystem\InformationSystemServer\InformationSystemServer.Data\bin\Debug\netcoreapp3.1\InformationSystemServer.Data.pdb
 C:\Users\hristo.petkov\Documents\GitHub\InformationSystem\InformationSystemServer\InformationSystemServer.Data\obj\Debug\netcoreapp3.1\InformationSystemServer.Data.dll
 C:\Users\hristo.petkov\Documents\GitHub\InformationSystem\InformationSystemServer\InformationSystemServer.Data\obj\Debug\netcoreapp3.1\InformationSystemServer.Data.pdb
-C:\Users\hristo.petkov\Documents\GitHub\InformationSystem\InformationSystemServer\InformationSystemServer.Data\obj\Debug\netcoreapp3.1\InformationSystemServer.Data.csprojAssemblyReference.cache

@@ -1,4 +1,4 @@
-﻿using InformationSystemServer.Services.Services.Account;
+﻿using InformationSystemServer.Services.Implementations.Account;
 using InformationSystemServer.Services.ViewModels.Account;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

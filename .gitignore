@@ -5,6 +5,8 @@ packages/*
 packages/**/*
 InformationSystemServer/InformationSystemServer/bin
 InformationSystemServer/InformationSystemServer/obj
+InformationSystemServer/InformationSystemServer.Data/bin
+InformationSystemServer/InformationSystemServer.Data/obj
 **/Log
 InformationSystemServer/.vs
 **/packages

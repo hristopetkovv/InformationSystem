@@ -23,6 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\InformationSystemServer.Controllers\InformationSystemServer.Controllers.csproj" />
     <ProjectReference Include="..\InformationSystemServer.Data\InformationSystemServer.Data.csproj" />
     <ProjectReference Include="..\InformationSystemServer.Services\InformationSystemServer.Services.csproj" />
   </ItemGroup>

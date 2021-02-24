@@ -1,0 +1,14 @@
+C:\Users\hristo.petkov\Documents\GitHub\InformationSystem\InformationSystemServer\InformationSystemServer.Controllers\obj\Debug\netcoreapp3.1\InformationSystemServer.Controllers.csprojAssemblyReference.cache
+C:\Users\hristo.petkov\Documents\GitHub\InformationSystem\InformationSystemServer\InformationSystemServer.Controllers\obj\Debug\netcoreapp3.1\InformationSystemServer.Controllers.AssemblyInfoInputs.cache
+C:\Users\hristo.petkov\Documents\GitHub\InformationSystem\InformationSystemServer\InformationSystemServer.Controllers\obj\Debug\netcoreapp3.1\InformationSystemServer.Controllers.AssemblyInfo.cs
+C:\Users\hristo.petkov\Documents\GitHub\InformationSystem\InformationSystemServer\InformationSystemServer.Controllers\obj\Debug\netcoreapp3.1\InformationSystemServer.Controllers.csproj.CoreCompileInputs.cache
+C:\Users\hristo.petkov\Documents\GitHub\InformationSystem\InformationSystemServer\InformationSystemServer.Controllers\bin\Debug\netcoreapp3.1\InformationSystemServer.Controllers.deps.json
+C:\Users\hristo.petkov\Documents\GitHub\InformationSystem\InformationSystemServer\InformationSystemServer.Controllers\bin\Debug\netcoreapp3.1\InformationSystemServer.Controllers.dll
+C:\Users\hristo.petkov\Documents\GitHub\InformationSystem\InformationSystemServer\InformationSystemServer.Controllers\bin\Debug\netcoreapp3.1\InformationSystemServer.Data.dll
+C:\Users\hristo.petkov\Documents\GitHub\InformationSystem\InformationSystemServer\InformationSystemServer.Controllers\bin\Debug\netcoreapp3.1\InformationSystemServer.Services.dll
+C:\Users\hristo.petkov\Documents\GitHub\InformationSystem\InformationSystemServer\InformationSystemServer.Controllers\bin\Debug\netcoreapp3.1\InformationSystemServer.Data.pdb
+C:\Users\hristo.petkov\Documents\GitHub\InformationSystem\InformationSystemServer\InformationSystemServer.Controllers\bin\Debug\netcoreapp3.1\InformationSystemServer.Services.pdb
+C:\Users\hristo.petkov\Documents\GitHub\InformationSystem\InformationSystemServer\InformationSystemServer.Controllers\obj\Debug\netcoreapp3.1\InformationSystemServer.Controllers.csproj.CopyComplete
+C:\Users\hristo.petkov\Documents\GitHub\InformationSystem\InformationSystemServer\InformationSystemServer.Controllers\bin\Debug\netcoreapp3.1\InformationSystemServer.Controllers.pdb
+C:\Users\hristo.petkov\Documents\GitHub\InformationSystem\InformationSystemServer\InformationSystemServer.Controllers\obj\Debug\netcoreapp3.1\InformationSystemServer.Controllers.dll
+C:\Users\hristo.petkov\Documents\GitHub\InformationSystem\InformationSystemServer\InformationSystemServer.Controllers\obj\Debug\netcoreapp3.1\InformationSystemServer.Controllers.pdb

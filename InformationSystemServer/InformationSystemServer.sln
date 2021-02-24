@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InformationSystemServer.Dat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InformationSystemServer.Services", "InformationSystemServer.Services\InformationSystemServer.Services.csproj", "{51806941-B5A8-404A-A3CF-86C00B445DDA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InformationSystemServer.Controllers", "InformationSystemServer.Controllers\InformationSystemServer.Controllers.csproj", "{F5808FB2-B9C0-4DA3-A0F1-F3665B453B85}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{51806941-B5A8-404A-A3CF-86C00B445DDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{51806941-B5A8-404A-A3CF-86C00B445DDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{51806941-B5A8-404A-A3CF-86C00B445DDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5808FB2-B9C0-4DA3-A0F1-F3665B453B85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5808FB2-B9C0-4DA3-A0F1-F3665B453B85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5808FB2-B9C0-4DA3-A0F1-F3665B453B85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5808FB2-B9C0-4DA3-A0F1-F3665B453B85}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

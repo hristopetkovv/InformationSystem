@@ -1,62 +1,38 @@
-﻿using System.Collections.Generic;
-using System.IO;
-using System.Threading.Tasks;
-using ClosedXML.Excel;
-using InformationSystemServer.Services.Implementations;
-using InformationSystemServer.Services.Implementations.Helpers;
+﻿using ClosedXML.Excel;
+using InformationSystemServer.Services.Implementations.Report;
 using InformationSystemServer.Services.ViewModels.Application;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.IO;
+using System.Threading.Tasks;
 
 namespace InformationSystemServer.Controllers
 {
-    public class ApplicationController : BaseApiController
+    public class ReportController : BaseApiController
     {
-        private readonly IApplicationService appService;
-        private readonly UserContext userContext;
+        private readonly IReportService reportService;
 
-        public ApplicationController(IApplicationService appService, UserContext userContext)
+        public ReportController(IReportService reportService)
         {
-            this.appService = appService;
-            this.userContext = userContext;
+            this.reportService = reportService;
         }
 
         [HttpGet]
-        public async Task<IEnumerable<ApplicationResponseDto>> GetApplications([FromQuery] ApplicationSearchFilterDto filter)
+        public async Task<IEnumerable<ReportResponseDto>> GetReports([FromQuery] ApplicationSearchFilterDto filter)
         {
-            return await this.appService.GetAllApplicationsAsync(filter);
-        }
-
-        [HttpGet("{id:int}")]
-        public async Task<ApplicationDetailsDto> GetApplication(int id)
-        {
-            return await this.appService.GetApplicationByIdAsync(id);
-        }
-
-        [HttpPost]
-        public async Task PostApplication(ApplicationRequestDto app)
-        {
-            var userId = this.userContext.UserId.Value;
-
-            await this.appService.AddApplicationAsync(app, userId);
-        }
-
-        [HttpPut("{id:int}")]
-        public async Task PutApplicationAsync(int id, ApplicationDetailsDto application)
-        {
-           await this.appService.UpdateApplicationAsync(id, application);
-        }
-
-        [HttpDelete("{id:int}")]
-        public async Task DeleteApplicationAsync(int id)
-        {
-            await this.appService.DeleteApplicationAsync(id);
+            return await this.reportService.GetReportsAsync(filter);
         }
 
         [HttpGet("excel")]
         public async Task<IActionResult> ExportExcel([FromQuery] ApplicationSearchFilterDto filter)
         {
-            var reports = await this.appService.GetAllApplicationsAsync(filter);
+            var reports = await this.reportService.GetReportsAsync(filter);
 
+            return this.ConvertToExcel(reports);
+        }
+
+        private IActionResult ConvertToExcel(IEnumerable<ReportResponseDto> reports)
+        {
             using (var workbook = new XLWorkbook())
             {
                 var worksheet = workbook.Worksheets.Add("Applications");
@@ -67,7 +43,9 @@ namespace InformationSystemServer.Controllers
                 worksheet.Cell(currentRow, 4).Value = "Region";
                 worksheet.Cell(currentRow, 5).Value = "City";
                 worksheet.Cell(currentRow, 6).Value = "Street";
-                worksheet.Cell(currentRow, 7).Value = "Status";
+                worksheet.Cell(currentRow, 7).Value = "Total Course Days";
+                worksheet.Cell(currentRow, 8).Value = "Total Internship Days";
+                worksheet.Cell(currentRow, 9).Value = "Status";
 
                 foreach (var report in reports)
                 {
@@ -78,7 +56,9 @@ namespace InformationSystemServer.Controllers
                     worksheet.Cell(currentRow, 4).Value = report.Region;
                     worksheet.Cell(currentRow, 5).Value = report.City;
                     worksheet.Cell(currentRow, 6).Value = report.Street;
-                    worksheet.Cell(currentRow, 7).Value = report.Status.ToString();
+                    worksheet.Cell(currentRow, 7).Value = report.TotalCourseDays;
+                    worksheet.Cell(currentRow, 8).Value = report.TotalInternshipDays;
+                    worksheet.Cell(currentRow, 9).Value = report.Status.ToString();
                 }
 
                 using (var stream = new MemoryStream())

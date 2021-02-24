@@ -2,9 +2,9 @@
 using System.IO;
 using System.Threading.Tasks;
 using ClosedXML.Excel;
-using InformationSystemServer.Services;
-using InformationSystemServer.Services.Helpers;
-using InformationSystemServer.ViewModels.Application;
+using InformationSystemServer.Services.Services;
+using InformationSystemServer.Services.Services.Helpers;
+using InformationSystemServer.Services.ViewModels.Application;
 using Microsoft.AspNetCore.Mvc;
 
 namespace InformationSystemServer.Controllers

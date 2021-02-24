@@ -1,5 +1,5 @@
 ﻿using InformationSystemServer.Data.Enums;
-using InformationSystemServer.Services;
+using InformationSystemServer.Services.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;

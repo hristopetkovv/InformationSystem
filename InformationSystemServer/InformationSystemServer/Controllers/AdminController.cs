@@ -1,5 +1,5 @@
-﻿using InformationSystemServer.Services.Admin;
-using InformationSystemServer.ViewModels.Admin;
+﻿using InformationSystemServer.Services.Services.Admin;
+using InformationSystemServer.Services.ViewModels.Admin;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;

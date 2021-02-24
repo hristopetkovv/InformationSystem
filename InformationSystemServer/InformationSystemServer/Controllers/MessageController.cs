@@ -1,6 +1,6 @@
-﻿using InformationSystemServer.Services;
-using InformationSystemServer.ViewModels.Application;
-using InformationSystemServer.ViewModels.Message;
+﻿using InformationSystemServer.Services.Services;
+using InformationSystemServer.Services.ViewModels.Application;
+using InformationSystemServer.Services.ViewModels.Message;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;

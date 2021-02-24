@@ -1,6 +1,6 @@
 ﻿using ClosedXML.Excel;
-using InformationSystemServer.Services.Reference;
-using InformationSystemServer.ViewModels.Application;
+using InformationSystemServer.Services.Services.Report;
+using InformationSystemServer.Services.ViewModels.Application;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.IO;

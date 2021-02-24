@@ -1,6 +1,6 @@
-using InformationSystemServer.ExtensionMethods;
+using InformationSystemServer.Infrastructure;
 using InformationSystemServer.Middleware;
-using InformationSystemServer.Services.Helpers;
+using InformationSystemServer.Services.Services.Helpers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

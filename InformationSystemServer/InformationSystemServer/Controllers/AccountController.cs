@@ -1,5 +1,5 @@
-﻿using InformationSystemServer.Services.Account;
-using InformationSystemServer.ViewModels.Account;
+﻿using InformationSystemServer.Services.Services.Account;
+using InformationSystemServer.Services.ViewModels.Account;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;

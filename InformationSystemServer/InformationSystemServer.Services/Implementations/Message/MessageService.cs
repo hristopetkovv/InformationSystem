@@ -55,14 +55,6 @@ namespace InformationSystemServer.Services.Implementations
 
             var newMessage = this.mapper.Map<Message>(message);
 
-            //var newMessage = new Message
-            //{
-            //    StartDate = message.StartDate,
-            //    EndDate = message.EndDate,
-            //    Content = message.Content,
-            //    Status = MessageStatus.Draft
-            //};
-
             this.dbContext.Messages.Add(newMessage);
 
             await this.dbContext.SaveChangesAsync();
@@ -74,13 +66,9 @@ namespace InformationSystemServer.Services.Implementations
 
         public async Task UpdateMessageAsync(int id, MessageDto message)
         {
-            var existingMessage = await this.dbContext
-                .Messages
-                .SingleOrDefaultAsync(p => p.Id == id);
+            var existingMessage = this.mapper.Map<Message>(message);
 
-            existingMessage.Content = message.Content;
-            existingMessage.StartDate = message.StartDate;
-            existingMessage.EndDate = message.EndDate;
+            this.dbContext.Entry(existingMessage).State = EntityState.Modified;
 
             await this.dbContext.SaveChangesAsync();
         }

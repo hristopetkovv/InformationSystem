@@ -1,5 +1,6 @@
-﻿using InformationSystemServer.Data;
-using InformationSystemServer.Data.Enums;
+﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
+using InformationSystemServer.Data;
 using InformationSystemServer.Services.ExtensionMethods;
 using InformationSystemServer.Services.ViewModels.Application;
 using Microsoft.EntityFrameworkCore;
@@ -12,30 +13,20 @@ namespace InformationSystemServer.Services.Implementations.Report
     public class ReportService : IReportService
     { 
         private readonly AppDbContext dbContext;
+        private readonly IMapper mapper;
 
-        public ReportService(AppDbContext dbContext)
+        public ReportService(AppDbContext dbContext, IMapper mapper)
         {
             this.dbContext = dbContext;
+            this.mapper = mapper;
         }
         public async Task<IEnumerable<ReportResponseDto>> GetReportsAsync(ApplicationSearchFilterDto filter)
         {
             var reports = await this.dbContext
                 .Applications
                 .FilterApplications(filter)
-                .Select(app => new ReportResponseDto
-                {
-                    ApplicationId = app.Id,
-                    FirstName = app.FirstName,
-                    LastName = app.LastName,
-                    Street = app.Street,
-                    Municipality = app.Municipality,
-                    Region = app.Region,
-                    City = app.City,
-                    Status = app.Status,
-                    TotalCourseDays = app.QualificationInformation.Where(q => q.TypeQualification == TypeQualification.Course).Sum(app => app.DurationDays),
-                    TotalInternshipDays = app.QualificationInformation.Where(q => q.TypeQualification == TypeQualification.Intership).Sum(app => app.DurationDays),
-                })
-                .OrderBy(x=>x.FirstName)
+                .ProjectTo<ReportResponseDto>(this.mapper.ConfigurationProvider)
+                .OrderBy(x => x.FirstName)
                 .ToListAsync();
 
             return reports;

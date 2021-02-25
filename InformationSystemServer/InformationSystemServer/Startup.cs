@@ -1,5 +1,6 @@
 using InformationSystemServer.Infrastructure;
 using InformationSystemServer.Middleware;
+using InformationSystemServer.Services.Implementations;
 using InformationSystemServer.Services.Implementations.Helpers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
@@ -30,6 +31,8 @@ namespace InformationSystemServer
                 .AddAuthorizationDefault()
                 .AddSwagger()
                 .AddControllers();
+
+            services.AddAutoMapper(typeof(IApplicationService).Assembly);
         }
 
         public void Configure(IApplicationBuilder app)

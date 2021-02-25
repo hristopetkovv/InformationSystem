@@ -39,7 +39,7 @@ namespace InformationSystemServer.Services.Implementations.Helpers
             return hashedInputStringBuilder.ToString();
         }
 
-        public static string GenerateString(int size = 10)
+        private static string GenerateString(int size = 10)
         {
             Random rand = new Random();
 

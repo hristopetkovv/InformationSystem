@@ -1,7 +1,6 @@
 C:\Users\hristo.petkov\Documents\GitHub\InformationSystem\InformationSystemServer\InformationSystemServer.Services\obj\Debug\netcoreapp3.1\InformationSystemServer.Services.csprojAssemblyReference.cache
 C:\Users\hristo.petkov\Documents\GitHub\InformationSystem\InformationSystemServer\InformationSystemServer.Services\obj\Debug\netcoreapp3.1\InformationSystemServer.Services.AssemblyInfoInputs.cache
 C:\Users\hristo.petkov\Documents\GitHub\InformationSystem\InformationSystemServer\InformationSystemServer.Services\obj\Debug\netcoreapp3.1\InformationSystemServer.Services.AssemblyInfo.cs
-C:\Users\hristo.petkov\Documents\GitHub\InformationSystem\InformationSystemServer\InformationSystemServer.Services\obj\Debug\netcoreapp3.1\InformationSystemServer.Services.csproj.CoreCompileInputs.cache
 C:\Users\hristo.petkov\Documents\GitHub\InformationSystem\InformationSystemServer\InformationSystemServer.Services\bin\Debug\netcoreapp3.1\InformationSystemServer.Services.deps.json
 C:\Users\hristo.petkov\Documents\GitHub\InformationSystem\InformationSystemServer\InformationSystemServer.Services\bin\Debug\netcoreapp3.1\InformationSystemServer.Services.dll
 C:\Users\hristo.petkov\Documents\GitHub\InformationSystem\InformationSystemServer\InformationSystemServer.Services\bin\Debug\netcoreapp3.1\InformationSystemServer.Data.dll
@@ -10,3 +9,4 @@ C:\Users\hristo.petkov\Documents\GitHub\InformationSystem\InformationSystemServe
 C:\Users\hristo.petkov\Documents\GitHub\InformationSystem\InformationSystemServer\InformationSystemServer.Services\bin\Debug\netcoreapp3.1\InformationSystemServer.Services.pdb
 C:\Users\hristo.petkov\Documents\GitHub\InformationSystem\InformationSystemServer\InformationSystemServer.Services\obj\Debug\netcoreapp3.1\InformationSystemServer.Services.dll
 C:\Users\hristo.petkov\Documents\GitHub\InformationSystem\InformationSystemServer\InformationSystemServer.Services\obj\Debug\netcoreapp3.1\InformationSystemServer.Services.pdb
+C:\Users\hristo.petkov\Documents\GitHub\InformationSystem\InformationSystemServer\InformationSystemServer.Services\obj\Debug\netcoreapp3.1\InformationSystemServer.Services.csproj.CoreCompileInputs.cache

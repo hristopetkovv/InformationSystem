@@ -9,39 +9,34 @@ using InformationSystemServer.Services.ViewModels.Message;
 using InformationSystemServer.Services.ViewModels.Application;
 using InformationSystemServer.Services.ExtensionMethods;
 using InformationSystemServer.Data.Models;
+using AutoMapper;
+using AutoMapper.QueryableExtensions;
 
 namespace InformationSystemServer.Services.Implementations
 {
     public class MessageService : IMessageService
     {
         private readonly AppDbContext dbContext;
+        private readonly IMapper mapper;
 
-        public MessageService(AppDbContext dbContext)
+        public MessageService(AppDbContext dbContext, IMapper mapper)
         {
             this.dbContext = dbContext;
+            this.mapper = mapper;
         }
 
         public async Task<IEnumerable<MessageDto>> GetMessagesAsync(MessageSearchFilterDto filter)
         {
-            var messages = await this.dbContext
+            return await this.dbContext
                 .Messages
                 .Where(x =>
                     x.StartDate <= DateTime.UtcNow &&
                    (x.EndDate >= DateTime.UtcNow || x.EndDate == null))
                 .FilterMessages(filter)
-                .Select(x => new MessageDto 
-                { 
-                    Id = x.Id,
-                    Content = x.Content,
-                    StartDate = x.StartDate,
-                    EndDate = x.EndDate,
-                    Status = x.Status
-                })
+                .ProjectTo<MessageDto>(this.mapper.ConfigurationProvider)
                 .OrderBy(x => x.StartDate)
                 .ThenBy(x => x.EndDate)
                 .ToListAsync();
-
-            return messages;
         }
 
         public async Task<MessageDto> GetMessageByIdAsync(int id)
@@ -49,15 +44,8 @@ namespace InformationSystemServer.Services.Implementations
             return await this.dbContext
                 .Messages
                 .Where(x => x.Id == id)
-                .Select(x => new MessageDto
-                {
-                    Id = x.Id,
-                    Content = x.Content,
-                    StartDate = x.StartDate,
-                    EndDate = x.EndDate,
-                    Status = x.Status
-                })
-                .OrderBy(x=>x.StartDate)
+                .ProjectTo<MessageDto>(this.mapper.ConfigurationProvider)
+                .OrderBy(x => x.StartDate)
                 .SingleOrDefaultAsync();
         }
 
@@ -65,13 +53,15 @@ namespace InformationSystemServer.Services.Implementations
         {
             message.Status = MessageStatus.Draft;
 
-            var newMessage = new Message 
-            {
-                StartDate = message.StartDate,
-                EndDate = message.EndDate,
-                Content = message.Content,
-                Status = MessageStatus.Draft
-            };
+            var newMessage = this.mapper.Map<Message>(message);
+
+            //var newMessage = new Message
+            //{
+            //    StartDate = message.StartDate,
+            //    EndDate = message.EndDate,
+            //    Content = message.Content,
+            //    Status = MessageStatus.Draft
+            //};
 
             this.dbContext.Messages.Add(newMessage);
 

@@ -9,38 +9,30 @@ using InformationSystemServer.Data.Enums;
 using InformationSystemServer.Services.ViewModels.Application;
 using InformationSystemServer.Services.ExtensionMethods;
 using InformationSystemServer.Services.Implementations.Helpers;
+using AutoMapper.QueryableExtensions;
+using AutoMapper;
 
 namespace InformationSystemServer.Services.Implementations
 {
     public class ApplicationService : IApplicationService
     {
-        private readonly AppDbContext context;
+        private readonly AppDbContext dbContext;
         private readonly UserContext userContext;
+        private readonly IMapper mapper;
 
-        public ApplicationService(AppDbContext context, UserContext userContext)
+        public ApplicationService(AppDbContext dbContext, UserContext userContext, IMapper mapper)
         {
-            this.context = context;
+            this.dbContext = dbContext;
             this.userContext = userContext;
+            this.mapper = mapper;
         }
 
         public async Task<IEnumerable<ApplicationResponseDto>> GetAllApplicationsAsync(ApplicationSearchFilterDto filter)
         {
-            var applications = await this.context
+            var applications = await this.dbContext
                 .Applications
                 .FilterApplications(filter)
-                .Select(app => new ApplicationResponseDto
-                {
-                    Id = app.Id,
-                    FirstName = app.FirstName,
-                    LastName = app.LastName,
-                    City = app.City,
-                    Region = app.Region,
-                    Street = app.Street,
-                    Municipality = app.Municipality,
-                    ApplicationType = app.ApplicationType,
-                    UserId = app.UserId,
-                    Status = app.Status,
-                })
+                .ProjectTo<ApplicationResponseDto>(this.mapper.ConfigurationProvider)
                 .OrderBy(x => x.FirstName)
                 .ToListAsync();
 
@@ -49,34 +41,11 @@ namespace InformationSystemServer.Services.Implementations
 
         public async Task<ApplicationDetailsDto> GetApplicationByIdAsync(int id)
         {
-            var application = await this.context
+            var application = await this.dbContext
                .Applications
                .Where(app => app.Id == id)
-               .Select(app => new ApplicationDetailsDto
-               {
-                   Id = app.Id,
-                   FirstName = app.FirstName,
-                   LastName = app.LastName,
-                   City = app.City,
-                   Region = app.Region,
-                   Municipality = app.Municipality,
-                   Street = app.Street,
-                   ApplicationType = app.ApplicationType,
-                   Status = app.Status,
-                   UserFirstName = app.User.FirstName,
-                   UserId = app.UserId,
-                   UserLastName = app.User.LastName,
-                   QualificationInformation = app.QualificationInformation
-                       .Select(q => new QualificationDto
-                       {
-                           QualificationId = q.Id,
-                           StartDate = q.StartDate.Date,
-                           EndDate = q.EndDate.Date,
-                           Description = q.Description,
-                           DurationDays = q.DurationDays,
-                           TypeQualification = q.TypeQualification
-                       })
-               }).SingleOrDefaultAsync();
+               .ProjectTo<ApplicationDetailsDto>(this.mapper.ConfigurationProvider)
+               .SingleOrDefaultAsync();
 
             if (this.IsAdministrator() || this.IsApplicationAuthor(application.UserId))
             {
@@ -90,48 +59,25 @@ namespace InformationSystemServer.Services.Implementations
 
         public async Task AddApplicationAsync(ApplicationRequestDto dto, int userId)
         {
-            var application = new Application
-            {
-                FirstName = dto.FirstName,
-                LastName = dto.LastName,
-                Status = StatusType.Draft,
-                ApplicationType = dto.ApplicationType,
-                Street = dto.Street,
-                City = dto.City,
-                Municipality = dto.Municipality,
-                Region = dto.Region,
-                UserId = userId
-            };
+            var application = this.mapper.Map<Application>(dto);
+            application.UserId = userId;
+            application.Status = StatusType.Draft;
 
-            foreach (var qualification in dto.QualificationInformation)
-            {
-                var newQualification = new QualificationInformation
-                {
-                    TypeQualification = qualification.TypeQualification,
-                    StartDate = qualification.StartDate.Date,
-                    EndDate = qualification.EndDate.Date,
-                    DurationDays = qualification.DurationDays,
-                    Description = qualification.Description,
-                    ApplicationId = application.Id
-                };
+            this.dbContext.Applications.Add(application);
 
-                application.QualificationInformation.Add(newQualification);
-            }
-
-            this.context.Applications.Add(application);
-            await this.context.SaveChangesAsync();
+            await this.dbContext.SaveChangesAsync();
         }
 
         public async Task DeleteApplicationAsync(int id)
         {
-            var application = await context
+            var application = await dbContext
                 .Applications
                 .SingleOrDefaultAsync(a => a.Id == id);
 
             if (this.IsAdministrator() || this.IsApplicationAuthor(application.UserId))
             {
-                this.context.Applications.Remove(application);
-                await this.context.SaveChangesAsync();
+                this.dbContext.Applications.Remove(application);
+                await this.dbContext.SaveChangesAsync();
             }
             else
             {
@@ -146,7 +92,7 @@ namespace InformationSystemServer.Services.Implementations
                 throw new InvalidOperationException("You cannot update this application!");
             }
 
-            var existingApp = await context
+            var existingApp = await this.dbContext
                 .Applications
                 .SingleOrDefaultAsync(app => app.Id == id);
 
@@ -158,7 +104,7 @@ namespace InformationSystemServer.Services.Implementations
             existingApp.Street = application.Street;
             existingApp.ApplicationType = application.ApplicationType;
 
-            var existingQualifications = await this.context
+            var existingQualifications = await this.dbContext
                 .QualificationsInformation
                 .Where(q => q.ApplicationId == application.Id)
                 .ToListAsync();
@@ -187,7 +133,7 @@ namespace InformationSystemServer.Services.Implementations
 
             if (forDelete.Any())
             {
-                this.context.QualificationsInformation.RemoveRange(forDelete);
+                this.dbContext.QualificationsInformation.RemoveRange(forDelete);
             }
 
             var forUpdate = existingQualifications.Where(eq => application.QualificationInformation.Any(qi => qi.QualificationId == eq.Id));
@@ -203,12 +149,12 @@ namespace InformationSystemServer.Services.Implementations
                 qualificationToUpdate.TypeQualification = qualification.TypeQualification;
             }
 
-            await this.context.SaveChangesAsync();
+            await this.dbContext.SaveChangesAsync();
         }
 
         public async Task ChangeStatusAsync(int applicationId, StatusType status)
         {
-            var application = await this.context.Applications.SingleOrDefaultAsync(app => app.Id == applicationId);
+            var application = await this.dbContext.Applications.SingleOrDefaultAsync(app => app.Id == applicationId);
 
             if (application.Status == StatusType.InProcess)
             {
@@ -231,7 +177,7 @@ namespace InformationSystemServer.Services.Implementations
 
             application.Status = status;
 
-            await this.context.SaveChangesAsync();
+            await this.dbContext.SaveChangesAsync();
         }
 
         private bool IsAdministrator()

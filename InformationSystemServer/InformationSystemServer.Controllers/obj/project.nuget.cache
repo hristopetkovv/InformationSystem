@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "7sVCAtyXIRBKk65SUYwmiV5E9nCnj3XVl1bZVg8MLiFsS/IObkSX+QllpVTmdLRDzveCWll806G2e9uP7nIZoA==",
+  "dgSpecHash": "fsDqZPgQ/2ZIMmTry5GyyOIgmkqSTy2KegRly1swndRAfNtSO4/qzZ1sT47eRB5mRvsTa+5d4L+FupI4S+1oYA==",
   "success": true,
   "projectFilePath": "C:\\Users\\hristo.petkov\\Documents\\GitHub\\InformationSystem\\InformationSystemServer\\InformationSystemServer.Controllers\\InformationSystemServer.Controllers.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\hristo.petkov\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\hristo.petkov\\.nuget\\packages\\closedxml\\0.95.4\\closedxml.0.95.4.nupkg.sha512",
     "C:\\Users\\hristo.petkov\\.nuget\\packages\\documentformat.openxml\\2.7.2\\documentformat.openxml.2.7.2.nupkg.sha512",
     "C:\\Users\\hristo.petkov\\.nuget\\packages\\excelnumberformat\\1.0.10\\excelnumberformat.1.0.10.nupkg.sha512",
@@ -86,7 +87,7 @@
     "C:\\Users\\hristo.petkov\\.nuget\\packages\\system.net.sockets\\4.3.0\\system.net.sockets.4.3.0.nupkg.sha512",
     "C:\\Users\\hristo.petkov\\.nuget\\packages\\system.objectmodel\\4.3.0\\system.objectmodel.4.3.0.nupkg.sha512",
     "C:\\Users\\hristo.petkov\\.nuget\\packages\\system.reflection\\4.3.0\\system.reflection.4.3.0.nupkg.sha512",
-    "C:\\Users\\hristo.petkov\\.nuget\\packages\\system.reflection.emit\\4.3.0\\system.reflection.emit.4.3.0.nupkg.sha512",
+    "C:\\Users\\hristo.petkov\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512",
     "C:\\Users\\hristo.petkov\\.nuget\\packages\\system.reflection.emit.ilgeneration\\4.3.0\\system.reflection.emit.ilgeneration.4.3.0.nupkg.sha512",
     "C:\\Users\\hristo.petkov\\.nuget\\packages\\system.reflection.emit.lightweight\\4.3.0\\system.reflection.emit.lightweight.4.3.0.nupkg.sha512",
     "C:\\Users\\hristo.petkov\\.nuget\\packages\\system.reflection.extensions\\4.3.0\\system.reflection.extensions.4.3.0.nupkg.sha512",

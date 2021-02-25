@@ -44,8 +44,9 @@
         "edit": "Редактирай",
         "details": "Детайли",
         "clear": "Изчисти",
-        "asExel": "Изтегли като ексел файл",
-        "itemsPerPage": "елемента на страница"
+        "asExcel": "Изтегли като ексел файл",
+        "itemsPerPage": "елемента на страница",
+        "makeDraft": "Върни в чернови"
     },
     "users": {
         "username": "Потребителско име",
@@ -68,7 +69,16 @@
     },
     "messages": {
         "title": "Всички съобщения",
-        "name": "Съобщение"
+        "name": "Съобщение",
+        "search": "Търси по:",
+        "content": "Съдържание",
+        "startDate": "Начална дата",
+        "endDate": "Крайна дата",
+        "status": "Статус",
+        "addNew": "Добави ново",
+        "edit": "Редактирай",
+        "done": "Запази",
+        "saved": "Запазени"
     },
     "login": {
         "title": "Вход",
@@ -77,5 +87,17 @@
     },
     "register": {
         "title": "Регистрация"
+    },
+    "reportsTable": {
+        "title": "Справки",
+        "firstName": "Име",
+        "lastName": "Фамилия",
+        "municipality": "Община",
+        "region": "Област",
+        "city": "Град",
+        "street": "Улица",
+        "totalCourseDays": "Брой дни квалификационен курс",
+        "totalInternshipDays": "Брой дни трудов стаж",
+        "status": "Статус"
     }
 }

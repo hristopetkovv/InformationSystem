@@ -11,10 +11,10 @@ export class AppComponent {
 
   constructor(private translate: TranslateService) {
 
-    translate.addLangs(['bg', 'en']);
-    translate.setDefaultLang('en');
+    translate.addLangs(['BG', 'EN']);
+    translate.setDefaultLang('EN');
 
     const browserLang = translate.getBrowserLang();
-    translate.use(browserLang.match(/en|bg/) ? browserLang : 'en');
+    translate.use(browserLang.match(/EN|BG/) ? browserLang : 'EN');
   }
 }

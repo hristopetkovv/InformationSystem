@@ -1,33 +1,35 @@
 <div class="form-group col-sm-11"
      style="display: inline-flex;align-items: baseline; width: 60%;">
-    <label style="min-width: 4.5em;"> Search By:</label>
-    <input type="search"
-           class="form-control form-control-sm"
-           style="max-width: fit-content; margin-left: 5px; "
-           placeholder="Content"
-           [(ngModel)]="messageFilter.content">
-    <input type="search"
-           class="form-control form-control-sm"
-           style="max-width: fit-content; margin-left: 5px;"
-           placeholder="Start Date"
-           [(ngModel)]="messageFilter.startDate">
-    <input type="search"
-           class="form-control form-control-sm"
-           style="max-width: fit-content; margin-left: 5px;"
-           placeholder="End Date"
-           [(ngModel)]="messageFilter.endDate">
-    <select [(ngModel)]="messageFilter.status"
-            style="margin-left: 5px;"
-            class="filterStatus">
-        <option [ngValue]="null"
-                selected>All</option>
-        <option [ngValue]="messageEnum.Draft">Draft</option>
-        <option [ngValue]="messageEnum.Saved">Saved</option>
-    </select>
-    <button class="btn btn-outline btn-sm"
-            (click)="search.emit(this.messageFilter)"
-            style="margin-left: 5px; border-color: #FF7F50; color: #FF7F50;">Search</button>
-    <button class="btn btn-outline btn-sm"
-            (click)="clear()"
-            style="margin-left: 5px; border-color: #FF7F50; color: #FF7F50;">Clear</button>
+        <label style="min-width: 4.5em;">{{'messages.search' | translate}}</label>
+        <input type="search"
+               class="form-control form-control-sm"
+               style="max-width: fit-content; margin-left: 5px; "
+               placeholder="{{'messages.content' | translate}}"
+               [(ngModel)]="messageFilter.content">
+        <input type="search"
+               class="form-control form-control-sm"
+               style="max-width: fit-content; margin-left: 5px;"
+               placeholder="{{'messages.startDate' | translate}}"
+               [(ngModel)]="messageFilter.startDate">
+        <input type="search"
+               class="form-control form-control-sm"
+               style="max-width: fit-content; margin-left: 5px;"
+               placeholder="{{'messages.endDate' | translate}}"
+               [(ngModel)]="messageFilter.endDate">
+        <select [(ngModel)]="messageFilter.status"
+                style="margin-left: 5px;"
+                class="filterStatus">
+                <option [ngValue]="null"
+                        selected>{{'applicationEnumStatus.all' | translate}}</option>
+                <option [ngValue]="messageEnum.Draft">{{'applicationEnumStatus.draft' | translate}}</option>
+                <option [ngValue]="messageEnum.Saved">{{'messages.saved' | translate}}</option>
+        </select>
+        <button class="btn btn-outline btn-sm"
+                (click)="search.emit(this.messageFilter)"
+                style="margin-left: 5px; border-color: #FF7F50; color: #FF7F50;">{{'buttons.search' |
+                translate}}</button>
+        <button class="btn btn-outline btn-sm"
+                (click)="clear()"
+                style="margin-left: 5px; border-color: #FF7F50; color: #FF7F50;">{{'buttons.clear' |
+                translate}}</button>
 </div>

@@ -61,7 +61,8 @@
                             )"
                                 type="button"
                                 class="btn btn-outline-success"
-                                (click)="updateStatus(application, statusTypesEnum.Draft)">Make Draft</button>
+                                (click)="updateStatus(application, statusTypesEnum.Draft)">{{'buttons.makeDraft' |
+                            translate}}</button>
                     </div>
                 </td>
             </tr>
@@ -91,6 +92,6 @@
     <button class="btn btn-outline"
             style="border-color: #ff7f50; color: #ff7f50;"
             (click)="exportExcel()">
-        {{'buttons.asExel'|translate}}
+        {{'buttons.asExcel'|translate}}
     </button>
 </div>

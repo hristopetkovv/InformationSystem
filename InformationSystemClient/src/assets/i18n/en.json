@@ -44,8 +44,9 @@
         "edit": "Edit",
         "details": "Details",
         "clear": "Clear",
-        "asExel": "Export as Excel File",
-        "itemsPerPage": "items per page"
+        "asExcel": "Export as Excel File",
+        "itemsPerPage": "items per page",
+        "makeDraft": "Make Draft"
     },
     "users": {
         "username": "Username",
@@ -68,7 +69,16 @@
     },
     "messages": {
         "title": "All messages",
-        "name": "Message"
+        "name": "Message",
+        "search": "Search by:",
+        "content": "Content",
+        "startDate": "Start date",
+        "endDate": "End date",
+        "status": "Status",
+        "addNew": "Add new",
+        "edit": "Edit",
+        "done": "Done",
+        "saved": "Saved"
     },
     "login": {
         "title": "Sign In",
@@ -77,5 +87,17 @@
     },
     "register": {
         "title": "Sign Up"
+    },
+    "reportsTable": {
+        "title": "Reports",
+        "firstName": "First name",
+        "lastName": "Last name",
+        "municipality": "Municipality",
+        "region": "Region",
+        "city": "City",
+        "street": "Street",
+        "totalCourseDays": "Total Course Days",
+        "totalInternshipDays": "Total Internship Days",
+        "status": "Status"
     }
 }

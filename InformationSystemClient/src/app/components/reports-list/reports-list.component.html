@@ -1,19 +1,19 @@
-<h2 class="text-center">Reports</h2>
+<h2 class="text-center">{{'reportsTable.title' | translate}}</h2>
 
 <application-search (search)="getReports($event)"
                     (clearSearch)="getReports($event)"></application-search>
 
 <table id="excel-table">
     <tr>
-        <th>First name</th>
-        <th>Last name</th>
-        <th>Municipality</th>
-        <th>Region</th>
-        <th>City</th>
-        <th>Street</th>
-        <th>Total Course Days</th>
-        <th>Total Internship Days</th>
-        <th>Status</th>
+        <th>{{ 'reportsTable.firstName' | translate }}</th>
+        <th>{{ 'reportsTable.lastName' | translate }}</th>
+        <th>{{ 'reportsTable.municipality' | translate }}</th>
+        <th>{{ 'reportsTable.street' | translate }}</th>
+        <th>{{ 'reportsTable.city' | translate }}</th>
+        <th>{{ 'reportsTable.region' | translate }}</th>
+        <th>{{ 'reportsTable.totalCourseDays' | translate }}</th>
+        <th>{{ 'reportsTable.totalInternshipDays' | translate }}</th>
+        <th>{{ 'reportsTable.status' | translate }}</th>
     </tr>
     <tr *ngFor="let report of reports">
         <td>{{report.firstName}}</td>
@@ -33,6 +33,6 @@
     <button class="btn btn-outline"
             style="border-color: #ff7f50; color: #ff7f50;"
             (click)="exportExcel()">
-        Export as Excel File
+        {{'buttons.asExcel' | translate}}
     </button>
 </div>

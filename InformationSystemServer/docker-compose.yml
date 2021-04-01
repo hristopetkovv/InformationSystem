@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  webapplication2:
+    image: ${DOCKER_REGISTRY-}webapplication2
+    build:
+      context: .
+      dockerfile: WebApplication2\Dockerfile
+
+  informationsystemserver:
+    image: ${DOCKER_REGISTRY-}informationsystemserver
+    build:
+      context: .
+      dockerfile: InformationSystemServer\Dockerfile
+

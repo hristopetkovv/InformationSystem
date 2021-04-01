@@ -34,6 +34,7 @@ import { UsersListComponent } from './components/admin/users-list/users-list.com
 
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { RecaptchaV3Module, RECAPTCHA_V3_SITE_KEY } from 'ng-recaptcha';
 
 
 
@@ -78,12 +79,14 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
-    })
+    }),
+    RecaptchaV3Module
 
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true, },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptorService, multi: true, },
+    { provide: RECAPTCHA_V3_SITE_KEY, useValue: "6LdRoJcaAAAAAJrU4t9I5SI3QV9vv6KRUGzYlZMK" },
     [DatePipe]
   ],
   bootstrap: [AppComponent]

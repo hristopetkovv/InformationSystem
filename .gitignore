@@ -20,3 +20,4 @@ InformationSystemServer/InformationSystemServer/appsettings.Development.json
 **/Migrations/**
 InformationSystemServer/InformationSystemServer.Services/bin/Debug/netcoreapp3.1/InformationSystemServer.Services.dll
 InformationSystemServer/InformationSystemServer.Services/obj/Debug/netcoreapp3.1/InformationSystemServer.Services.dll
+InformationSystemServer/InformationSystemServer.Controllers/bin/Debug/netcoreapp3.1/InformationSystemServer.Controllers.dll

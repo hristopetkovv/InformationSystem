@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "4YEULO0YOxUutFBft3mJiOUsZuIa6JKXrh3xSkQQnssuKeEQmn65601TBr4foTuEZXIb9qdGkTUl8TK4KhZk+g==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\hristo.petkov\\Documents\\GitHub\\InformationSystem\\InformationSystemServer\\WebApplication1\\WebApplication1.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\hristo.petkov\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.10.9\\microsoft.visualstudio.azure.containers.tools.targets.1.10.9.nupkg.sha512"
+  ],
+  "logs": []
+}

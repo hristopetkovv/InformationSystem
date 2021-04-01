@@ -5,11 +5,11 @@ VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InformationSystemServer", "InformationSystemServer\InformationSystemServer.csproj", "{B95CC2B0-7E81-480F-B3F8-D37C76D9E931}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InformationSystemServer.Data", "InformationSystemServer.Data\InformationSystemServer.Data.csproj", "{F0051F7B-1BC4-4C7E-A966-DFCBAB3F5978}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InformationSystemServer.Data", "InformationSystemServer.Data\InformationSystemServer.Data.csproj", "{F0051F7B-1BC4-4C7E-A966-DFCBAB3F5978}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InformationSystemServer.Services", "InformationSystemServer.Services\InformationSystemServer.Services.csproj", "{51806941-B5A8-404A-A3CF-86C00B445DDA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InformationSystemServer.Services", "InformationSystemServer.Services\InformationSystemServer.Services.csproj", "{51806941-B5A8-404A-A3CF-86C00B445DDA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InformationSystemServer.Controllers", "InformationSystemServer.Controllers\InformationSystemServer.Controllers.csproj", "{F5808FB2-B9C0-4DA3-A0F1-F3665B453B85}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InformationSystemServer.Controllers", "InformationSystemServer.Controllers\InformationSystemServer.Controllers.csproj", "{F5808FB2-B9C0-4DA3-A0F1-F3665B453B85}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

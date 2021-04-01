@@ -3,4 +3,5 @@ export class RegisterDto {
     firstname: string;
     lastname: string;
     password: string;
+    reCaptchaToken: string;
 }

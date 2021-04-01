@@ -6399,7 +6399,8 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\hristo.petkov\\.nuget\\packages\\": {}
+    "C:\\Users\\hristo.petkov\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
@@ -6410,6 +6411,9 @@
       "packagesPath": "C:\\Users\\hristo.petkov\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\hristo.petkov\\Documents\\GitHub\\InformationSystem\\InformationSystemServer\\InformationSystemServer.Controllers\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
         "C:\\Users\\hristo.petkov\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -6419,10 +6423,12 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "http://192.168.0.38:20202/nuget": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "projectReferences": {
             "C:\\Users\\hristo.petkov\\Documents\\GitHub\\InformationSystem\\InformationSystemServer\\InformationSystemServer.Data\\InformationSystemServer.Data.csproj": {
               "projectPath": "C:\\Users\\hristo.petkov\\Documents\\GitHub\\InformationSystem\\InformationSystemServer\\InformationSystemServer.Data\\InformationSystemServer.Data.csproj"
@@ -6441,6 +6447,7 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "ClosedXML": {
             "target": "Package",
@@ -6457,12 +6464,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[3.1.2, 3.1.2]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -6471,7 +6472,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.104\\RuntimeIdentifierGraph.json"
       }
     }
   }

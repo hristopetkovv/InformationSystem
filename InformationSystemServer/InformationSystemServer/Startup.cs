@@ -20,6 +20,7 @@ namespace InformationSystemServer
         public void ConfigureServices(IServiceCollection services)
         {
             services.Configure<TokenConfiguration>(this.Configuration.GetSection("TokenOptions"));
+            services.Configure<ReCaptchaConfiguration>(this.Configuration.GetSection("GoogleRecaptchaV3"));
             services.AddOptions();
 
             var authConfig = this.Configuration.GetSection("TokenOptions").Get<TokenConfiguration>();
